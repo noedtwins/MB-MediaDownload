@@ -14,20 +14,8 @@ namespace mediaDownloader
         private static frm_StartInstance loadedSplashScreen;
         private static frm_GetURL loadedURLCatch;
         private static frm_SaveFile loadedSaveFile;
-        private static mediaDetails _details;
+        public static mediaDetails details; //TODO: Add Encapsulation
 
-        public static mediaDetails details
-        {
-            get
-            {
-                return _details;
-            }
-
-            set
-            {
-                _details = value;
-            }
-        }
 
         public static void runoutsideMB()
         {
@@ -88,7 +76,10 @@ namespace mediaDownloader
         public static void gotoSaveFile()
         {
             if (loadedSaveFile == null)
+            {
                 loadedSaveFile = new frm_SaveFile();
+                loadedSaveFile.firstStart();
+            }
 
             hideAllForms();
             loadedSaveFile.Show();

@@ -33,22 +33,25 @@
             this.but_NextStage = new System.Windows.Forms.Button();
             this.lbl_FormatCount = new System.Windows.Forms.Label();
             this.lbl_VideoTitle = new System.Windows.Forms.Label();
-            this.pic_Thumb = new System.Windows.Forms.PictureBox();
-            this.but_MoreOptions = new System.Windows.Forms.Button();
             this.txt_MediaURL = new System.Windows.Forms.TextBox();
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
+            this.flow_DownRdoButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.pnl_AvaFormat = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.but_ContStage = new System.Windows.Forms.Button();
-            this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
+            this.bk_QueryFormats = new System.ComponentModel.BackgroundWorker();
+            this.pic_InfLoad = new System.Windows.Forms.PictureBox();
+            this.but_MoreOptions = new System.Windows.Forms.Button();
+            this.pic_Thumb = new System.Windows.Forms.PictureBox();
+            this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
@@ -72,6 +75,7 @@
             this.but_Reset.Text = "Reset This Stage";
             this.but_Reset.UseVisualStyleBackColor = true;
             this.but_Reset.Visible = false;
+            this.but_Reset.Click += new System.EventHandler(this.but_Reset_Click);
             // 
             // but_NextStage
             // 
@@ -104,29 +108,13 @@
             this.lbl_VideoTitle.TabIndex = 1;
             this.lbl_VideoTitle.Text = "lbl_VideoTitle";
             // 
-            // pic_Thumb
-            // 
-            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_Thumb.Name = "pic_Thumb";
-            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
-            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_Thumb.TabIndex = 0;
-            this.pic_Thumb.TabStop = false;
-            // 
-            // but_MoreOptions
-            // 
-            this.but_MoreOptions.Location = new System.Drawing.Point(439, 63);
-            this.but_MoreOptions.Name = "but_MoreOptions";
-            this.but_MoreOptions.Size = new System.Drawing.Size(26, 38);
-            this.but_MoreOptions.TabIndex = 26;
-            this.but_MoreOptions.UseVisualStyleBackColor = true;
-            // 
             // txt_MediaURL
             // 
             this.txt_MediaURL.Location = new System.Drawing.Point(3, 77);
             this.txt_MediaURL.Name = "txt_MediaURL";
             this.txt_MediaURL.Size = new System.Drawing.Size(430, 20);
             this.txt_MediaURL.TabIndex = 14;
+            this.txt_MediaURL.Text = "Insert URL Here...";
             // 
             // grp_FrmButtons
             // 
@@ -141,15 +129,26 @@
             // 
             // grp_VidDetails
             // 
+            this.grp_VidDetails.Controls.Add(this.flow_DownRdoButtons);
             this.grp_VidDetails.Controls.Add(this.lbl_FormatCount);
             this.grp_VidDetails.Controls.Add(this.lbl_VideoTitle);
             this.grp_VidDetails.Controls.Add(this.pic_Thumb);
             this.grp_VidDetails.Location = new System.Drawing.Point(0, 103);
             this.grp_VidDetails.Name = "grp_VidDetails";
-            this.grp_VidDetails.Size = new System.Drawing.Size(462, 68);
+            this.grp_VidDetails.Size = new System.Drawing.Size(462, 343);
             this.grp_VidDetails.TabIndex = 24;
             this.grp_VidDetails.TabStop = false;
             this.grp_VidDetails.Visible = false;
+            // 
+            // flow_DownRdoButtons
+            // 
+            this.flow_DownRdoButtons.BackColor = System.Drawing.SystemColors.Control;
+            this.flow_DownRdoButtons.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flow_DownRdoButtons.Location = new System.Drawing.Point(0, 74);
+            this.flow_DownRdoButtons.Name = "flow_DownRdoButtons";
+            this.flow_DownRdoButtons.Size = new System.Drawing.Size(462, 263);
+            this.flow_DownRdoButtons.TabIndex = 3;
+            this.flow_DownRdoButtons.Visible = false;
             // 
             // statusStrip1
             // 
@@ -158,15 +157,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(473, 22);
             this.statusStrip1.TabIndex = 22;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // pnl_AvaFormat
-            // 
-            this.pnl_AvaFormat.BackColor = System.Drawing.SystemColors.Control;
-            this.pnl_AvaFormat.Location = new System.Drawing.Point(2, 177);
-            this.pnl_AvaFormat.Name = "pnl_AvaFormat";
-            this.pnl_AvaFormat.Size = new System.Drawing.Size(461, 33);
-            this.pnl_AvaFormat.TabIndex = 23;
-            this.pnl_AvaFormat.Visible = false;
             // 
             // label1
             // 
@@ -186,15 +176,7 @@
             this.but_ContStage.TabIndex = 20;
             this.but_ContStage.Text = "Continue";
             this.but_ContStage.UseVisualStyleBackColor = true;
-            // 
-            // pic_TopLine
-            // 
-            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-5, 49);
-            this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
-            this.pic_TopLine.TabIndex = 19;
-            this.pic_TopLine.TabStop = false;
+            this.but_ContStage.Click += new System.EventHandler(this.but_ContStage_Click);
             // 
             // lbl_Title
             // 
@@ -207,6 +189,51 @@
             this.lbl_Title.Size = new System.Drawing.Size(333, 37);
             this.lbl_Title.TabIndex = 18;
             this.lbl_Title.Text = "Media: Download Plugin";
+            // 
+            // bk_QueryFormats
+            // 
+            this.bk_QueryFormats.WorkerSupportsCancellation = true;
+            this.bk_QueryFormats.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bk_QueryFormats_DoWork);
+            this.bk_QueryFormats.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bk_QueryFormats_RunWorkerCompleted);
+            // 
+            // pic_InfLoad
+            // 
+            this.pic_InfLoad.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_InfLoad.Location = new System.Drawing.Point(128, 277);
+            this.pic_InfLoad.Name = "pic_InfLoad";
+            this.pic_InfLoad.Size = new System.Drawing.Size(236, 28);
+            this.pic_InfLoad.TabIndex = 27;
+            this.pic_InfLoad.TabStop = false;
+            this.pic_InfLoad.Visible = false;
+            // 
+            // but_MoreOptions
+            // 
+            this.but_MoreOptions.Image = global::mediaDownloader.Properties.Resources.menu_icon_16;
+            this.but_MoreOptions.Location = new System.Drawing.Point(439, 63);
+            this.but_MoreOptions.Name = "but_MoreOptions";
+            this.but_MoreOptions.Size = new System.Drawing.Size(26, 38);
+            this.but_MoreOptions.TabIndex = 26;
+            this.but_MoreOptions.UseVisualStyleBackColor = true;
+            this.but_MoreOptions.Click += new System.EventHandler(this.but_MoreOptions_Click);
+            // 
+            // pic_Thumb
+            // 
+            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_Thumb.Name = "pic_Thumb";
+            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
+            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_Thumb.TabIndex = 0;
+            this.pic_Thumb.TabStop = false;
+            // 
+            // pic_TopLine
+            // 
+            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pic_TopLine.Location = new System.Drawing.Point(-5, 49);
+            this.pic_TopLine.Name = "pic_TopLine";
+            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
+            this.pic_TopLine.TabIndex = 19;
+            this.pic_TopLine.TabStop = false;
             // 
             // pic_ICO
             // 
@@ -231,24 +258,28 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 532);
+            this.Controls.Add(this.pic_InfLoad);
             this.Controls.Add(this.but_MoreOptions);
             this.Controls.Add(this.txt_MediaURL);
             this.Controls.Add(this.grp_FrmButtons);
             this.Controls.Add(this.grp_VidDetails);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.pnl_AvaFormat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.but_ContStage);
             this.Controls.Add(this.pic_TopLine);
             this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.pic_Top);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frm_GetURL";
-            this.Text = "frm_GetURL";
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Media Download Plugin: Retrieve URL";
+            this.Activated += new System.EventHandler(this.frm_GetURL_Activated);
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
@@ -269,12 +300,14 @@
         private System.Windows.Forms.GroupBox grp_FrmButtons;
         private System.Windows.Forms.GroupBox grp_VidDetails;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Panel pnl_AvaFormat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button but_ContStage;
         private System.Windows.Forms.PictureBox pic_TopLine;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.PictureBox pic_ICO;
         private System.Windows.Forms.PictureBox pic_Top;
+        private System.Windows.Forms.PictureBox pic_InfLoad;
+        private System.ComponentModel.BackgroundWorker bk_QueryFormats;
+        private System.Windows.Forms.FlowLayoutPanel flow_DownRdoButtons;
     }
 }

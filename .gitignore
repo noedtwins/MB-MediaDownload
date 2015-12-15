@@ -177,3 +177,5 @@ FakesAssemblies/
 ClientID.cs
 ClientID.cs
 ClientID.cs
+
+*.exe

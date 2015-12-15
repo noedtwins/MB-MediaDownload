@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.but_Swap = new System.Windows.Forms.Button();
             this.tbl_Tags = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pic_Artwork = new System.Windows.Forms.PictureBox();
             this.txt_Tag_Album = new System.Windows.Forms.TextBox();
             this.txt_Tag_Title = new System.Windows.Forms.TextBox();
             this.txt_Tag_Artist = new System.Windows.Forms.TextBox();
@@ -48,8 +46,6 @@
             this.tmr_DelayClose = new System.Windows.Forms.Timer(this.components);
             this.fldr_BrowseSelection = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pic_TopLine = new System.Windows.Forms.PictureBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.txt_FileName = new System.Windows.Forms.TextBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
             this.lbl_Prefix = new System.Windows.Forms.Label();
@@ -57,7 +53,6 @@
             this.lbl_Convert = new System.Windows.Forms.Label();
             this.lbl_FormatStatus = new System.Windows.Forms.Label();
             this.lbl_VideoTitle = new System.Windows.Forms.Label();
-            this.pic_VidThumb = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbo_Folder = new System.Windows.Forms.ComboBox();
@@ -74,31 +69,27 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.but_Browse = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
+            this.pic_ICO = new System.Windows.Forms.PictureBox();
+            this.pic_Artwork = new System.Windows.Forms.PictureBox();
+            this.pic_TopLine = new System.Windows.Forms.PictureBox();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
+            this.pic_VidThumb = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tbl_Tags.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).BeginInit();
             this.grp_FrmButtons.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.grp_VidDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tbl_FileName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pic_ICO
-            // 
-            this.pic_ICO.Location = new System.Drawing.Point(19, 4);
-            this.pic_ICO.Name = "pic_ICO";
-            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
-            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_ICO.TabIndex = 21;
-            this.pic_ICO.TabStop = false;
             // 
             // but_Swap
             // 
@@ -115,6 +106,9 @@
             this.tbl_Tags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tbl_Tags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tbl_Tags.Controls.Add(this.label11, 0, 2);
+            this.tbl_Tags.Controls.Add(this.txt_Tag_Artist, 1, 1);
+            this.tbl_Tags.Controls.Add(this.txt_Tag_Title, 1, 0);
+            this.tbl_Tags.Controls.Add(this.txt_Tag_Album, 1, 2);
             this.tbl_Tags.Controls.Add(this.label10, 0, 1);
             this.tbl_Tags.Controls.Add(this.label8, 0, 0);
             this.tbl_Tags.Location = new System.Drawing.Point(90, 12);
@@ -166,35 +160,28 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Artwork";
             // 
-            // pic_Artwork
-            // 
-            this.pic_Artwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic_Artwork.Location = new System.Drawing.Point(8, 32);
-            this.pic_Artwork.Name = "pic_Artwork";
-            this.pic_Artwork.Size = new System.Drawing.Size(80, 64);
-            this.pic_Artwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_Artwork.TabIndex = 1;
-            this.pic_Artwork.TabStop = false;
-            // 
             // txt_Tag_Album
             // 
-            this.txt_Tag_Album.Location = new System.Drawing.Point(6, 0);
+            this.txt_Tag_Album.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Album.Location = new System.Drawing.Point(54, 69);
             this.txt_Tag_Album.Name = "txt_Tag_Album";
-            this.txt_Tag_Album.Size = new System.Drawing.Size(100, 20);
+            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
             this.txt_Tag_Album.TabIndex = 16;
             // 
             // txt_Tag_Title
             // 
-            this.txt_Tag_Title.Location = new System.Drawing.Point(6, 0);
+            this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
             this.txt_Tag_Title.Name = "txt_Tag_Title";
-            this.txt_Tag_Title.Size = new System.Drawing.Size(100, 20);
+            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
             this.txt_Tag_Title.TabIndex = 17;
             // 
             // txt_Tag_Artist
             // 
-            this.txt_Tag_Artist.Location = new System.Drawing.Point(6, 0);
+            this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
             this.txt_Tag_Artist.Name = "txt_Tag_Artist";
-            this.txt_Tag_Artist.Size = new System.Drawing.Size(100, 20);
+            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
             this.txt_Tag_Artist.TabIndex = 18;
             // 
             // grp_FrmButtons
@@ -264,29 +251,12 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tagging";
             // 
-            // pic_TopLine
-            // 
-            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(4, 49);
-            this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
-            this.pic_TopLine.TabIndex = 23;
-            this.pic_TopLine.TabStop = false;
-            // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-6, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(491, 50);
-            this.pic_Top.TabIndex = 20;
-            this.pic_Top.TabStop = false;
-            // 
             // txt_FileName
             // 
-            this.txt_FileName.Location = new System.Drawing.Point(6, 0);
+            this.txt_FileName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_FileName.Location = new System.Drawing.Point(3, 3);
             this.txt_FileName.Name = "txt_FileName";
-            this.txt_FileName.Size = new System.Drawing.Size(100, 20);
+            this.txt_FileName.Size = new System.Drawing.Size(242, 20);
             this.txt_FileName.TabIndex = 19;
             // 
             // grp_VidDetails
@@ -357,15 +327,6 @@
             this.lbl_VideoTitle.Size = new System.Drawing.Size(117, 20);
             this.lbl_VideoTitle.TabIndex = 1;
             this.lbl_VideoTitle.Text = "lbl_VideoTitle";
-            // 
-            // pic_VidThumb
-            // 
-            this.pic_VidThumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_VidThumb.Name = "pic_VidThumb";
-            this.pic_VidThumb.Size = new System.Drawing.Size(79, 70);
-            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_VidThumb.TabIndex = 0;
-            this.pic_VidThumb.TabStop = false;
             // 
             // lbl_Title
             // 
@@ -443,6 +404,7 @@
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.16294F));
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.539823F));
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.30383F));
+            this.tbl_FileName.Controls.Add(this.txt_FileName, 0, 0);
             this.tbl_FileName.Controls.Add(this.label13, 1, 0);
             this.tbl_FileName.Controls.Add(this.cbo_SelectFileFormat, 2, 0);
             this.tbl_FileName.Location = new System.Drawing.Point(112, 44);
@@ -562,15 +524,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "File Name:";
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox3.Location = new System.Drawing.Point(4, 69);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(459, 3);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            // 
             // but_Browse
             // 
             this.but_Browse.Location = new System.Drawing.Point(394, 19);
@@ -590,41 +543,97 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Select Folder:";
             // 
+            // pic_ICO
+            // 
+            this.pic_ICO.Location = new System.Drawing.Point(19, 4);
+            this.pic_ICO.Name = "pic_ICO";
+            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
+            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_ICO.TabIndex = 21;
+            this.pic_ICO.TabStop = false;
+            // 
+            // pic_Artwork
+            // 
+            this.pic_Artwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_Artwork.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
+            this.pic_Artwork.Location = new System.Drawing.Point(8, 32);
+            this.pic_Artwork.Name = "pic_Artwork";
+            this.pic_Artwork.Size = new System.Drawing.Size(80, 64);
+            this.pic_Artwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_Artwork.TabIndex = 1;
+            this.pic_Artwork.TabStop = false;
+            // 
+            // pic_TopLine
+            // 
+            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pic_TopLine.Location = new System.Drawing.Point(-1, 49);
+            this.pic_TopLine.Name = "pic_TopLine";
+            this.pic_TopLine.Size = new System.Drawing.Size(484, 5);
+            this.pic_TopLine.TabIndex = 23;
+            this.pic_TopLine.TabStop = false;
+            // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-11, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(491, 50);
+            this.pic_Top.TabIndex = 20;
+            this.pic_Top.TabStop = false;
+            // 
+            // pic_VidThumb
+            // 
+            this.pic_VidThumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_VidThumb.Name = "pic_VidThumb";
+            this.pic_VidThumb.Size = new System.Drawing.Size(79, 70);
+            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_VidThumb.TabIndex = 0;
+            this.pic_VidThumb.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox3.Location = new System.Drawing.Point(4, 69);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(459, 3);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
             // frm_SaveFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(480, 491);
+            this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.pic_ICO);
-            this.Controls.Add(this.txt_Tag_Album);
-            this.Controls.Add(this.txt_Tag_Title);
-            this.Controls.Add(this.txt_Tag_Artist);
             this.Controls.Add(this.grp_FrmButtons);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pic_TopLine);
             this.Controls.Add(this.pic_Top);
-            this.Controls.Add(this.txt_FileName);
             this.Controls.Add(this.grp_VidDetails);
-            this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frm_SaveFile";
-            this.Text = "frm_SaveFile";
-            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Media Download Plugin: Save File As...";
+            this.Load += new System.EventHandler(this.frm_SaveFile_Load);
             this.tbl_Tags.ResumeLayout(false);
             this.tbl_Tags.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).EndInit();
             this.grp_FrmButtons.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbl_FileName.ResumeLayout(false);
+            this.tbl_FileName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

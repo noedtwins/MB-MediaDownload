@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediaDownloader", "mediaDownloader.csproj", "{496131BF-D8C0-433F-A889-13CE56F5510E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ECDC127F-8DEF-4F99-8300-72C13597339D} = {ECDC127F-8DEF-4F99-8300-72C13597339D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeExtractor", "..\..\..\Development\Media Downloader V13\customYouTubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor.csproj", "{ECDC127F-8DEF-4F99-8300-72C13597339D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
