@@ -45,6 +45,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="taglib-sharp">
+      <HintPath>..\..\..\Development\Media Downloader V13\Plugin_YTDownload-master\Plugin_YTDownload-master\bin\Debug\taglib-sharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="autotag.cs" />
@@ -54,6 +57,12 @@
     </Compile>
     <Compile Include="frm_GetURL.Designer.cs">
       <DependentUpon>frm_GetURL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ProcessMedia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ProcessMedia.Designer.cs">
+      <DependentUpon>frm_ProcessMedia.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_SaveFile.cs">
       <SubType>Form</SubType>
@@ -69,11 +78,13 @@
     </Compile>
     <Compile Include="mediaDetails.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="proInfo.cs" />
     <Compile Include="pluginInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_GetURL.resx">
       <DependentUpon>frm_GetURL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ProcessMedia.resx">
+      <DependentUpon>frm_ProcessMedia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_SaveFile.resx">
       <DependentUpon>frm_SaveFile.cs</DependentUpon>
@@ -115,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\unknownThumb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basic icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

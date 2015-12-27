@@ -7,6 +7,8 @@ using YoutubeExtractor;
 
 namespace mediaDownloader
 {
+    public enum moveType { inbox, library, none }
+
     public struct mediaDetails
     {
         public string unnomralisedURL;
@@ -18,7 +20,21 @@ namespace mediaDownloader
         public AudioType audioFormat;
         public string selectedResolution;
         public Boolean cropSelected;
+        public string startTime;
+        public string endTime;
+        public Boolean videoMode;
+
         public Image cachedThumb;
+        public moveType moveTo;
+
+        public String titleTag;
+        public String artistTag;
+        public String albumTag;
+
+        public String fullTempPath;
+        public String downloadPath;
+        public String fileName;
+        public String addMBMode;
 
         public IEnumerable<VideoInfo> results;
         public VideoInfo selectedResult;

@@ -24,10 +24,10 @@ namespace mediaDownloader
 
         public void firstStart() //First time form instanced, load default values and settings
         {
-            cbo_Folder.Items.Add(config.mainFolderPath); //Add the main folder path from settings
-            cbo_Folder.Text = config.mainFolderPath;
+            cbo_Folder.Items.Add(pluginInstance.config.mainFolder); //Add the main folder path from settings
+            cbo_Folder.Text = pluginInstance.config.mainFolder;
 
-            if (config.useSameValueBitRateOnConversion)
+            if (pluginInstance.config.sameValBitRateAsVideo)
             {
                 //If Use Same BitRate on Conversion is true in settings, then add the format bitrate to this
                 cbo_SetBitRate.Items.Add(pluginInstance.details.audioBitRate);
@@ -35,16 +35,16 @@ namespace mediaDownloader
             }
             else
             {
-                cbo_SetBitRate.Text = Convert.ToString(config.defaultBitRate);
+                cbo_SetBitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
             }
 
             //Radio Buttons for Adding Media To MB
-            if (config.addToMBInbox == false && config.addToMBLibrary == false)
+            if (pluginInstance.config.addInbox == false && pluginInstance.config.addLibrary == false)
             { rdo_None.Checked = true; } //Neither will be selected
             else
             {
-                rdo_Inbox.Checked = config.addToMBInbox;
-                rdo_Library.Checked = config.addToMBLibrary;
+                rdo_Inbox.Checked = pluginInstance.config.addInbox;
+                rdo_Library.Checked = pluginInstance.config.addLibrary;
             }
 
             this.ActiveControl = txt_Tag_Title; //Set Focus on Title Tag TextBox
@@ -60,9 +60,9 @@ namespace mediaDownloader
 
             txt_FileName.Text = autotag.removeSpecialCharactersFromFileName(pluginInstance.details.title); //Store the file name as title without special characters.
 
-            if (config.extractAudio) //If Extracting rather than converting
+            if (pluginInstance.config.extractAudio) //If Extracting rather than converting
             {
-                if (!config.m4aMake) //If making an not making m4a file, then use the format code media format.
+                if (!pluginInstance.config.m4aMake) //If making an not making m4a file, then use the format code media format.
                 { txt_FileName.Text = txt_FileName.Text + pluginInstance.details.audioFormat; } //TOOD: This obsolete surely?
                 else //Otherwise use a m4a file
                 {
@@ -94,7 +94,7 @@ namespace mediaDownloader
                 lbl_Prefix.Visible = false;
             }
 
-            if (config.autoTagInfo) //If autotagging from filename is enabled in options, perform the function
+            if (pluginInstance.config.autoTagInfo) //If autotagging from filename is enabled in options, perform the function
             {
                 autotag.autoTagInfo holder;
                 holder =  autotag.performAutoTag(pluginInstance.details.title); //Regex autotag
@@ -178,6 +178,80 @@ namespace mediaDownloader
         }
 
         private void frm_SaveFile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private Boolean prepareStep()
+        {
+
+            if (checkValidPath() == false) //Check the folder selected is valid.
+            {
+                MessageBox.Show("Invaid path selected. Please confirm the directory you have selected exists.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false; ; //Error occured, Exit method.
+            }
+
+            if (rdo_Video.Checked == true)
+                pluginInstance.details.videoMode = true;
+
+            //////////////
+            ///Tagging///
+            ////////////
+            if ((txt_Tag_Album.Text == "" || txt_Tag_Artist.Text == "" || txt_Tag_Title.Text == "") &&
+                !pluginInstance.config.hideTagMessage && !rdo_Video.Checked)
+            {
+                DialogResult confirmNoTag = MessageBox.Show("You have left one or more tags fields blank, Continue without tagging?",
+                    "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmNoTag == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;  //User pressed no, exit method so user can enter them.
+                }
+
+            }
+
+            ///////////////////////
+            ///Music Bee Addition//
+            ///////////////////////
+            if (rdo_None.Checked == true)
+            { pluginInstance.details.moveTo = moveType.none; }
+            if (rdo_Inbox.Checked)
+            { pluginInstance.details.moveTo = moveType.inbox; }
+            if (rdo_Library.Checked)
+            { pluginInstance.details.moveTo = moveType.library; }
+
+
+            pluginInstance.details.titleTag = txt_Tag_Title.Text;
+            pluginInstance.details.albumTag = txt_Tag_Album.Text;
+            pluginInstance.details.artistTag = txt_Tag_Artist.Text;
+            setFileLoc(txt_FileName.Text + "." + cbo_SelectFileFormat.Text, pluginInstance.config.tempFolder, cbo_Folder.Text);
+
+            pluginInstance.details.audioBitRate = Convert.ToInt32(cbo_SetBitRate.Text);
+
+            return true;
+        }
+
+        public void setFileLoc(string filename, string tempPath, string downloadPath)
+        {
+            pluginInstance.details.fileName = filename;
+            pluginInstance.details.downloadPath = downloadPath;
+            pluginInstance.details.fullTempPath = tempPath;
+        }
+
+
+
+        private void but_NextStage_Click(object sender, EventArgs e)
+        {
+            if (prepareStep())
+            {
+                pluginInstance.startProcess();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void grp_FrmButtons_Enter(object sender, EventArgs e)
         {
 
         }

@@ -32,12 +32,12 @@
             this.but_Swap = new System.Windows.Forms.Button();
             this.tbl_Tags = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
+            this.txt_Tag_Artist = new System.Windows.Forms.TextBox();
+            this.txt_Tag_Title = new System.Windows.Forms.TextBox();
+            this.txt_Tag_Album = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_Tag_Album = new System.Windows.Forms.TextBox();
-            this.txt_Tag_Title = new System.Windows.Forms.TextBox();
-            this.txt_Tag_Artist = new System.Windows.Forms.TextBox();
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.but_PreviousStage = new System.Windows.Forms.Button();
             this.but_Reset = new System.Windows.Forms.Button();
@@ -46,6 +46,7 @@
             this.tmr_DelayClose = new System.Windows.Forms.Timer(this.components);
             this.fldr_BrowseSelection = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pic_Artwork = new System.Windows.Forms.PictureBox();
             this.txt_FileName = new System.Windows.Forms.TextBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
             this.lbl_Prefix = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.lbl_Convert = new System.Windows.Forms.Label();
             this.lbl_FormatStatus = new System.Windows.Forms.Label();
             this.lbl_VideoTitle = new System.Windows.Forms.Label();
+            this.pic_VidThumb = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbo_Folder = new System.Windows.Forms.ComboBox();
@@ -69,26 +71,24 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.but_Browse = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
-            this.pic_Artwork = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
-            this.pic_VidThumb = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tbl_Tags.SuspendLayout();
             this.grp_FrmButtons.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).BeginInit();
             this.grp_VidDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tbl_FileName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // but_Swap
@@ -130,6 +130,30 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "Album:";
             // 
+            // txt_Tag_Artist
+            // 
+            this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
+            this.txt_Tag_Artist.Name = "txt_Tag_Artist";
+            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Artist.TabIndex = 18;
+            // 
+            // txt_Tag_Title
+            // 
+            this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
+            this.txt_Tag_Title.Name = "txt_Tag_Title";
+            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Title.TabIndex = 17;
+            // 
+            // txt_Tag_Album
+            // 
+            this.txt_Tag_Album.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Album.Location = new System.Drawing.Point(54, 69);
+            this.txt_Tag_Album.Name = "txt_Tag_Album";
+            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Album.TabIndex = 16;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -160,30 +184,6 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Artwork";
             // 
-            // txt_Tag_Album
-            // 
-            this.txt_Tag_Album.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Album.Location = new System.Drawing.Point(54, 69);
-            this.txt_Tag_Album.Name = "txt_Tag_Album";
-            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Album.TabIndex = 16;
-            // 
-            // txt_Tag_Title
-            // 
-            this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
-            this.txt_Tag_Title.Name = "txt_Tag_Title";
-            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Title.TabIndex = 17;
-            // 
-            // txt_Tag_Artist
-            // 
-            this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
-            this.txt_Tag_Artist.Name = "txt_Tag_Artist";
-            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Artist.TabIndex = 18;
-            // 
             // grp_FrmButtons
             // 
             this.grp_FrmButtons.Controls.Add(this.but_PreviousStage);
@@ -194,6 +194,7 @@
             this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
             this.grp_FrmButtons.TabIndex = 27;
             this.grp_FrmButtons.TabStop = false;
+            this.grp_FrmButtons.Enter += new System.EventHandler(this.grp_FrmButtons_Enter);
             // 
             // but_PreviousStage
             // 
@@ -221,6 +222,7 @@
             this.but_NextStage.TabIndex = 9;
             this.but_NextStage.Text = "Continue ->";
             this.but_NextStage.UseVisualStyleBackColor = true;
+            this.but_NextStage.Click += new System.EventHandler(this.but_NextStage_Click);
             // 
             // statusStrip1
             // 
@@ -250,6 +252,17 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tagging";
+            // 
+            // pic_Artwork
+            // 
+            this.pic_Artwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic_Artwork.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
+            this.pic_Artwork.Location = new System.Drawing.Point(8, 32);
+            this.pic_Artwork.Name = "pic_Artwork";
+            this.pic_Artwork.Size = new System.Drawing.Size(80, 64);
+            this.pic_Artwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_Artwork.TabIndex = 1;
+            this.pic_Artwork.TabStop = false;
             // 
             // txt_FileName
             // 
@@ -328,13 +341,22 @@
             this.lbl_VideoTitle.TabIndex = 1;
             this.lbl_VideoTitle.Text = "lbl_VideoTitle";
             // 
+            // pic_VidThumb
+            // 
+            this.pic_VidThumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_VidThumb.Name = "pic_VidThumb";
+            this.pic_VidThumb.Size = new System.Drawing.Size(79, 70);
+            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_VidThumb.TabIndex = 0;
+            this.pic_VidThumb.TabStop = false;
+            // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.ForeColor = System.Drawing.Color.Transparent;
-            this.lbl_Title.Location = new System.Drawing.Point(72, 5);
+            this.lbl_Title.Location = new System.Drawing.Point(63, 7);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(333, 37);
             this.lbl_Title.TabIndex = 22;
@@ -524,6 +546,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "File Name:";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox3.Location = new System.Drawing.Point(4, 69);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(459, 3);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
             // but_Browse
             // 
             this.but_Browse.Location = new System.Drawing.Point(394, 19);
@@ -545,23 +576,13 @@
             // 
             // pic_ICO
             // 
-            this.pic_ICO.Location = new System.Drawing.Point(19, 4);
+            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
+            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
             this.pic_ICO.Name = "pic_ICO";
             this.pic_ICO.Size = new System.Drawing.Size(49, 41);
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_ICO.TabIndex = 21;
             this.pic_ICO.TabStop = false;
-            // 
-            // pic_Artwork
-            // 
-            this.pic_Artwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic_Artwork.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
-            this.pic_Artwork.Location = new System.Drawing.Point(8, 32);
-            this.pic_Artwork.Name = "pic_Artwork";
-            this.pic_Artwork.Size = new System.Drawing.Size(80, 64);
-            this.pic_Artwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_Artwork.TabIndex = 1;
-            this.pic_Artwork.TabStop = false;
             // 
             // pic_TopLine
             // 
@@ -580,24 +601,6 @@
             this.pic_Top.Size = new System.Drawing.Size(491, 50);
             this.pic_Top.TabIndex = 20;
             this.pic_Top.TabStop = false;
-            // 
-            // pic_VidThumb
-            // 
-            this.pic_VidThumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_VidThumb.Name = "pic_VidThumb";
-            this.pic_VidThumb.Size = new System.Drawing.Size(79, 70);
-            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_VidThumb.TabIndex = 0;
-            this.pic_VidThumb.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox3.Location = new System.Drawing.Point(4, 69);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(459, 3);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
             // 
             // frm_SaveFile
             // 
@@ -623,18 +626,18 @@
             this.grp_FrmButtons.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).EndInit();
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbl_FileName.ResumeLayout(false);
             this.tbl_FileName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_VidThumb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

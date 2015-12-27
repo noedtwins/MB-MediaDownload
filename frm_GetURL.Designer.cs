@@ -37,6 +37,7 @@
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
             this.flow_DownRdoButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.but_ContStage = new System.Windows.Forms.Button();
@@ -44,14 +45,13 @@
             this.bk_QueryFormats = new System.ComponentModel.BackgroundWorker();
             this.pic_InfLoad = new System.Windows.Forms.PictureBox();
             this.but_MoreOptions = new System.Windows.Forms.Button();
-            this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
@@ -65,6 +65,7 @@
             this.but_Previous.TabIndex = 10;
             this.but_Previous.Text = "<- Previous";
             this.but_Previous.UseVisualStyleBackColor = true;
+            this.but_Previous.Click += new System.EventHandler(this.but_Previous_Click);
             // 
             // but_Reset
             // 
@@ -121,7 +122,7 @@
             this.grp_FrmButtons.Controls.Add(this.but_Previous);
             this.grp_FrmButtons.Controls.Add(this.but_Reset);
             this.grp_FrmButtons.Controls.Add(this.but_NextStage);
-            this.grp_FrmButtons.Location = new System.Drawing.Point(2, 452);
+            this.grp_FrmButtons.Location = new System.Drawing.Point(3, 417);
             this.grp_FrmButtons.Name = "grp_FrmButtons";
             this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
             this.grp_FrmButtons.TabIndex = 25;
@@ -133,9 +134,9 @@
             this.grp_VidDetails.Controls.Add(this.lbl_FormatCount);
             this.grp_VidDetails.Controls.Add(this.lbl_VideoTitle);
             this.grp_VidDetails.Controls.Add(this.pic_Thumb);
-            this.grp_VidDetails.Location = new System.Drawing.Point(0, 103);
+            this.grp_VidDetails.Location = new System.Drawing.Point(10, 103);
             this.grp_VidDetails.Name = "grp_VidDetails";
-            this.grp_VidDetails.Size = new System.Drawing.Size(462, 343);
+            this.grp_VidDetails.Size = new System.Drawing.Size(462, 304);
             this.grp_VidDetails.TabIndex = 24;
             this.grp_VidDetails.TabStop = false;
             this.grp_VidDetails.Visible = false;
@@ -146,15 +147,25 @@
             this.flow_DownRdoButtons.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flow_DownRdoButtons.Location = new System.Drawing.Point(0, 74);
             this.flow_DownRdoButtons.Name = "flow_DownRdoButtons";
-            this.flow_DownRdoButtons.Size = new System.Drawing.Size(462, 263);
+            this.flow_DownRdoButtons.Size = new System.Drawing.Size(462, 224);
             this.flow_DownRdoButtons.TabIndex = 3;
             this.flow_DownRdoButtons.Visible = false;
             // 
+            // pic_Thumb
+            // 
+            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_Thumb.Name = "pic_Thumb";
+            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
+            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_Thumb.TabIndex = 0;
+            this.pic_Thumb.TabStop = false;
+            // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 510);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 469);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(473, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(480, 22);
             this.statusStrip1.TabIndex = 22;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -184,7 +195,7 @@
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.ForeColor = System.Drawing.Color.Transparent;
-            this.lbl_Title.Location = new System.Drawing.Point(63, 5);
+            this.lbl_Title.Location = new System.Drawing.Point(63, 7);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(333, 37);
             this.lbl_Title.TabIndex = 18;
@@ -199,7 +210,7 @@
             // pic_InfLoad
             // 
             this.pic_InfLoad.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_InfLoad.Location = new System.Drawing.Point(128, 277);
+            this.pic_InfLoad.Location = new System.Drawing.Point(135, 276);
             this.pic_InfLoad.Name = "pic_InfLoad";
             this.pic_InfLoad.Size = new System.Drawing.Size(236, 28);
             this.pic_InfLoad.TabIndex = 27;
@@ -216,16 +227,6 @@
             this.but_MoreOptions.UseVisualStyleBackColor = true;
             this.but_MoreOptions.Click += new System.EventHandler(this.but_MoreOptions_Click);
             // 
-            // pic_Thumb
-            // 
-            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_Thumb.Name = "pic_Thumb";
-            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
-            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_Thumb.TabIndex = 0;
-            this.pic_Thumb.TabStop = false;
-            // 
             // pic_TopLine
             // 
             this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
@@ -237,7 +238,8 @@
             // 
             // pic_ICO
             // 
-            this.pic_ICO.Location = new System.Drawing.Point(12, 3);
+            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
+            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
             this.pic_ICO.Name = "pic_ICO";
             this.pic_ICO.Size = new System.Drawing.Size(49, 41);
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -249,7 +251,7 @@
             this.pic_Top.BackColor = System.Drawing.Color.DimGray;
             this.pic_Top.Location = new System.Drawing.Point(-15, 0);
             this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(491, 50);
+            this.pic_Top.Size = new System.Drawing.Size(509, 50);
             this.pic_Top.TabIndex = 15;
             this.pic_Top.TabStop = false;
             // 
@@ -257,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 532);
+            this.ClientSize = new System.Drawing.Size(480, 491);
             this.Controls.Add(this.pic_InfLoad);
             this.Controls.Add(this.but_MoreOptions);
             this.Controls.Add(this.txt_MediaURL);
@@ -271,6 +273,7 @@
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frm_GetURL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Retrieve URL";
@@ -278,8 +281,8 @@
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();

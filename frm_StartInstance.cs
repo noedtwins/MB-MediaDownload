@@ -15,7 +15,7 @@ namespace mediaDownloader
         public frm_StartInstance()
         {
             InitializeComponent();
-          
+           
         }
 
         private void but_NextStage_Click(object sender, EventArgs e)
@@ -23,6 +23,21 @@ namespace mediaDownloader
             //TODO: Add Terms & Conditions Boolean Value
 
             pluginInstance.gotoCatchURL();
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chk_AcceptTerms_CheckStateChanged(object sender, EventArgs e)
+        {
+            but_NextStage.Enabled = chk_AcceptTerms.Checked;
 
         }
     }

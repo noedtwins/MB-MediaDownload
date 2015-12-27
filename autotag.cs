@@ -17,7 +17,7 @@ namespace mediaDownloader
         public static string removeSpecialCharactersFromFileName(String FileName)
         {
             string toreturn = "ERROR";
-            Regex.Replace(FileName, @"[^\w\d\s]*", "");
+            toreturn = Regex.Replace(FileName, @"[^\w\d\s]*", "");
 
             return toreturn;
         }
@@ -35,7 +35,7 @@ namespace mediaDownloader
             if (Holder.attemptTitle == "" || Holder.attemptArtist == "") //If the basic version returns no match..
             {
                 //Secondary version auto-tag (if no tag was found) - TODO: Improve this function
-                if (config.enableAdvancedTag) //If setting allows this version to run
+                if (pluginInstance.config.advanceAutoTag) //If setting allows this version to run
                 {
                     string format;
 

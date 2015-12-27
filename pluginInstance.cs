@@ -15,6 +15,7 @@ namespace mediaDownloader
         private static frm_GetURL loadedURLCatch;
         private static frm_SaveFile loadedSaveFile;
         public static mediaDetails details; //TODO: Add Encapsulation
+        public static serialConfig config;
 
 
         public static void runoutsideMB()
@@ -24,24 +25,35 @@ namespace mediaDownloader
 
         public static void createNewInstance() //Create new Plugin Instance
         {
+            config = new serialConfig(null);
+            config.loadDefaultSettings();
+
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
-            if (config.outsideMB)
+            if (pluginInstance.config.outsideMB)
             {
+                pluginInstance.config.outsideMB = false; //patch-er-uper job, fix this TODO
                 runoutsideMB();
             }
             else
             {
-                gotoSplashScreen();
+                gotoSplashScreen(false);
             }
         }
 
         public static void clearInstance()
         {
-            loadedSaveFile = null;
-            loadedURLCatch = null;
-            loadedSplashScreen = null;
 
+            try {
+                loadedSaveFile.Close();
+                loadedURLCatch.Close();
+                loadedSplashScreen.Close();
+
+                loadedSaveFile = null;
+                loadedURLCatch = null;
+                loadedSplashScreen = null;
+            }
+            catch { }
         }
 
         public static void hideAllForms()
@@ -58,15 +70,21 @@ namespace mediaDownloader
             }
         }
 
-        public static void gotoSplashScreen()
+        public static void gotoSplashScreen(Boolean resetAll)
         {
+            if (resetAll)
+            {
+                createNewInstance();
+                return;
+            }
             hideAllForms();
+
             loadedSplashScreen.Show();
         }
 
         public static void gotoCatchURL()
         {
-            if (loadedURLCatch == null)
+            if (loadedURLCatch == null || loadedURLCatch.IsDisposed)
                 loadedURLCatch = new frm_GetURL();
 
             hideAllForms();
@@ -83,6 +101,15 @@ namespace mediaDownloader
 
             hideAllForms();
             loadedSaveFile.Show();
+        }
+
+        public static void startProcess()
+        {
+            hideAllForms();
+            frm_ProcessMedia startTask = new frm_ProcessMedia();
+            startTask.Show();
+            startTask.runStages();
+                
         }
 
     }

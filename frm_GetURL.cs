@@ -289,7 +289,7 @@ namespace mediaDownloader
 
         private void frm_GetURL_Activated(object sender, EventArgs e)
         {
-            if (config.pasteFromClipboard && !focusedAutoPasted)
+            if (pluginInstance.config.autoPasteURL && !focusedAutoPasted)
             {
                 string compareString = Clipboard.GetText();
                 if (compareString.Contains("youtube"))
@@ -305,6 +305,12 @@ namespace mediaDownloader
                 }
 
             }
+        }
+
+        private void but_Previous_Click(object sender, EventArgs e)
+        {
+            pluginInstance.gotoSplashScreen(true);
+            this.Close();
         }
     }
 }
