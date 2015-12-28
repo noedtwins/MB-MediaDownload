@@ -251,7 +251,6 @@
             this.chk_AutoClose.TabIndex = 27;
             this.chk_AutoClose.Text = "Automatically close the plugin once process has completed";
             this.chk_AutoClose.UseVisualStyleBackColor = true;
-            this.chk_AutoClose.CheckedChanged += new System.EventHandler(this.chk_AutoClose_CheckedChanged);
             // 
             // label16
             // 

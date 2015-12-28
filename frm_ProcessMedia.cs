@@ -81,11 +81,6 @@ namespace mediaDownloader
 
         }
 
-
-        private void frm_ProcessMedia_Load(object sender, EventArgs e)
-        {
-        }
-
         private void but_Finish_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -499,16 +494,6 @@ namespace mediaDownloader
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pic_INILOAD_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frm_ProcessMedia_FormClosing(object sender, FormClosingEventArgs e)
         {
 
@@ -542,11 +527,6 @@ namespace mediaDownloader
 
             }
             pluginInstance.closeApplication();
-
-        }
-
-        private void grp_FrmButtons_Enter(object sender, EventArgs e)
-        {
 
         }
 

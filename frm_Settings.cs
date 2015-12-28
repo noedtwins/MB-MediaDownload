@@ -178,12 +178,7 @@ namespace mediaDownloader
 
             pluginInstance.gotoSplashScreen(true);
         }
-
-        private void chk_AutoClose_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void but_TagEditor_Click(object sender, EventArgs e)
         {
             tagFrm = new frm_TagModify();

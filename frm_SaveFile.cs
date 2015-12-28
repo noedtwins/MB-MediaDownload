@@ -171,11 +171,6 @@ namespace mediaDownloader
             { return false; }
         }
 
-        private void frm_SaveFile_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private Boolean prepareStep()
         {
 

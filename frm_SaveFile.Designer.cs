@@ -638,7 +638,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Save File As...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_SaveFile_FormClosing);
-            this.Load += new System.EventHandler(this.frm_SaveFile_Load);
             this.tbl_Tags.ResumeLayout(false);
             this.tbl_Tags.PerformLayout();
             this.grp_FrmButtons.ResumeLayout(false);

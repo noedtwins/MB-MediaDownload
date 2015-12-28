@@ -52,12 +52,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.grp_Controls = new System.Windows.Forms.GroupBox();
+            this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
-            this.rangeBar = new Zzzz.ZzzzRangeBar();
             this.grp_Overlay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -317,7 +317,28 @@
             this.grp_Controls.Size = new System.Drawing.Size(686, 151);
             this.grp_Controls.TabIndex = 37;
             this.grp_Controls.TabStop = false;
-            this.grp_Controls.Enter += new System.EventHandler(this.grp_Controls_Enter);
+            // 
+            // rangeBar
+            // 
+            this.rangeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rangeBar.BackColor = System.Drawing.SystemColors.Control;
+            this.rangeBar.DivisionNum = 10;
+            this.rangeBar.HeightOfBar = 8;
+            this.rangeBar.HeightOfMark = 24;
+            this.rangeBar.HeightOfTick = 6;
+            this.rangeBar.InnerColor = System.Drawing.Color.DeepSkyBlue;
+            this.rangeBar.Location = new System.Drawing.Point(16, 46);
+            this.rangeBar.Name = "rangeBar";
+            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
+            this.rangeBar.RangeMaximum = 5;
+            this.rangeBar.RangeMinimum = 3;
+            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
+            this.rangeBar.Size = new System.Drawing.Size(631, 48);
+            this.rangeBar.TabIndex = 0;
+            this.rangeBar.TotalMaximum = 20;
+            this.rangeBar.TotalMinimum = 0;
             // 
             // label1
             // 
@@ -368,28 +389,6 @@
             this.pic_Top.Size = new System.Drawing.Size(746, 50);
             this.pic_Top.TabIndex = 32;
             this.pic_Top.TabStop = false;
-            // 
-            // rangeBar
-            // 
-            this.rangeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rangeBar.BackColor = System.Drawing.SystemColors.Control;
-            this.rangeBar.DivisionNum = 10;
-            this.rangeBar.HeightOfBar = 8;
-            this.rangeBar.HeightOfMark = 24;
-            this.rangeBar.HeightOfTick = 6;
-            this.rangeBar.InnerColor = System.Drawing.Color.DeepSkyBlue;
-            this.rangeBar.Location = new System.Drawing.Point(16, 46);
-            this.rangeBar.Name = "rangeBar";
-            this.rangeBar.Orientation = Zzzz.ZzzzRangeBar.RangeBarOrientation.horizontal;
-            this.rangeBar.RangeMaximum = 5;
-            this.rangeBar.RangeMinimum = 3;
-            this.rangeBar.ScaleOrientation = Zzzz.ZzzzRangeBar.TopBottomOrientation.bottom;
-            this.rangeBar.Size = new System.Drawing.Size(631, 48);
-            this.rangeBar.TabIndex = 0;
-            this.rangeBar.TotalMaximum = 20;
-            this.rangeBar.TotalMinimum = 0;
             // 
             // frm_CropContent
             // 

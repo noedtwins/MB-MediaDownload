@@ -123,7 +123,6 @@
             this.grp_Lic.Size = new System.Drawing.Size(377, 282);
             this.grp_Lic.TabIndex = 32;
             this.grp_Lic.TabStop = false;
-            this.grp_Lic.Enter += new System.EventHandler(this.grp_Lic_Enter);
             // 
             // label8
             // 
@@ -155,7 +154,6 @@
             this.lbl_Version.Size = new System.Drawing.Size(152, 13);
             this.lbl_Version.TabIndex = 25;
             this.lbl_Version.Text = "Plugin Version: #.##.###";
-            this.lbl_Version.Click += new System.EventHandler(this.label8_Click);
             // 
             // chk_AcceptTerms
             // 
@@ -223,7 +221,6 @@
             this.lbl_Terms.Size = new System.Drawing.Size(361, 104);
             this.lbl_Terms.TabIndex = 23;
             this.lbl_Terms.Text = resources.GetString("lbl_Terms.Text");
-            this.lbl_Terms.Click += new System.EventHandler(this.lbl_Terms_Click);
             // 
             // label2
             // 
@@ -234,7 +231,6 @@
             this.label2.Size = new System.Drawing.Size(225, 17);
             this.label2.TabIndex = 31;
             this.label2.Text = "A MusicBee Plugin. Created by Cyano";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -245,7 +241,6 @@
             this.label1.Size = new System.Drawing.Size(335, 47);
             this.label1.TabIndex = 29;
             this.label1.Text = "Media Downloader";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // statusStrip1
             // 
@@ -293,7 +288,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(348, 5);
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pic_TopLine
             // 

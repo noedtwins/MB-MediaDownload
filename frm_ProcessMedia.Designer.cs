@@ -104,7 +104,6 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Download Information";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // grp_Download
             // 
@@ -189,7 +188,6 @@
             this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
             this.grp_FrmButtons.TabIndex = 46;
             this.grp_FrmButtons.TabStop = false;
-            this.grp_FrmButtons.Enter += new System.EventHandler(this.grp_FrmButtons_Enter);
             // 
             // lbl_LargeHeading
             // 
@@ -287,7 +285,6 @@
             this.pic_INILOAD.TabIndex = 4;
             this.pic_INILOAD.TabStop = false;
             this.pic_INILOAD.Visible = false;
-            this.pic_INILOAD.Click += new System.EventHandler(this.pic_INILOAD_Click);
             // 
             // lbl_Title
             // 
@@ -356,7 +353,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Processing Media...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_ProcessMedia_FormClosing);
-            this.Load += new System.EventHandler(this.frm_ProcessMedia_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.grp_Download.ResumeLayout(false);

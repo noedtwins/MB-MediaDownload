@@ -47,11 +47,6 @@ namespace mediaDownloader.CropContentLogic
 
         }
 
-        private void grp_Controls_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void setControls(int maxTime)
         {
             rangeBar.SetRangeLimit(0, Convert.ToDouble(maxTime));

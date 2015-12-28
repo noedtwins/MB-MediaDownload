@@ -40,43 +40,13 @@ namespace mediaDownloader
 
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void chk_AcceptTerms_CheckStateChanged(object sender, EventArgs e)
         {
             but_NextStage.Enabled = chk_AcceptTerms.Checked;
 
         }
 
-        private void lbl_Terms_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grp_Lic_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void but_Settings_Click(object sender, EventArgs e)
+        public void but_Settings_Click(object sender, EventArgs e)
         {
             pluginInstance.showSettingsForm();
         }
