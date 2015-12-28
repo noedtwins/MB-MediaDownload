@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Settings));
             this.rdo_Inbox = new System.Windows.Forms.RadioButton();
             this.label26 = new System.Windows.Forms.Label();
             this.rdo_TopAlways = new System.Windows.Forms.RadioButton();
@@ -1146,6 +1147,7 @@
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_GetURL));
             this.but_Previous = new System.Windows.Forms.Button();
             this.but_Reset = new System.Windows.Forms.Button();
             this.but_NextStage = new System.Windows.Forms.Button();
@@ -345,6 +346,7 @@
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_GetURL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

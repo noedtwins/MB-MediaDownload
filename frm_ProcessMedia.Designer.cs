@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_ProcessMedia));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_TRate = new System.Windows.Forms.Label();
@@ -349,10 +350,11 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_ProcessMedia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_ProcessMedia";
+            this.Text = "Media Download Plugin: Processing Media...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_ProcessMedia_FormClosing);
             this.Load += new System.EventHandler(this.frm_ProcessMedia_Load);
             this.statusStrip1.ResumeLayout(false);
