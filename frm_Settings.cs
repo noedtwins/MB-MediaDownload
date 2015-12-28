@@ -11,6 +11,9 @@ namespace mediaDownloader
 {
     public partial class frm_Settings : Form
     {
+        private frm_TagModify tagFrm;
+
+
         public frm_Settings()
         {
             InitializeComponent();
@@ -170,12 +173,21 @@ namespace mediaDownloader
 
         private void frm_Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
+            try { tagFrm.Close(); }
+            catch { }
+
             pluginInstance.gotoSplashScreen(true);
         }
 
         private void chk_AutoClose_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void but_TagEditor_Click(object sender, EventArgs e)
+        {
+            tagFrm = new frm_TagModify();
+            tagFrm.Show();
         }
     }
 }

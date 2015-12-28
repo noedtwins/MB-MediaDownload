@@ -88,7 +88,6 @@
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.pnl_VisCntrl = new System.Windows.Forms.Panel();
             this.cbo_BitRate = new System.Windows.Forms.ComboBox();
@@ -118,9 +117,10 @@
             this.label28 = new System.Windows.Forms.Label();
             this.fldr_MainBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.label27 = new System.Windows.Forms.Label();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
-            this.label27 = new System.Windows.Forms.Label();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.pnl_OnTop.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -130,7 +130,6 @@
             this.panel1.SuspendLayout();
             this.tbl_FilePaths.SuspendLayout();
             this.grp_FrmButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.pnl_VisCntrl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -143,6 +142,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
             // rdo_Inbox
@@ -302,6 +302,7 @@
             this.but_TagEditor.TabIndex = 22;
             this.but_TagEditor.Text = "Modify Tag Info";
             this.but_TagEditor.UseVisualStyleBackColor = true;
+            this.but_TagEditor.Click += new System.EventHandler(this.but_TagEditor_Click);
             // 
             // label14
             // 
@@ -784,15 +785,6 @@
             this.lbl_Title.TabIndex = 32;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-4, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(746, 50);
-            this.pic_Top.TabIndex = 30;
-            this.pic_Top.TabStop = false;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1103,6 +1095,17 @@
             // 
             this.dlg_OpenFile.Filter = "FFMPEG EXE|ffmpeg.exe|EXE File|*.exe";
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(249, 51);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(317, 16);
+            this.label27.TabIndex = 38;
+            this.label27.Text = "Some settings are unavailable in this version";
+            // 
             // pic_TopLine
             // 
             this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
@@ -1122,16 +1125,14 @@
             this.pic_ICO.TabIndex = 31;
             this.pic_ICO.TabStop = false;
             // 
-            // label27
+            // pic_Top
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(249, 51);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(317, 16);
-            this.label27.TabIndex = 38;
-            this.label27.Text = "Some settings are unavailable in this version";
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-4, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(746, 50);
+            this.pic_Top.TabIndex = 30;
+            this.pic_Top.TabStop = false;
             // 
             // frm_Settings
             // 
@@ -1170,7 +1171,6 @@
             this.tbl_FilePaths.ResumeLayout(false);
             this.tbl_FilePaths.PerformLayout();
             this.grp_FrmButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.pnl_VisCntrl.ResumeLayout(false);
             this.pnl_VisCntrl.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -1190,6 +1190,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

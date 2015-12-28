@@ -82,6 +82,12 @@
     <Compile Include="frm_StartInstance.Designer.cs">
       <DependentUpon>frm_StartInstance.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_TagModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_TagModify.Designer.cs">
+      <DependentUpon>frm_TagModify.cs</DependentUpon>
+    </Compile>
     <Compile Include="mediaDetails.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="pluginInstance.cs" />
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_StartInstance.resx">
       <DependentUpon>frm_StartInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_TagModify.resx">
+      <DependentUpon>frm_TagModify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
