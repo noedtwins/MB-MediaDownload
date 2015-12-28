@@ -347,6 +347,7 @@
             this.Name = "frm_StartInstance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Start";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_StartInstance_FormClosing);
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_Lic.ResumeLayout(false);
             this.grp_Lic.PerformLayout();

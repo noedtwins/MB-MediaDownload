@@ -69,5 +69,10 @@ namespace mediaDownloader
         {
             pluginInstance.showSettingsForm();
         }
+
+        private void frm_StartInstance_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            pluginInstance.closeApplication();
+        }
     }
 }
