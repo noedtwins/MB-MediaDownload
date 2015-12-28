@@ -15,6 +15,7 @@ namespace mediaDownloader
         public frm_StartInstance()
         {
             InitializeComponent();
+            lbl_Version.Text = "Plugin Version: " + Program.versionCode;
            
         }
 
@@ -38,6 +39,31 @@ namespace mediaDownloader
         private void chk_AcceptTerms_CheckStateChanged(object sender, EventArgs e)
         {
             but_NextStage.Enabled = chk_AcceptTerms.Checked;
+
+        }
+
+        private void lbl_Terms_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grp_Lic_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }

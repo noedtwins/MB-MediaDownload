@@ -9,7 +9,7 @@ namespace mediaDownloader
     {
 
         public static Boolean isStandaloneMode = false;
-        public static string versionCode = "1.0.0";
+        public static string versionCode = "1.5.0";
 
         /// <summary>
         /// The main entry point for the application.
