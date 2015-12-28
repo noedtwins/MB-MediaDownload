@@ -17,13 +17,18 @@ namespace mediaDownloader
         [XmlIgnoreAttribute]
         public readonly int SETTINGVERSION = 3;
 
+        public serialConfig()
+        {
+
+        }
+
         public serialConfig(string setLocation)
         {
             configLoc = setLocation;
         }
 
         [XmlIgnoreAttribute]
-        public string configLoc = ""; //TODO: Add prop
+        public string configLoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\testMBPlugin.xml"; //TODO: Add prop
 
         [XmlAttribute]
         public int loadedVersion = 0;
@@ -317,7 +322,7 @@ namespace mediaDownloader
             useMBLegacy = false;
         }
 
-        public void saveSettings(serialConfig ObjectPass)
+        public void saveSettings(serialConfig ObjectPass, Boolean skipSuccessMessage = false)
         {
             try
             {
@@ -325,13 +330,15 @@ namespace mediaDownloader
                 StreamWriter fileWriter = new StreamWriter(configLoc);
                 settingWriter.Serialize(fileWriter, ObjectPass);
                 fileWriter.Close();
-                MessageBox.Show("The settings file has been saved!", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (!skipSuccessMessage)
+                    MessageBox.Show("The settings file has been saved!", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            catch
+            catch (Exception e)
             {
 
-                MessageBox.Show("An error occured saving the settings file.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured saving the settings file.\n" + e, "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
