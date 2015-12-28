@@ -14,6 +14,7 @@ namespace mediaDownloader
         private static frm_StartInstance loadedSplashScreen;
         private static frm_GetURL loadedURLCatch;
         private static frm_SaveFile loadedSaveFile;
+        private static frm_Settings loadedSettingsForm;
         public static mediaDetails details; //TODO: Add Encapsulation
         public static serialConfig config;
 
@@ -30,9 +31,9 @@ namespace mediaDownloader
 
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
-            if (pluginInstance.config.outsideMB)
+            if (!Program.isStandaloneMode)
             {
-                pluginInstance.config.outsideMB = false; //patch-er-uper job, fix this TODO
+                pluginInstance.config.outsideMB = true; //patch-er-uper job, fix this TODO
                 runoutsideMB();
             }
             else
@@ -48,10 +49,12 @@ namespace mediaDownloader
                 loadedSaveFile.Close();
                 loadedURLCatch.Close();
                 loadedSplashScreen.Close();
+                loadedSettingsForm.Close();
 
                 loadedSaveFile = null;
                 loadedURLCatch = null;
                 loadedSplashScreen = null;
+                loadedSettingsForm = null;
             }
             catch { }
         }
@@ -63,6 +66,7 @@ namespace mediaDownloader
                 loadedSplashScreen.Hide();
                 loadedSaveFile.Hide();
                 loadedURLCatch.Hide();
+                loadedSettingsForm.Hide();
             }
             catch
             {
@@ -89,6 +93,15 @@ namespace mediaDownloader
 
             hideAllForms();
             loadedURLCatch.Show();
+        }
+
+        public static void showSettingsForm()
+        {
+            if (loadedSettingsForm == null || loadedSettingsForm.IsDisposed)
+                loadedSettingsForm = new frm_Settings();
+
+            hideAllForms();
+            loadedSettingsForm.Show();
         }
 
         public static void gotoSaveFile()

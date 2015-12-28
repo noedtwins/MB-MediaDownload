@@ -117,24 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbl_Terms.Text" xml:space="preserve">
-    <value>By using this application you agree that:
-This service is designed to make copies of videoes avaliable offline for
-personal use (fair use). You take full responsability for all actions 
-for the legitimacy for the user of this application.
-This is a free (open-source) application. Which offers no guarantee for it's
-use of any kind. 
-You are reminded of the illicit downloading of protected works and 'harming'
-artistic creation. This application grants no rights to the contents.</value>
-  </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="fldr_MainBrowse.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>282, 17</value>
   </metadata>
-  <data name="label7.Text" xml:space="preserve">
-    <value>YouTube Extractor: https://github.com/flagbug/YoutubeExtractor || MIT License
-TagLib: https://github.com/mono/taglib-sharp/ || LGPL
-Newtonsoft.Json: http://james.newtonking.com/json || MIT License
-FFMpeg: https://www.ffmpeg.org/doxygen/trunk/md_LICENSE.html
-</value>
-  </data>
+  <metadata name="dlg_OpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>424, 17</value>
+  </metadata>
 </root>

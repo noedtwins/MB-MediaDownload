@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 
 namespace mediaDownloader
 {
-
     [XmlRoot("Configuration")]
     public class serialConfig
     {
@@ -224,28 +223,61 @@ namespace mediaDownloader
             set { _testFeature = value; }
         }
 
-        private string _onTopMode = "never";
-        [XmlAttribute]
-        public string onTopMode
-        {
-            get { return _onTopMode; }
-            set { _onTopMode = value; }
-        }
-
-        private bool _advanceAutoTag = true;
-        [XmlAttribute]
-        public bool advanceAutoTag
-        {
-            get { return _advanceAutoTag; }
-            set { _advanceAutoTag = value; }
-        }
-
-        private bool _smoothing = true;
+        private bool _smoothing;
         [XmlAttribute]
         public bool smoothing
         {
             get { return _smoothing; }
             set { _smoothing = value; }
+        }
+
+        private bool _termsAccepted;
+        [XmlAttribute]
+        public bool termsAccepted
+        {
+            get { return _termsAccepted; }
+            set { _termsAccepted = value; }
+        }
+
+
+        private bool _clipboardMessageShown;
+        [XmlAttribute]
+        public bool clipboardMessageShown
+        {
+            get { return _clipboardMessageShown; }
+            set { _clipboardMessageShown = value; }
+        }
+
+        private string _downloadLibraryType;
+        [XmlAttribute]
+        public string downloadLibraryType
+        {
+            get { return _downloadLibraryType; }
+            set { _downloadLibraryType = value; }
+        }
+
+        private string _manualDecipherOperataion;
+        [XmlAttribute]
+        public string manualDecipherOperataion
+        {
+            get { return _manualDecipherOperataion; }
+            set { _manualDecipherOperataion = value; }
+        }
+
+        private bool _useUnModifiedYTVersion;
+        [XmlAttribute]
+        public bool useUnModifiedYTVersion
+        {
+            get { return _useUnModifiedYTVersion; }
+            set { _useUnModifiedYTVersion = value; }
+        }
+
+        private bool _useMBLegacy;
+        [XmlAttribute]
+        public bool useMBLegacy
+        {
+            get { return _useMBLegacy; }
+            set { _useMBLegacy = value; }
         }
 
         public void loadDefaultSettings()
@@ -274,10 +306,15 @@ namespace mediaDownloader
             testFeature = false;
             preventDelTempFiles = false;
             overwriteMode = "warn";
-            onTopMode = "never";
-            advanceAutoTag = true;
             smoothing = true;
             loadedVersion = SETTINGVERSION;
+            termsAccepted = false;
+            clipboardMessageShown = false;
+
+            downloadLibraryType = "YouTubeExtractor";
+            manualDecipherOperataion = "";
+            useUnModifiedYTVersion = false;
+            useMBLegacy = false;
         }
 
         public void saveSettings(serialConfig ObjectPass)

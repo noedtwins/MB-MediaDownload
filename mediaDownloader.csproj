@@ -70,6 +70,12 @@
     <Compile Include="frm_SaveFile.Designer.cs">
       <DependentUpon>frm_SaveFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Settings.Designer.cs">
+      <DependentUpon>frm_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_StartInstance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_SaveFile.resx">
       <DependentUpon>frm_SaveFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Settings.resx">
+      <DependentUpon>frm_Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_StartInstance.resx">
       <DependentUpon>frm_StartInstance.cs</DependentUpon>

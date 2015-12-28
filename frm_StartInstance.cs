@@ -66,5 +66,10 @@ namespace mediaDownloader
         {
 
         }
+
+        private void but_Settings_Click(object sender, EventArgs e)
+        {
+            pluginInstance.showSettingsForm();
+        }
     }
 }
