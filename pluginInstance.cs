@@ -33,10 +33,14 @@ namespace mediaDownloader
                 Application.Run(loadedSplashScreen);
             }
             else
-                loadedSplashScreen.Show();
+                loadedSplashScreen.Show();         
 
-           
+        }
 
+        public static void reloadPlugin()
+        {
+            clearInstance();
+            createNewInstance();
         }
 
         public static void createNewInstance() //Create new Plugin Instance

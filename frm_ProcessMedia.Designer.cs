@@ -203,6 +203,7 @@
             this.but_ConvertAgain.Text = "Convert Another Video";
             this.but_ConvertAgain.UseVisualStyleBackColor = true;
             this.but_ConvertAgain.Visible = false;
+            this.but_ConvertAgain.Click += new System.EventHandler(this.but_ConvertAgain_Click);
             // 
             // lbl_ManProg
             // 

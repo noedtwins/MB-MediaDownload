@@ -23,7 +23,6 @@ namespace mediaDownloader
         private string oldOperations = "";
         private Boolean oldRequiredDecipher = false;
         private bool downloadCompleted = false;
-        private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
 
 
         public frm_ProcessMedia()
@@ -546,6 +545,11 @@ namespace mediaDownloader
         private void grp_FrmButtons_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void but_ConvertAgain_Click(object sender, EventArgs e)
+        {
+            pluginInstance.reloadPlugin();
         }
     }
 
