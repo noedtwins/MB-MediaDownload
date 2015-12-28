@@ -29,6 +29,9 @@ namespace mediaDownloader
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+
+            this.lbl_Title.Parent = pic_Top;
+            this.pic_ICO.Parent = pic_Top;
         }
 
         public void runStages()
@@ -550,6 +553,7 @@ namespace mediaDownloader
         private void but_ConvertAgain_Click(object sender, EventArgs e)
         {
             pluginInstance.reloadPlugin();
+            this.Dispose();
         }
     }
 

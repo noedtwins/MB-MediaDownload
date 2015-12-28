@@ -52,6 +52,18 @@
   <ItemGroup>
     <Compile Include="autotag.cs" />
     <Compile Include="config.cs" />
+    <Compile Include="CropContentLogic\frm_CropContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CropContentLogic\frm_CropContent.Designer.cs">
+      <DependentUpon>frm_CropContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CropContentLogic\RangeBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CropContentLogic\ZzzzRangeBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="frm_GetURL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="pluginInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CropContentLogic\frm_CropContent.resx">
+      <DependentUpon>frm_CropContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CropContentLogic\RangeBar.resx">
+      <DependentUpon>RangeBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_GetURL.resx">
       <DependentUpon>frm_GetURL.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\basic icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_SWAP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\crop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

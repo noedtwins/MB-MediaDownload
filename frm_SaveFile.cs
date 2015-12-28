@@ -31,6 +31,8 @@ namespace mediaDownloader
             cbo_Folder.Items.Add(pluginInstance.config.mainFolder); //Add the main folder path from settings
             cbo_Folder.Text = pluginInstance.config.mainFolder;
 
+            updateCropButton();
+
             if (pluginInstance.config.sameValBitRateAsVideo)
             {
                 //If Use Same BitRate on Conversion is true in settings, then add the format bitrate to this
@@ -274,6 +276,11 @@ namespace mediaDownloader
                 pluginInstance.closeApplication();
 
             }
+        }
+
+        private void but_Crop_Click(object sender, EventArgs e)
+        {
+            pluginInstance.gotoCropContent();
         }
     }
 

@@ -122,6 +122,7 @@
 TagLib: https://github.com/mono/taglib-sharp/ || LGPL
 Newtonsoft.Json: http://james.newtonking.com/json || MIT License
 FFMpeg: https://www.ffmpeg.org/doxygen/trunk/md_LICENSE.html
+http://www.codeproject.com/Articles/2275/C-RangeBar-control
 </value>
   </data>
   <data name="lbl_Terms.Text" xml:space="preserve">

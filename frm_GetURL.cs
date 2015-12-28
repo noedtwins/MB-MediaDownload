@@ -259,6 +259,7 @@ namespace mediaDownloader
             pluginInstance.details.audioFormat = pluginInstance.details.selectedResult.AudioType;
             pluginInstance.details.selectedResolution = Convert.ToString(pluginInstance.details.selectedResult.Resolution);
             pluginInstance.details.formatCode = mSelectedFormat;
+            pluginInstance.details.cropSelected = false; //init
 
             closeEntirePlugin = false;
 

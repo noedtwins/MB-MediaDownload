@@ -17,6 +17,7 @@ namespace mediaDownloader
         private static frm_GetURL loadedURLCatch;
         private static frm_SaveFile loadedSaveFile;
         private static frm_Settings loadedSettingsForm;
+        private static CropContentLogic.frm_CropContent loadedCropContent;
         public static mediaDetails details; //TODO: Add Encapsulation
         public static serialConfig config;
         private static Boolean alreadyCalledApplication = false;
@@ -125,18 +126,35 @@ namespace mediaDownloader
         public static void clearInstance()
         {
 
-            try {
-                loadedSaveFile.Close();
-                loadedURLCatch.Close();
-                loadedSplashScreen.Close();
-                loadedSettingsForm.Close();
-
+            if (loadedSaveFile != null)
+            {
+                loadedSaveFile.Dispose();
                 loadedSaveFile = null;
+            }
+
+            if (loadedURLCatch != null)
+            {
+                loadedURLCatch.Dispose();
                 loadedURLCatch = null;
-                loadedSplashScreen = null;
+            }
+
+            if (loadedSettingsForm != null)
+            {
+                loadedSettingsForm.Dispose();
                 loadedSettingsForm = null;
             }
-            catch { }
+
+            if (loadedCropContent != null)
+            {
+                loadedCropContent.Dispose();
+                loadedCropContent = null; 
+            }
+
+            
+
+            //try { loadedSplashScreen.Close(); }
+            //catch { }
+
         }
 
         public static void hideAllForms()
@@ -147,6 +165,7 @@ namespace mediaDownloader
                 loadedSaveFile.Hide();
                 loadedURLCatch.Hide();
                 loadedSettingsForm.Hide();
+                loadedCropContent.Hide();
             }
             catch
             {
@@ -164,6 +183,19 @@ namespace mediaDownloader
             hideAllForms();
 
             loadedSplashScreen.Show();
+        }
+
+        public static void gotoCropContent()
+        {
+            if (loadedCropContent == null || loadedCropContent.IsDisposed)
+            {
+                loadedCropContent = new CropContentLogic.frm_CropContent();
+                loadedCropContent.getTimeStarter();
+            }
+
+            hideAllForms();
+            loadedCropContent.resumeLoad();
+            loadedCropContent.Show();
         }
 
         public static void gotoCatchURL()
@@ -195,6 +227,14 @@ namespace mediaDownloader
             loadedSaveFile.firstStart();
             loadedSaveFile.Show();
 
+        }
+
+        public static void returnToSaveFile()
+        {
+            //if returning from crop
+            hideAllForms();
+            loadedSaveFile.updateCropButton();
+            loadedSaveFile.Show();
         }
 
         public static void startProcess()
