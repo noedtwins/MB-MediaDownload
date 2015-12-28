@@ -20,6 +20,8 @@ namespace mediaDownloader
         private const string sm = "\"";
         private bool doingThings = false;
         private bool requestedCancel = false;
+        private string oldOperations = "";
+        private Boolean oldRequiredDecipher = false;
         private bool downloadCompleted = false;
 
         public frm_ProcessMedia()
@@ -93,14 +95,20 @@ namespace mediaDownloader
             addLog("Begin Stage 1: Initial Stages", false);
             addLog("URL: " + pluginInstance.details.url);
 
-            if (pluginInstance.details.selectedResult.RequiresDecryption)
+
+            oldRequiredDecipher = YoutubeExtractor.Decipherer.wasDecrypted;
+            oldOperations = YoutubeExtractor.Decipherer.theOperationsToDo;
+
+            if (oldRequiredDecipher)
             {
                 addLog("Signature incorrect - Deciphering Media URL...");
-                DownloadUrlResolver.DecryptDownloadUrl(pluginInstance.details.selectedResult);
-                addLog("Operations: " + Decipherer.theOperationsToDo);
+                    addLog("Operations: " + Decipherer.theOperationsToDo);
             }
             else
                 addLog("Signature is correct, deciphering not required ");
+
+            YoutubeExtractor.Decipherer.wasDecrypted = false;
+            YoutubeExtractor.Decipherer.theOperationsToDo = "null";
 
             addLog("Stage 1 Complete...", true);
             tmr_DelayStage2.Enabled = true;
