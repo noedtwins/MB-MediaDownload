@@ -88,7 +88,7 @@ namespace mediaDownloader
         #region stage1
         private void process_Stage1()
         {
-            addLog("Cyano Media Downloader - Version: ##.##.###", false);
+            addLog("Cyano Media Downloader - Version: " + Program.versionCode + " Setting Version: " + pluginInstance.config.loadedVersion, false);
             addLog("New Task Initialized at " + DateTime.Now, true);
             addLog("Begin Stage 1: Initial Stages", false);
             addLog("URL: " + pluginInstance.details.url);

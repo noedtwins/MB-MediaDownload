@@ -22,6 +22,7 @@ namespace mediaDownloader
         public static void runoutsideMB()
         {
             Application.Run(loadedSplashScreen);
+            config.configLoc = @"C:\Users\Charlie\Desktop\testMBPlugin.xml";
         }
 
         public static void createNewInstance() //Create new Plugin Instance

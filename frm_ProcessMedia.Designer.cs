@@ -30,13 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_TRate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grp_Download = new System.Windows.Forms.GroupBox();
             this.lbl_Size = new System.Windows.Forms.Label();
-            this.pic_TopLine = new System.Windows.Forms.PictureBox();
-            this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.txt_ConvLog = new System.Windows.Forms.TextBox();
             this.tmr_DelayStage4 = new System.Windows.Forms.Timer(this.components);
             this.bkWork_ConvertVideo = new System.ComponentModel.BackgroundWorker();
@@ -46,23 +43,26 @@
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.lbl_LargeHeading = new System.Windows.Forms.Label();
             this.but_ConvertAgain = new System.Windows.Forms.Button();
-            this.pic_INILOAD = new System.Windows.Forms.PictureBox();
             this.lbl_ManProg = new System.Windows.Forms.Label();
             this.lbl_Desc = new System.Windows.Forms.Label();
             this.prg_Main = new System.Windows.Forms.ProgressBar();
             this.lbl_Stage = new System.Windows.Forms.Label();
             this.lbl_DownloadETA = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.tmr_DelayStage2 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic_TopLine = new System.Windows.Forms.PictureBox();
+            this.pic_ICO = new System.Windows.Forms.PictureBox();
+            this.pic_INILOAD = new System.Windows.Forms.PictureBox();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.grp_Download.SuspendLayout();
+            this.grp_FrmButtons.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            this.grp_FrmButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,15 +73,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
             this.statusStrip1.TabIndex = 39;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-55, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(492, 5);
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // lbl_TRate
             // 
@@ -126,25 +117,6 @@
             this.lbl_Size.Size = new System.Drawing.Size(191, 16);
             this.lbl_Size.TabIndex = 24;
             this.lbl_Size.Text = "Waiting for Download to Start....";
-            // 
-            // pic_TopLine
-            // 
-            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-8, 49);
-            this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
-            this.pic_TopLine.TabIndex = 43;
-            this.pic_TopLine.TabStop = false;
-            // 
-            // pic_ICO
-            // 
-            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
-            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
-            this.pic_ICO.Name = "pic_ICO";
-            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
-            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_ICO.TabIndex = 41;
-            this.pic_ICO.TabStop = false;
             // 
             // txt_ConvLog
             // 
@@ -218,20 +190,6 @@
             this.but_ConvertAgain.UseVisualStyleBackColor = true;
             this.but_ConvertAgain.Visible = false;
             // 
-            // pic_INILOAD
-            // 
-            this.pic_INILOAD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_INILOAD.Location = new System.Drawing.Point(109, 79);
-            this.pic_INILOAD.Name = "pic_INILOAD";
-            this.pic_INILOAD.Size = new System.Drawing.Size(249, 51);
-            this.pic_INILOAD.TabIndex = 4;
-            this.pic_INILOAD.TabStop = false;
-            this.pic_INILOAD.Visible = false;
-            this.pic_INILOAD.Click += new System.EventHandler(this.pic_INILOAD_Click);
-            // 
             // lbl_ManProg
             // 
             this.lbl_ManProg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -295,15 +253,6 @@
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-15, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(513, 50);
-            this.pic_Top.TabIndex = 40;
-            this.pic_Top.TabStop = false;
-            // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
@@ -320,6 +269,57 @@
             // 
             this.tmr_DelayStage2.Interval = 300;
             this.tmr_DelayStage2.Tick += new System.EventHandler(this.tmr_DelayStage2_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox1.Location = new System.Drawing.Point(-55, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(492, 5);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pic_TopLine
+            // 
+            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pic_TopLine.Location = new System.Drawing.Point(-8, 49);
+            this.pic_TopLine.Name = "pic_TopLine";
+            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
+            this.pic_TopLine.TabIndex = 43;
+            this.pic_TopLine.TabStop = false;
+            // 
+            // pic_ICO
+            // 
+            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
+            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
+            this.pic_ICO.Name = "pic_ICO";
+            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
+            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_ICO.TabIndex = 41;
+            this.pic_ICO.TabStop = false;
+            // 
+            // pic_INILOAD
+            // 
+            this.pic_INILOAD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_INILOAD.Location = new System.Drawing.Point(109, 79);
+            this.pic_INILOAD.Name = "pic_INILOAD";
+            this.pic_INILOAD.Size = new System.Drawing.Size(249, 51);
+            this.pic_INILOAD.TabIndex = 4;
+            this.pic_INILOAD.TabStop = false;
+            this.pic_INILOAD.Visible = false;
+            this.pic_INILOAD.Click += new System.EventHandler(this.pic_INILOAD_Click);
+            // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-15, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(513, 50);
+            this.pic_Top.TabIndex = 40;
+            this.pic_Top.TabStop = false;
             // 
             // frm_ProcessMedia
             // 
@@ -339,16 +339,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frm_ProcessMedia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_ProcessMedia";
             this.Load += new System.EventHandler(this.frm_ProcessMedia_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grp_Download.ResumeLayout(false);
             this.grp_Download.PerformLayout();
+            this.grp_FrmButtons.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
-            this.grp_FrmButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
