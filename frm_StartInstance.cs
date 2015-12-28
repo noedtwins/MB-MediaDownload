@@ -15,6 +15,8 @@ namespace mediaDownloader
         public frm_StartInstance()
         {
             InitializeComponent();
+            this.lbl_Title.Parent = pic_Top;
+            this.pic_ICO.Parent = pic_Top;
             lbl_Version.Text = "Plugin Version: " + Program.versionCode;
            
         }

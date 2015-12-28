@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_TRate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grp_Download = new System.Windows.Forms.GroupBox();
@@ -52,20 +53,19 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pic_INILOAD = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.tmr_DelayStage2 = new System.Windows.Forms.Timer(this.components);
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.grp_Download.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grp_FrmButtons.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -77,6 +77,12 @@
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
             this.statusStrip1.TabIndex = 39;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
+            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
             // 
             // lbl_TRate
             // 
@@ -294,6 +300,15 @@
             this.lbl_Title.TabIndex = 42;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-1, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(513, 50);
+            this.pic_Top.TabIndex = 40;
+            this.pic_Top.TabStop = false;
+            // 
             // tmr_DelayStage2
             // 
             this.tmr_DelayStage2.Interval = 300;
@@ -317,21 +332,6 @@
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_ICO.TabIndex = 41;
             this.pic_ICO.TabStop = false;
-            // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-15, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(513, 50);
-            this.pic_Top.TabIndex = 40;
-            this.pic_Top.TabStop = false;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
-            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
             // 
             // frm_ProcessMedia
             // 
@@ -363,9 +363,9 @@
             this.grp_FrmButtons.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

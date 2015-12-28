@@ -24,6 +24,8 @@ namespace mediaDownloader
         public frm_GetURL()
         {
             InitializeComponent();
+            this.lbl_Title.Parent = pic_Top;
+            this.pic_ICO.Parent = pic_Top;
         }
 
         public Boolean checkForValidURL(String checkURL) //Checks if the URL is Valid
@@ -71,6 +73,7 @@ namespace mediaDownloader
         {
             //Lock the controls whilst the media is querying
             but_Previous.Enabled = false;
+            grp_Info.Visible = false;
             pic_InfLoad.Visible = true;
             but_ContStage.Enabled = false;
             txt_MediaURL.Enabled = false;

@@ -43,20 +43,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.but_ContStage = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.bk_QueryFormats = new System.ComponentModel.BackgroundWorker();
             this.pic_InfLoad = new System.Windows.Forms.PictureBox();
             this.but_MoreOptions = new System.Windows.Forms.Button();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
+            this.grp_Info = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
+            this.grp_Info.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // but_Previous
@@ -118,6 +125,8 @@
             this.txt_MediaURL.Size = new System.Drawing.Size(430, 20);
             this.txt_MediaURL.TabIndex = 14;
             this.txt_MediaURL.Text = "Insert URL Here...";
+            this.txt_MediaURL.Enter += new System.EventHandler(this.txt_MediaURL_Enter);
+            this.txt_MediaURL.Leave += new System.EventHandler(this.txt_MediaURL_Leave);
             // 
             // grp_FrmButtons
             // 
@@ -211,6 +220,15 @@
             this.lbl_Title.TabIndex = 18;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-3, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(509, 50);
+            this.pic_Top.TabIndex = 15;
+            this.pic_Top.TabStop = false;
+            // 
             // bk_QueryFormats
             // 
             this.bk_QueryFormats.WorkerSupportsCancellation = true;
@@ -256,20 +274,64 @@
             this.pic_ICO.TabIndex = 16;
             this.pic_ICO.TabStop = false;
             // 
-            // pic_Top
+            // grp_Info
             // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-15, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(509, 50);
-            this.pic_Top.TabIndex = 15;
-            this.pic_Top.TabStop = false;
+            this.grp_Info.Controls.Add(this.label5);
+            this.grp_Info.Controls.Add(this.label4);
+            this.grp_Info.Controls.Add(this.label3);
+            this.grp_Info.Controls.Add(this.pictureBox3);
+            this.grp_Info.Location = new System.Drawing.Point(9, 158);
+            this.grp_Info.Name = "grp_Info";
+            this.grp_Info.Size = new System.Drawing.Size(462, 175);
+            this.grp_Info.TabIndex = 28;
+            this.grp_Info.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(8, 131);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(390, 26);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "The creator of this plugin does not take liability towards the user or any third " +
+    "party \r\nfor the permissibility of downloading content using this plugin.\r\n";
+            // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(138, 47);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(321, 93);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Supported Media\r\n---------------------\r\n• YouTube\r\n";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(132, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 30);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Information";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
+            this.pictureBox3.Location = new System.Drawing.Point(5, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(127, 97);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // frm_GetURL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 491);
+            this.Controls.Add(this.grp_Info);
             this.Controls.Add(this.pic_InfLoad);
             this.Controls.Add(this.but_MoreOptions);
             this.Controls.Add(this.txt_MediaURL);
@@ -295,10 +357,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
+            this.grp_Info.ResumeLayout(false);
+            this.grp_Info.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +391,10 @@
         private System.ComponentModel.BackgroundWorker bk_QueryFormats;
         private System.Windows.Forms.FlowLayoutPanel flow_DownRdoButtons;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.GroupBox grp_Info;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

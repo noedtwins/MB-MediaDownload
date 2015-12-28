@@ -35,6 +35,7 @@
             this.rdo_TopNever = new System.Windows.Forms.RadioButton();
             this.pnl_OnTop = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chk_AutoClose = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.chk_AutoPaste = new System.Windows.Forms.CheckBox();
@@ -86,6 +87,7 @@
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.pnl_VisCntrl = new System.Windows.Forms.Panel();
             this.cbo_BitRate = new System.Windows.Forms.ComboBox();
@@ -116,10 +118,8 @@
             this.fldr_MainBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pnl_OnTop.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -129,6 +129,7 @@
             this.panel1.SuspendLayout();
             this.tbl_FilePaths.SuspendLayout();
             this.grp_FrmButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.pnl_VisCntrl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -140,7 +141,6 @@
             this.tabPage8.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -229,6 +229,17 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Features";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(6, 219);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(358, 17);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Skip Splash Screen (Requires Terms To Be Accepted To Take Effect)";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // chk_AutoClose
             // 
@@ -772,6 +783,15 @@
             this.lbl_Title.TabIndex = 32;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-4, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(746, 50);
+            this.pic_Top.TabIndex = 30;
+            this.pic_Top.TabStop = false;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1085,20 +1105,11 @@
             // pic_TopLine
             // 
             this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-9, 43);
+            this.pic_TopLine.Location = new System.Drawing.Point(-9, 46);
             this.pic_TopLine.Name = "pic_TopLine";
             this.pic_TopLine.Size = new System.Drawing.Size(602, 5);
             this.pic_TopLine.TabIndex = 33;
             this.pic_TopLine.TabStop = false;
-            // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-4, -6);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(746, 50);
-            this.pic_Top.TabIndex = 30;
-            this.pic_Top.TabStop = false;
             // 
             // pic_ICO
             // 
@@ -1120,17 +1131,6 @@
             this.label27.Size = new System.Drawing.Size(317, 16);
             this.label27.TabIndex = 38;
             this.label27.Text = "Some settings are unavailable in this version";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(6, 219);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(358, 17);
-            this.checkBox1.TabIndex = 28;
-            this.checkBox1.Text = "Skip Splash Screen (Requires Terms To Be Accepted To Take Effect)";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // frm_Settings
             // 
@@ -1168,6 +1168,7 @@
             this.tbl_FilePaths.ResumeLayout(false);
             this.tbl_FilePaths.PerformLayout();
             this.grp_FrmButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.pnl_VisCntrl.ResumeLayout(false);
             this.pnl_VisCntrl.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -1186,7 +1187,6 @@
             this.tabPage8.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

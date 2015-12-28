@@ -49,20 +49,19 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_Lic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
             // grp_FrmButtons
@@ -270,28 +269,25 @@
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.ForeColor = System.Drawing.Color.Transparent;
-            this.lbl_Title.Location = new System.Drawing.Point(43, 5);
+            this.lbl_Title.Location = new System.Drawing.Point(64, 6);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(333, 37);
             this.lbl_Title.TabIndex = 26;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
-            // label14
+            // pic_Top
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Transparent;
-            this.label14.Location = new System.Drawing.Point(63, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(333, 37);
-            this.label14.TabIndex = 35;
-            this.label14.Text = "Media: Download Plugin";
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(0, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(597, 50);
+            this.pic_Top.TabIndex = 24;
+            this.pic_Top.TabStop = false;
             // 
             // pic_ICO
             // 
             this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
-            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
+            this.pic_ICO.Location = new System.Drawing.Point(12, 2);
             this.pic_ICO.Name = "pic_ICO";
             this.pic_ICO.Size = new System.Drawing.Size(49, 41);
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -317,31 +313,21 @@
             this.pic_TopLine.TabIndex = 27;
             this.pic_TopLine.TabStop = false;
             // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-35, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(597, 50);
-            this.pic_Top.TabIndex = 24;
-            this.pic_Top.TabStop = false;
-            // 
             // frm_StartInstance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 487);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.grp_FrmButtons);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pic_TopLine);
-            this.Controls.Add(this.pic_Top);
             this.Controls.Add(this.grp_Lic);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lbl_Title);
+            this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frm_StartInstance";
@@ -355,10 +341,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,7 +366,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label lbl_Title;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pic_ICO;
         private System.Windows.Forms.CheckBox chk_AcceptTerms;
         private System.Windows.Forms.Label lbl_Terms;

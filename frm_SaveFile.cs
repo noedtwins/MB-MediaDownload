@@ -21,6 +21,8 @@ namespace mediaDownloader
         public frm_SaveFile()
         {
             InitializeComponent();
+            this.lbl_Title.Parent = pic_Top;
+            this.pic_ICO.Parent = pic_Top;
         }
 
 
