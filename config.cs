@@ -28,7 +28,7 @@ namespace mediaDownloader
         }
 
         [XmlIgnoreAttribute]
-        public string configLoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\testMBPlugin.xml"; //TODO: Add prop
+        public string configLoc = "";
 
         [XmlAttribute]
         public int loadedVersion = 0;

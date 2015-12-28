@@ -78,6 +78,7 @@ namespace mediaDownloader
                     XmlSerializer settingReader = new XmlSerializer(typeof(serialConfig));
                     StreamReader fileReader = new StreamReader(configLocation);
                     config = (serialConfig)settingReader.Deserialize(fileReader);
+                    config.configLoc = configLocation;
                     fileReader.Close();
 
                 }
@@ -90,6 +91,7 @@ namespace mediaDownloader
                         config = new serialConfig(configLocation);
                         config.loadDefaultSettings();
                         config.tempFolder = configuationPath;
+                        config.configLoc = configLocation;
                         config.saveSettings(config);
                     }
                     else
