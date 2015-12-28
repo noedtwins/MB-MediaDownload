@@ -297,8 +297,14 @@ namespace mediaDownloader
                     focusedAutoPasted = true;
                     txt_MediaURL.Text = Clipboard.GetText();
 
-                    /* grp_ShowMsg.Visible = true;
-                    lbl_MsgInfo.Text = "Information: The URL has been pasted for you. Change In Plugin Settings"; */
+                    if (!pluginInstance.config.clipboardMessageShown)
+                    {
+                        MessageBox.Show("Media Downloader: A valid media URL was in your clipboard and has automatically been pasted\nYou can turn this function off in the plugin settings\n" +
+                            "This message will not show again.", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        pluginInstance.config.clipboardMessageShown = true;
+                        pluginInstance.config.saveSettings(pluginInstance.config);
+                    }
+
 
                     but_ContStage.PerformClick();
 
