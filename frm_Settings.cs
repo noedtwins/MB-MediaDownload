@@ -170,5 +170,10 @@ namespace mediaDownloader
         {
             pluginInstance.gotoSplashScreen(true);
         }
+
+        private void chk_AutoClose_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

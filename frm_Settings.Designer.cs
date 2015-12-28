@@ -119,6 +119,7 @@
             this.pic_Top = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pnl_OnTop.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -211,6 +212,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.checkBox1);
             this.tabPage3.Controls.Add(this.chk_AutoClose);
             this.tabPage3.Controls.Add(this.pnl_OnTop);
             this.tabPage3.Controls.Add(this.label16);
@@ -237,6 +239,7 @@
             this.chk_AutoClose.TabIndex = 27;
             this.chk_AutoClose.Text = "Automatically close the plugin once process has completed";
             this.chk_AutoClose.UseVisualStyleBackColor = true;
+            this.chk_AutoClose.CheckedChanged += new System.EventHandler(this.chk_AutoClose_CheckedChanged);
             // 
             // label16
             // 
@@ -879,7 +882,7 @@
             // chk_ExtractAudio
             // 
             this.chk_ExtractAudio.AutoSize = true;
-            this.chk_ExtractAudio.Location = new System.Drawing.Point(13, 245);
+            this.chk_ExtractAudio.Location = new System.Drawing.Point(3, 245);
             this.chk_ExtractAudio.Name = "chk_ExtractAudio";
             this.chk_ExtractAudio.Size = new System.Drawing.Size(362, 17);
             this.chk_ExtractAudio.TabIndex = 32;
@@ -1118,6 +1121,17 @@
             this.label27.TabIndex = 38;
             this.label27.Text = "Some settings are unavailable in this version";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(6, 219);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(358, 17);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Skip Splash Screen (Requires Terms To Be Accepted To Take Effect)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frm_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1272,5 +1286,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox chk_Legacy;
         private System.Windows.Forms.CheckBox chk_useModifiedLibrary;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

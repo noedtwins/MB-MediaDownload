@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace mediaDownloader
 {
@@ -18,6 +20,9 @@ namespace mediaDownloader
         public static mediaDetails details; //TODO: Add Encapsulation
         public static serialConfig config;
         private static Boolean alreadyCalledApplication = false;
+        private static string configuationPath;
+        private static string configuationFileName = @"\mb_MediaDownloader_Settings.xml";
+        private static Boolean forceDefaultSettings = false;
 
 
         public static void runoutsideMB()
@@ -30,25 +35,79 @@ namespace mediaDownloader
             else
                 loadedSplashScreen.Show();
 
-            config.configLoc = @"C:\Users\Charlie\Desktop\testMBPlugin.xml";
+           
+
         }
 
         public static void createNewInstance() //Create new Plugin Instance
         {
-            config = new serialConfig(null);
-            config.loadDefaultSettings(); //TODO: Change this into loaded settings.
-
+            configuationPath = Environment.CurrentDirectory;
+            loadSettings();
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
             if (!Program.isStandaloneMode)
             {
-                
-                pluginInstance.config.outsideMB = true; //patch-er-uper job, fix this TODO
                 runoutsideMB();
             }
             else
             {
                 gotoSplashScreen(false);
+            }
+        }
+
+        public static void loadSettings()
+        {
+            String configLocation = configuationPath + configuationFileName;
+
+            if (!File.Exists(configLocation) || forceDefaultSettings)
+            {
+                config = new serialConfig(configLocation);
+                config.loadDefaultSettings();
+                config.tempFolder = configuationPath;
+                MessageBox.Show("Media Downloader: No Settings File Found. \nDefault Settings will be applied", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                config.saveSettings(config);
+            }
+            else
+            {
+                try
+                {
+                    XmlSerializer settingReader = new XmlSerializer(typeof(serialConfig));
+                    StreamReader fileReader = new StreamReader(configLocation);
+                    config = (serialConfig)settingReader.Deserialize(fileReader);
+                    fileReader.Close();
+
+                }
+                catch
+                {
+                    DialogResult failedRead = MessageBox.Show("Media Downloader Error\n There was aproblem loading the settings file, It may be corrupt.\n Create a new default settings file?", "Plugin Error",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (failedRead == DialogResult.Yes)
+                    {
+                        config = new serialConfig(configLocation);
+                        config.loadDefaultSettings();
+                        config.tempFolder = configuationPath;
+                        config.saveSettings(config);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Media Downloader: Pugin unable to start due to a configuation error\nSource Reference Error: config.cs +93", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        closeApplication();
+                    }
+                }
+            }
+
+            checkSettingVersion();
+        }
+
+        private static void checkSettingVersion()
+        {
+            if (config.loadedVersion < config.SETTINGVERSION)
+            {
+                MessageBox.Show("Media Downloader: The current plugin settings file was written for a earlier verison\nThe setting file will be restored to defaults", "Information", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                forceDefaultSettings = true;
+                loadSettings();
+                forceDefaultSettings = false;
             }
         }
 
