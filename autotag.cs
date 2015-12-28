@@ -34,9 +34,6 @@ namespace mediaDownloader
 
             if (Holder.attemptTitle == "" || Holder.attemptArtist == "") //If the basic version returns no match..
             {
-                //Secondary version auto-tag (if no tag was found) - TODO: Improve this function
-                if (pluginInstance.config.advanceAutoTag) //If setting allows this version to run
-                {
                     string format;
 
                     ////////////////
@@ -119,8 +116,7 @@ namespace mediaDownloader
                         Holder.attemptArtist = "";
                     }
 
-                }
-
+                
             }
 
             //Remove any extra whitespace characters at the end 
