@@ -77,8 +77,10 @@
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tbl_Tags.SuspendLayout();
             this.grp_FrmButtons.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).BeginInit();
             this.grp_VidDetails.SuspendLayout();
@@ -204,6 +206,7 @@
             this.but_PreviousStage.TabIndex = 11;
             this.but_PreviousStage.Text = "<- Previous";
             this.but_PreviousStage.UseVisualStyleBackColor = true;
+            this.but_PreviousStage.Click += new System.EventHandler(this.but_PreviousStage_Click);
             // 
             // but_Reset
             // 
@@ -213,6 +216,7 @@
             this.but_Reset.TabIndex = 10;
             this.but_Reset.Text = "Reset This Stage";
             this.but_Reset.UseVisualStyleBackColor = true;
+            this.but_Reset.Click += new System.EventHandler(this.but_Reset_Click_1);
             // 
             // but_NextStage
             // 
@@ -226,6 +230,8 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 469);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
@@ -602,6 +608,12 @@
             this.pic_Top.TabIndex = 20;
             this.pic_Top.TabStop = false;
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
+            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
+            // 
             // frm_SaveFile
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -620,10 +632,13 @@
             this.Name = "frm_SaveFile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Save File As...";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_SaveFile_FormClosing);
             this.Load += new System.EventHandler(this.frm_SaveFile_Load);
             this.tbl_Tags.ResumeLayout(false);
             this.tbl_Tags.PerformLayout();
             this.grp_FrmButtons.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Artwork)).EndInit();
@@ -693,5 +708,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button but_Browse;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

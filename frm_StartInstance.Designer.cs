@@ -34,35 +34,35 @@
             this.but_NextStage = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.grp_Lic = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.lbl_Version = new System.Windows.Forms.Label();
             this.chk_AcceptTerms = new System.Windows.Forms.CheckBox();
-            this.lbl_Terms = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbl_Terms = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_Lic.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // grp_FrmButtons
@@ -126,6 +126,26 @@
             this.grp_Lic.TabStop = false;
             this.grp_Lic.Enter += new System.EventHandler(this.grp_Lic_Enter);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(21, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(335, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Mode: MusicBee || Library: YouTube Extractor || Conversion: FFMPEG";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(10, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(327, 48);
+            this.label7.TabIndex = 26;
+            this.label7.Text = resources.GetString("label7.Text");
+            // 
             // lbl_Version
             // 
             this.lbl_Version.AutoSize = true;
@@ -150,15 +170,14 @@
             this.chk_AcceptTerms.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             this.chk_AcceptTerms.CheckStateChanged += new System.EventHandler(this.chk_AcceptTerms_CheckStateChanged);
             // 
-            // lbl_Terms
+            // pictureBox2
             // 
-            this.lbl_Terms.AutoSize = true;
-            this.lbl_Terms.Location = new System.Drawing.Point(6, 149);
-            this.lbl_Terms.Name = "lbl_Terms";
-            this.lbl_Terms.Size = new System.Drawing.Size(361, 104);
-            this.lbl_Terms.TabIndex = 23;
-            this.lbl_Terms.Text = resources.GetString("lbl_Terms.Text");
-            this.lbl_Terms.Click += new System.EventHandler(this.lbl_Terms_Click);
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox2.Location = new System.Drawing.Point(9, 145);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(348, 2);
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -179,6 +198,15 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Terms of Use";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox3.Location = new System.Drawing.Point(8, 56);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(348, 2);
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -187,6 +215,16 @@
             this.label4.Size = new System.Drawing.Size(313, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "This plugin relies on several pieces of licensed code listed below.";
+            // 
+            // lbl_Terms
+            // 
+            this.lbl_Terms.AutoSize = true;
+            this.lbl_Terms.Location = new System.Drawing.Point(6, 149);
+            this.lbl_Terms.Name = "lbl_Terms";
+            this.lbl_Terms.Size = new System.Drawing.Size(361, 104);
+            this.lbl_Terms.TabIndex = 23;
+            this.lbl_Terms.Text = resources.GetString("lbl_Terms.Text");
+            this.lbl_Terms.Click += new System.EventHandler(this.lbl_Terms_Click);
             // 
             // label2
             // 
@@ -220,6 +258,12 @@
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
+            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
+            // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
@@ -243,32 +287,6 @@
             this.label14.Size = new System.Drawing.Size(333, 37);
             this.label14.TabIndex = 35;
             this.label14.Text = "Media: Download Plugin";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(10, 63);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(327, 48);
-            this.label7.TabIndex = 26;
-            this.label7.Text = resources.GetString("label7.Text");
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(335, 13);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Mode: MusicBee || Library: YouTube Extractor || Conversion: FFMPEG";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
-            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
             // 
             // pic_ICO
             // 
@@ -308,24 +326,6 @@
             this.pic_Top.TabIndex = 24;
             this.pic_Top.TabStop = false;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox2.Location = new System.Drawing.Point(9, 145);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(348, 2);
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox3.Location = new System.Drawing.Point(8, 56);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(348, 2);
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
-            // 
             // frm_StartInstance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,14 +350,14 @@
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_Lic.ResumeLayout(false);
             this.grp_Lic.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

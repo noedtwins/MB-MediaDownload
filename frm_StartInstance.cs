@@ -21,8 +21,6 @@ namespace mediaDownloader
 
         private void but_NextStage_Click(object sender, EventArgs e)
         {
-            //TODO: Add Terms & Conditions Boolean Value
-
             pluginInstance.gotoCatchURL();
 
         }

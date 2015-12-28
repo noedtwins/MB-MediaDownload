@@ -14,8 +14,10 @@ namespace mediaDownloader
     {
         private bool mMessageDisplayed; //Has the Invalid Format alredy been displayed. Obsolete?
         private int mSelectedFormat = -1; //Selected Format in the list (-1 is null/error)
-        private bool requestedRestart = false; //Obsolete?
-        private bool focusedAutoPasted = false;
+        private bool requestedRestart = false; 
+        private bool focusedAutoPasted = false; //Prevent pasting the same URL twice
+        private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
+
 
         private ContextMenuStrip overflowMenu = new ContextMenuStrip(); //For the Overflow Menu button
        
@@ -255,6 +257,8 @@ namespace mediaDownloader
             pluginInstance.details.selectedResolution = Convert.ToString(pluginInstance.details.selectedResult.Resolution);
             pluginInstance.details.formatCode = mSelectedFormat;
 
+            closeEntirePlugin = false;
+
             pluginInstance.gotoSaveFile();
             
         }
@@ -315,8 +319,18 @@ namespace mediaDownloader
 
         private void but_Previous_Click(object sender, EventArgs e)
         {
-            pluginInstance.gotoSplashScreen(true);
+            pluginInstance.gotoSplashScreen(false);
+            closeEntirePlugin = false;
             this.Close();
+        }
+
+        private void frm_GetURL_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (bk_QueryFormats.IsBusy)
+            { bk_QueryFormats.CancelAsync(); }
+
+            if (closeEntirePlugin == true)
+            { pluginInstance.closeApplication(); }
         }
     }
 }

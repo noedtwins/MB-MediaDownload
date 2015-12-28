@@ -35,6 +35,7 @@
             this.rdo_TopNever = new System.Windows.Forms.RadioButton();
             this.pnl_OnTop = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chk_AutoClose = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.chk_AutoPaste = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -66,8 +67,12 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.chk_HideTagWarn = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.chk_Legacy = new System.Windows.Forms.CheckBox();
+            this.chk_useModifiedLibrary = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.but_Close = new System.Windows.Forms.Button();
             this.txt_TempPath = new System.Windows.Forms.TextBox();
@@ -87,38 +92,33 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chk_ExtractAudio = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.but_BrowseFFMpeg = new System.Windows.Forms.Button();
+            this.tbl_FFMPEG = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_FFMpegPath = new System.Windows.Forms.TextBox();
+            this.chk_Window = new System.Windows.Forms.CheckBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.label32 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txt_OverrideSignature = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.fldr_MainBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label30 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_OverrideSignature = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_FFMpegPath = new System.Windows.Forms.TextBox();
-            this.but_BrowseFFMpeg = new System.Windows.Forms.Button();
-            this.tbl_FFMPEG = new System.Windows.Forms.TableLayoutPanel();
-            this.chk_Window = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.chk_ExtractAudio = new System.Windows.Forms.CheckBox();
-            this.chk_AutoClose = new System.Windows.Forms.CheckBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.chk_useModifiedLibrary = new System.Windows.Forms.CheckBox();
-            this.chk_Legacy = new System.Windows.Forms.CheckBox();
             this.pnl_OnTop.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -131,16 +131,16 @@
             this.pnl_VisCntrl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tbl_FFMPEG.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            this.tabPage6.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tbl_FFMPEG.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdo_Inbox
@@ -227,6 +227,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Features";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chk_AutoClose
+            // 
+            this.chk_AutoClose.AutoSize = true;
+            this.chk_AutoClose.Location = new System.Drawing.Point(6, 196);
+            this.chk_AutoClose.Name = "chk_AutoClose";
+            this.chk_AutoClose.Size = new System.Drawing.Size(304, 17);
+            this.chk_AutoClose.TabIndex = 27;
+            this.chk_AutoClose.Text = "Automatically close the plugin once process has completed";
+            this.chk_AutoClose.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -324,22 +334,22 @@
             // rdo_NoWarn
             // 
             this.rdo_NoWarn.AutoSize = true;
+            this.rdo_NoWarn.Checked = true;
             this.rdo_NoWarn.Location = new System.Drawing.Point(246, 5);
             this.rdo_NoWarn.Name = "rdo_NoWarn";
             this.rdo_NoWarn.Size = new System.Drawing.Size(105, 17);
             this.rdo_NoWarn.TabIndex = 8;
+            this.rdo_NoWarn.TabStop = true;
             this.rdo_NoWarn.Text = "Without Warning";
             this.rdo_NoWarn.UseVisualStyleBackColor = true;
             // 
             // rdo_Warn
             // 
             this.rdo_Warn.AutoSize = true;
-            this.rdo_Warn.Checked = true;
             this.rdo_Warn.Location = new System.Drawing.Point(157, 5);
             this.rdo_Warn.Name = "rdo_Warn";
             this.rdo_Warn.Size = new System.Drawing.Size(90, 17);
             this.rdo_Warn.TabIndex = 9;
-            this.rdo_Warn.TabStop = true;
             this.rdo_Warn.Text = "With Warning";
             this.rdo_Warn.UseVisualStyleBackColor = true;
             // 
@@ -502,10 +512,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(96, 28);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(97, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(131, 13);
             this.linkLabel1.TabIndex = 26;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Non-Public Version";
+            this.linkLabel1.Text = "Non-Public Alpha Release";
             // 
             // label24
             // 
@@ -551,6 +561,25 @@
             this.tabPage5.Text = "About";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(25, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Null";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(1, 56);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(143, 21);
+            this.label23.TabIndex = 24;
+            this.label23.Text = "With Thanks To....";
+            // 
             // chk_HideTagWarn
             // 
             this.chk_HideTagWarn.AutoSize = true;
@@ -581,6 +610,28 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Uncategorized";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // chk_Legacy
+            // 
+            this.chk_Legacy.AutoSize = true;
+            this.chk_Legacy.Enabled = false;
+            this.chk_Legacy.Location = new System.Drawing.Point(6, 221);
+            this.chk_Legacy.Name = "chk_Legacy";
+            this.chk_Legacy.Size = new System.Drawing.Size(331, 17);
+            this.chk_Legacy.TabIndex = 32;
+            this.chk_Legacy.Text = "Force MusicBee Legacy Mode (Run Plugin on MB Version < 2.4)";
+            this.chk_Legacy.UseVisualStyleBackColor = true;
+            // 
+            // chk_useModifiedLibrary
+            // 
+            this.chk_useModifiedLibrary.AutoSize = true;
+            this.chk_useModifiedLibrary.Enabled = false;
+            this.chk_useModifiedLibrary.Location = new System.Drawing.Point(6, 200);
+            this.chk_useModifiedLibrary.Name = "chk_useModifiedLibrary";
+            this.chk_useModifiedLibrary.Size = new System.Drawing.Size(298, 17);
+            this.chk_useModifiedLibrary.TabIndex = 31;
+            this.chk_useModifiedLibrary.Text = "Using Unmodified YouTube Extractor Library (By FlagBug)";
+            this.chk_useModifiedLibrary.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -794,48 +845,6 @@
             this.tabControl1.Size = new System.Drawing.Size(547, 297);
             this.tabControl1.TabIndex = 37;
             // 
-            // dlg_OpenFile
-            // 
-            this.dlg_OpenFile.Filter = "FFMPEG EXE|ffmpeg.exe|EXE File|*.exe";
-            // 
-            // pic_TopLine
-            // 
-            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-9, 43);
-            this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(602, 5);
-            this.pic_TopLine.TabIndex = 33;
-            this.pic_TopLine.TabStop = false;
-            // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-4, -6);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(746, 50);
-            this.pic_Top.TabIndex = 30;
-            this.pic_Top.TabStop = false;
-            // 
-            // pic_ICO
-            // 
-            this.pic_ICO.Location = new System.Drawing.Point(7, -1);
-            this.pic_ICO.Name = "pic_ICO";
-            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
-            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_ICO.TabIndex = 31;
-            this.pic_ICO.TabStop = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(249, 51);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(317, 16);
-            this.label27.TabIndex = 38;
-            this.label27.Text = "Some settings are unavailable in this version";
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.label12);
@@ -857,15 +866,169 @@
             this.tabPage6.Text = "Downloading && Converting Settings";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label28
+            // label12
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(1, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(191, 21);
-            this.label28.TabIndex = 23;
-            this.label28.Text = "Media-Extractor Library";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(0, 221);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(196, 21);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Audio Stream Extracting";
+            // 
+            // chk_ExtractAudio
+            // 
+            this.chk_ExtractAudio.AutoSize = true;
+            this.chk_ExtractAudio.Location = new System.Drawing.Point(13, 245);
+            this.chk_ExtractAudio.Name = "chk_ExtractAudio";
+            this.chk_ExtractAudio.Size = new System.Drawing.Size(362, 17);
+            this.chk_ExtractAudio.TabIndex = 32;
+            this.chk_ExtractAudio.Text = "Extract audio stream from original file instead of converting the video file";
+            this.chk_ExtractAudio.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(-1, 151);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(154, 21);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "Conversion Library";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(0, 177);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(141, 16);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "FFMpeg.exe Location:";
+            // 
+            // but_BrowseFFMpeg
+            // 
+            this.but_BrowseFFMpeg.Location = new System.Drawing.Point(462, 174);
+            this.but_BrowseFFMpeg.Name = "but_BrowseFFMpeg";
+            this.but_BrowseFFMpeg.Size = new System.Drawing.Size(75, 23);
+            this.but_BrowseFFMpeg.TabIndex = 29;
+            this.but_BrowseFFMpeg.Text = "Browse";
+            this.but_BrowseFFMpeg.UseVisualStyleBackColor = true;
+            this.but_BrowseFFMpeg.Click += new System.EventHandler(this.but_BrowseFFMpeg_Click);
+            // 
+            // tbl_FFMPEG
+            // 
+            this.tbl_FFMPEG.ColumnCount = 1;
+            this.tbl_FFMPEG.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_FFMPEG.Controls.Add(this.txt_FFMpegPath, 0, 0);
+            this.tbl_FFMPEG.Location = new System.Drawing.Point(144, 174);
+            this.tbl_FFMPEG.Name = "tbl_FFMPEG";
+            this.tbl_FFMPEG.RowCount = 1;
+            this.tbl_FFMPEG.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_FFMPEG.Size = new System.Drawing.Size(316, 23);
+            this.tbl_FFMPEG.TabIndex = 30;
+            // 
+            // txt_FFMpegPath
+            // 
+            this.txt_FFMpegPath.Location = new System.Drawing.Point(3, 3);
+            this.txt_FFMpegPath.Name = "txt_FFMpegPath";
+            this.txt_FFMpegPath.Size = new System.Drawing.Size(310, 20);
+            this.txt_FFMpegPath.TabIndex = 29;
+            // 
+            // chk_Window
+            // 
+            this.chk_Window.AutoSize = true;
+            this.chk_Window.Location = new System.Drawing.Point(4, 202);
+            this.chk_Window.Name = "chk_Window";
+            this.chk_Window.Size = new System.Drawing.Size(412, 17);
+            this.chk_Window.TabIndex = 28;
+            this.chk_Window.Text = "Display the FFMpeg conversion console window when conversion process begins";
+            this.chk_Window.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage7);
+            this.tabControl2.Controls.Add(this.tabPage8);
+            this.tabControl2.Location = new System.Drawing.Point(13, 48);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(510, 104);
+            this.tabControl2.TabIndex = 26;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.label32);
+            this.tabPage7.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage7.Controls.Add(this.label31);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(502, 78);
+            this.tabPage7.TabIndex = 0;
+            this.tabPage7.Text = "YouTube Extractor (By FlagBug) Settings";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(6, 33);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(462, 13);
+            this.label32.TabIndex = 23;
+            this.label32.Text = "Override automatic decipher by manual signature operations. Leave blank to obtain" +
+    " automatically";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.txt_OverrideSignature, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(124, 7);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(342, 23);
+            this.tableLayoutPanel2.TabIndex = 21;
+            // 
+            // txt_OverrideSignature
+            // 
+            this.txt_OverrideSignature.Enabled = false;
+            this.txt_OverrideSignature.Location = new System.Drawing.Point(3, 3);
+            this.txt_OverrideSignature.MaxLength = 20;
+            this.txt_OverrideSignature.Name = "txt_OverrideSignature";
+            this.txt_OverrideSignature.Size = new System.Drawing.Size(336, 20);
+            this.txt_OverrideSignature.TabIndex = 29;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(6, 10);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(121, 16);
+            this.label31.TabIndex = 20;
+            this.label31.Text = "Override Decipher:";
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.label30);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(502, 78);
+            this.tabPage8.TabIndex = 1;
+            this.tabPage8.Text = "RG3 Extractor Settings";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(93, 27);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(317, 16);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Some settings are unavailable in this version";
             // 
             // label29
             // 
@@ -902,220 +1065,58 @@
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "YouTube Extractor (By Flagbug)";
             // 
-            // tabControl2
+            // label28
             // 
-            this.tabControl2.Controls.Add(this.tabPage7);
-            this.tabControl2.Controls.Add(this.tabPage8);
-            this.tabControl2.Location = new System.Drawing.Point(13, 48);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(510, 104);
-            this.tabControl2.TabIndex = 26;
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(1, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(191, 21);
+            this.label28.TabIndex = 23;
+            this.label28.Text = "Media-Extractor Library";
             // 
-            // tabPage7
+            // dlg_OpenFile
             // 
-            this.tabPage7.Controls.Add(this.label32);
-            this.tabPage7.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage7.Controls.Add(this.label31);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(502, 78);
-            this.tabPage7.TabIndex = 0;
-            this.tabPage7.Text = "YouTube Extractor (By FlagBug) Settings";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.dlg_OpenFile.Filter = "FFMPEG EXE|ffmpeg.exe|EXE File|*.exe";
             // 
-            // tabPage8
+            // pic_TopLine
             // 
-            this.tabPage8.Controls.Add(this.label30);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(502, 78);
-            this.tabPage8.TabIndex = 1;
-            this.tabPage8.Text = "RG3 Extractor Settings";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pic_TopLine.Location = new System.Drawing.Point(-9, 43);
+            this.pic_TopLine.Name = "pic_TopLine";
+            this.pic_TopLine.Size = new System.Drawing.Size(602, 5);
+            this.pic_TopLine.TabIndex = 33;
+            this.pic_TopLine.TabStop = false;
             // 
-            // label30
+            // pic_Top
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(93, 27);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(317, 16);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Some settings are unavailable in this version";
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-4, -6);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(746, 50);
+            this.pic_Top.TabIndex = 30;
+            this.pic_Top.TabStop = false;
             // 
-            // tableLayoutPanel2
+            // pic_ICO
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.txt_OverrideSignature, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(124, 7);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(342, 23);
-            this.tableLayoutPanel2.TabIndex = 21;
+            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
+            this.pic_ICO.Location = new System.Drawing.Point(7, -1);
+            this.pic_ICO.Name = "pic_ICO";
+            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
+            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_ICO.TabIndex = 31;
+            this.pic_ICO.TabStop = false;
             // 
-            // txt_OverrideSignature
+            // label27
             // 
-            this.txt_OverrideSignature.Enabled = false;
-            this.txt_OverrideSignature.Location = new System.Drawing.Point(3, 3);
-            this.txt_OverrideSignature.MaxLength = 20;
-            this.txt_OverrideSignature.Name = "txt_OverrideSignature";
-            this.txt_OverrideSignature.Size = new System.Drawing.Size(336, 20);
-            this.txt_OverrideSignature.TabIndex = 29;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(6, 10);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(121, 16);
-            this.label31.TabIndex = 20;
-            this.label31.Text = "Override Decipher:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 33);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(462, 13);
-            this.label32.TabIndex = 23;
-            this.label32.Text = "Override automatic decipher by manual signature operations. Leave blank to obtain" +
-    " automatically";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(-1, 151);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 21);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "Conversion Library";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(0, 177);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 16);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "FFMpeg.exe Location:";
-            // 
-            // txt_FFMpegPath
-            // 
-            this.txt_FFMpegPath.Location = new System.Drawing.Point(3, 3);
-            this.txt_FFMpegPath.Name = "txt_FFMpegPath";
-            this.txt_FFMpegPath.Size = new System.Drawing.Size(310, 20);
-            this.txt_FFMpegPath.TabIndex = 29;
-            // 
-            // but_BrowseFFMpeg
-            // 
-            this.but_BrowseFFMpeg.Location = new System.Drawing.Point(462, 174);
-            this.but_BrowseFFMpeg.Name = "but_BrowseFFMpeg";
-            this.but_BrowseFFMpeg.Size = new System.Drawing.Size(75, 23);
-            this.but_BrowseFFMpeg.TabIndex = 29;
-            this.but_BrowseFFMpeg.Text = "Browse";
-            this.but_BrowseFFMpeg.UseVisualStyleBackColor = true;
-            this.but_BrowseFFMpeg.Click += new System.EventHandler(this.but_BrowseFFMpeg_Click);
-            // 
-            // tbl_FFMPEG
-            // 
-            this.tbl_FFMPEG.ColumnCount = 1;
-            this.tbl_FFMPEG.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tbl_FFMPEG.Controls.Add(this.txt_FFMpegPath, 0, 0);
-            this.tbl_FFMPEG.Location = new System.Drawing.Point(144, 174);
-            this.tbl_FFMPEG.Name = "tbl_FFMPEG";
-            this.tbl_FFMPEG.RowCount = 1;
-            this.tbl_FFMPEG.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tbl_FFMPEG.Size = new System.Drawing.Size(316, 23);
-            this.tbl_FFMPEG.TabIndex = 30;
-            // 
-            // chk_Window
-            // 
-            this.chk_Window.AutoSize = true;
-            this.chk_Window.Location = new System.Drawing.Point(4, 202);
-            this.chk_Window.Name = "chk_Window";
-            this.chk_Window.Size = new System.Drawing.Size(412, 17);
-            this.chk_Window.TabIndex = 28;
-            this.chk_Window.Text = "Display the FFMpeg conversion console window when conversion process begins";
-            this.chk_Window.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(0, 221);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(196, 21);
-            this.label12.TabIndex = 33;
-            this.label12.Text = "Audio Stream Extracting";
-            // 
-            // chk_ExtractAudio
-            // 
-            this.chk_ExtractAudio.AutoSize = true;
-            this.chk_ExtractAudio.Location = new System.Drawing.Point(13, 245);
-            this.chk_ExtractAudio.Name = "chk_ExtractAudio";
-            this.chk_ExtractAudio.Size = new System.Drawing.Size(362, 17);
-            this.chk_ExtractAudio.TabIndex = 32;
-            this.chk_ExtractAudio.Text = "Extract audio stream from original file instead of converting the video file";
-            this.chk_ExtractAudio.UseVisualStyleBackColor = true;
-            // 
-            // chk_AutoClose
-            // 
-            this.chk_AutoClose.AutoSize = true;
-            this.chk_AutoClose.Location = new System.Drawing.Point(6, 196);
-            this.chk_AutoClose.Name = "chk_AutoClose";
-            this.chk_AutoClose.Size = new System.Drawing.Size(304, 17);
-            this.chk_AutoClose.TabIndex = 27;
-            this.chk_AutoClose.Text = "Automatically close the plugin once process has completed";
-            this.chk_AutoClose.UseVisualStyleBackColor = true;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(1, 56);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(143, 21);
-            this.label23.TabIndex = 24;
-            this.label23.Text = "With Thanks To....";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 13);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Null";
-            // 
-            // chk_useModifiedLibrary
-            // 
-            this.chk_useModifiedLibrary.AutoSize = true;
-            this.chk_useModifiedLibrary.Enabled = false;
-            this.chk_useModifiedLibrary.Location = new System.Drawing.Point(6, 200);
-            this.chk_useModifiedLibrary.Name = "chk_useModifiedLibrary";
-            this.chk_useModifiedLibrary.Size = new System.Drawing.Size(298, 17);
-            this.chk_useModifiedLibrary.TabIndex = 31;
-            this.chk_useModifiedLibrary.Text = "Using Unmodified YouTube Extractor Library (By FlagBug)";
-            this.chk_useModifiedLibrary.UseVisualStyleBackColor = true;
-            // 
-            // chk_Legacy
-            // 
-            this.chk_Legacy.AutoSize = true;
-            this.chk_Legacy.Enabled = false;
-            this.chk_Legacy.Location = new System.Drawing.Point(6, 221);
-            this.chk_Legacy.Name = "chk_Legacy";
-            this.chk_Legacy.Size = new System.Drawing.Size(331, 17);
-            this.chk_Legacy.TabIndex = 32;
-            this.chk_Legacy.Text = "Force MusicBee Legacy Mode (Run Plugin on MB Version < 2.4)";
-            this.chk_Legacy.UseVisualStyleBackColor = true;
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(249, 51);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(317, 16);
+            this.label27.TabIndex = 38;
+            this.label27.Text = "Some settings are unavailable in this version";
             // 
             // frm_Settings
             // 
@@ -1135,6 +1136,7 @@
             this.Name = "frm_Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_Settings_FormClosing);
             this.pnl_OnTop.ResumeLayout(false);
             this.pnl_OnTop.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -1157,21 +1159,21 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tbl_FFMPEG.ResumeLayout(false);
+            this.tbl_FFMPEG.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage8.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tbl_FFMPEG.ResumeLayout(false);
-            this.tbl_FFMPEG.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

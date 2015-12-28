@@ -39,6 +39,7 @@
             this.flow_DownRdoButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.but_ContStage = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
@@ -163,11 +165,19 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 469);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
             this.statusStrip1.TabIndex = 22;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
+            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
             // 
             // label1
             // 
@@ -278,10 +288,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Media Download Plugin: Retrieve URL";
             this.Activated += new System.EventHandler(this.frm_GetURL_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_GetURL_FormClosing);
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
@@ -312,5 +325,6 @@
         private System.Windows.Forms.PictureBox pic_InfLoad;
         private System.ComponentModel.BackgroundWorker bk_QueryFormats;
         private System.Windows.Forms.FlowLayoutPanel flow_DownRdoButtons;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

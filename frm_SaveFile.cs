@@ -15,7 +15,9 @@ namespace mediaDownloader
     {
 
         private bool mVideoMode = false;
-        
+        private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
+
+
         public frm_SaveFile()
         {
             InitializeComponent();
@@ -107,18 +109,6 @@ namespace mediaDownloader
         {
             //TODO: Add select artwork.
             MessageBox.Show("Setting Artwork unavailable. Tasked for a future release!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void but_Reset_Click(object sender, EventArgs e)
-        {
-            //Reset back to form load
-            txt_Tag_Title.Text = "";
-            txt_Tag_Artist.Text = "";
-            txt_Tag_Album.Text = "";
-            pluginInstance.details.cropSelected = false;
-            updateCropButton();
-
-            firstStart(); //Rerun the instance of this form
         }
 
         private void but_Browse_Click(object sender, EventArgs e)
@@ -254,6 +244,34 @@ namespace mediaDownloader
         private void grp_FrmButtons_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void but_PreviousStage_Click(object sender, EventArgs e)
+        {
+            but_Reset.PerformClick();
+            pluginInstance.gotoCatchURL();
+
+        }
+
+        private void but_Reset_Click_1(object sender, EventArgs e)
+        {
+            //Reset back to form load
+            txt_Tag_Title.Text = "";
+            txt_Tag_Artist.Text = "";
+            txt_Tag_Album.Text = "";
+            pluginInstance.details.cropSelected = false;
+            updateCropButton();
+
+            firstStart(); //Rerun the instance of this form
+        }
+
+        private void frm_SaveFile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (closeEntirePlugin == true)
+            {
+                pluginInstance.closeApplication();
+
+            }
         }
     }
 

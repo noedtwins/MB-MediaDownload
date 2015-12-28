@@ -23,6 +23,8 @@ namespace mediaDownloader
         private string oldOperations = "";
         private Boolean oldRequiredDecipher = false;
         private bool downloadCompleted = false;
+        private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
+
 
         public frm_ProcessMedia()
         {
@@ -84,7 +86,7 @@ namespace mediaDownloader
 
         private void but_Finish_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         #region stage1
@@ -501,6 +503,47 @@ namespace mediaDownloader
         }
 
         private void pic_INILOAD_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frm_ProcessMedia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (doingThings && but_Finish.Text == "Cancel")
+            {
+                DialogResult confirmCancel = MessageBox.Show("Are you sure you want to cancel?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmCancel == DialogResult.Yes)
+                {
+
+                    try
+                    {
+                        mVideoDownloader.DownloadProgressChanged += (asend, args) => args.Cancel = true;
+                        requestedCancel = true;
+                        bkWork_DownloadVideo.CancelAsync();
+                    }
+                    catch { }
+                    try
+                    {
+                        requestedCancel = true;
+                        bkWork_ConvertVideo.CancelAsync();
+                        ffmpegConvert.Kill();
+                    }
+                    catch { }
+
+                }
+                else
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+            }
+            pluginInstance.closeApplication();
+
+        }
+
+        private void grp_FrmButtons_Enter(object sender, EventArgs e)
         {
 
         }

@@ -33,6 +33,7 @@
             this.lbl_TRate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grp_Download = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_Size = new System.Windows.Forms.Label();
             this.txt_ConvLog = new System.Windows.Forms.TextBox();
             this.tmr_DelayStage4 = new System.Windows.Forms.Timer(this.components);
@@ -49,25 +50,28 @@
             this.lbl_Stage = new System.Windows.Forms.Label();
             this.lbl_DownloadETA = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pic_INILOAD = new System.Windows.Forms.PictureBox();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.tmr_DelayStage2 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
-            this.pic_INILOAD = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.grp_Download.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grp_FrmButtons.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 469);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(480, 22);
@@ -107,6 +111,15 @@
             this.grp_Download.TabIndex = 49;
             this.grp_Download.TabStop = false;
             this.grp_Download.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pictureBox1.Location = new System.Drawing.Point(-55, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(492, 5);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // lbl_Size
             // 
@@ -169,6 +182,7 @@
             this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
             this.grp_FrmButtons.TabIndex = 46;
             this.grp_FrmButtons.TabStop = false;
+            this.grp_FrmButtons.Enter += new System.EventHandler(this.grp_FrmButtons_Enter);
             // 
             // lbl_LargeHeading
             // 
@@ -253,6 +267,20 @@
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
+            // pic_INILOAD
+            // 
+            this.pic_INILOAD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_INILOAD.Location = new System.Drawing.Point(109, 79);
+            this.pic_INILOAD.Name = "pic_INILOAD";
+            this.pic_INILOAD.Size = new System.Drawing.Size(249, 51);
+            this.pic_INILOAD.TabIndex = 4;
+            this.pic_INILOAD.TabStop = false;
+            this.pic_INILOAD.Visible = false;
+            this.pic_INILOAD.Click += new System.EventHandler(this.pic_INILOAD_Click);
+            // 
             // lbl_Title
             // 
             this.lbl_Title.AutoSize = true;
@@ -269,15 +297,6 @@
             // 
             this.tmr_DelayStage2.Interval = 300;
             this.tmr_DelayStage2.Tick += new System.EventHandler(this.tmr_DelayStage2_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-55, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(492, 5);
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // pic_TopLine
             // 
@@ -298,20 +317,6 @@
             this.pic_ICO.TabIndex = 41;
             this.pic_ICO.TabStop = false;
             // 
-            // pic_INILOAD
-            // 
-            this.pic_INILOAD.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_INILOAD.Location = new System.Drawing.Point(109, 79);
-            this.pic_INILOAD.Name = "pic_INILOAD";
-            this.pic_INILOAD.Size = new System.Drawing.Size(249, 51);
-            this.pic_INILOAD.TabIndex = 4;
-            this.pic_INILOAD.TabStop = false;
-            this.pic_INILOAD.Visible = false;
-            this.pic_INILOAD.Click += new System.EventHandler(this.pic_INILOAD_Click);
-            // 
             // pic_Top
             // 
             this.pic_Top.BackColor = System.Drawing.Color.DimGray;
@@ -320,6 +325,12 @@
             this.pic_Top.Size = new System.Drawing.Size(513, 50);
             this.pic_Top.TabIndex = 40;
             this.pic_Top.TabStop = false;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(168, 17);
+            this.toolStripStatusLabel1.Text = "Media Downloader - By Cyano";
             // 
             // frm_ProcessMedia
             // 
@@ -341,15 +352,18 @@
             this.Name = "frm_ProcessMedia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_ProcessMedia";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_ProcessMedia_FormClosing);
             this.Load += new System.EventHandler(this.frm_ProcessMedia_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.grp_Download.ResumeLayout(false);
             this.grp_Download.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grp_FrmButtons.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_INILOAD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -384,5 +398,6 @@
         private System.Windows.Forms.PictureBox pic_Top;
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Timer tmr_DelayStage2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

@@ -17,23 +17,32 @@ namespace mediaDownloader
         private static frm_Settings loadedSettingsForm;
         public static mediaDetails details; //TODO: Add Encapsulation
         public static serialConfig config;
+        private static Boolean alreadyCalledApplication = false;
 
 
         public static void runoutsideMB()
         {
-            Application.Run(loadedSplashScreen);
+            if (!alreadyCalledApplication)
+            {
+                alreadyCalledApplication = true;
+                Application.Run(loadedSplashScreen);
+            }
+            else
+                loadedSplashScreen.Show();
+
             config.configLoc = @"C:\Users\Charlie\Desktop\testMBPlugin.xml";
         }
 
         public static void createNewInstance() //Create new Plugin Instance
         {
             config = new serialConfig(null);
-            config.loadDefaultSettings();
+            config.loadDefaultSettings(); //TODO: Change this into loaded settings.
 
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
             if (!Program.isStandaloneMode)
             {
+                
                 pluginInstance.config.outsideMB = true; //patch-er-uper job, fix this TODO
                 runoutsideMB();
             }
@@ -41,6 +50,11 @@ namespace mediaDownloader
             {
                 gotoSplashScreen(false);
             }
+        }
+
+        public static void closeApplication()
+        {
+            Application.Exit();
         }
 
         public static void clearInstance()
@@ -110,11 +124,12 @@ namespace mediaDownloader
             if (loadedSaveFile == null)
             {
                 loadedSaveFile = new frm_SaveFile();
-                loadedSaveFile.firstStart();
             }
 
             hideAllForms();
+            loadedSaveFile.firstStart();
             loadedSaveFile.Show();
+
         }
 
         public static void startProcess()

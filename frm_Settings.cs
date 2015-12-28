@@ -165,5 +165,10 @@ namespace mediaDownloader
             moveTempCntrlBox(chk_SeperateDir.Checked);
 
         }
+
+        private void frm_Settings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            pluginInstance.gotoSplashScreen(true);
+        }
     }
 }
