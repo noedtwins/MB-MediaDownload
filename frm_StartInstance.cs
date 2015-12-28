@@ -29,6 +29,8 @@ namespace mediaDownloader
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            pluginInstance.config.clipboardMessageShown = true;
+            pluginInstance.config.saveSettings(pluginInstance.config, true);
         }
 
         private void label8_Click(object sender, EventArgs e)

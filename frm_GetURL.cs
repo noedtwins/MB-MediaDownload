@@ -309,7 +309,7 @@ namespace mediaDownloader
                         MessageBox.Show("Media Downloader: A valid media URL was in your clipboard and has automatically been pasted\nYou can turn this function off in the plugin settings\n" +
                             "This message will not show again.", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         pluginInstance.config.clipboardMessageShown = true;
-                        pluginInstance.config.saveSettings(pluginInstance.config);
+                        pluginInstance.config.saveSettings(pluginInstance.config, true);
                     }
 
 
