@@ -99,10 +99,11 @@ namespace mediaDownloader
             oldRequiredDecipher = YoutubeExtractor.Decipherer.wasDecrypted;
             oldOperations = YoutubeExtractor.Decipherer.theOperationsToDo;
 
-            if (oldRequiredDecipher)
+            if (pluginInstance.details.selectedResult.RequiresDecryption)
             {
                 addLog("Signature incorrect - Deciphering Media URL...");
-                    addLog("Operations: " + Decipherer.theOperationsToDo);
+                DownloadUrlResolver.DecryptDownloadUrl(pluginInstance.details.selectedResult); //TODO: Run in async
+                addLog("Operations: " + Decipherer.theOperationsToDo);
             }
             else
                 addLog("Signature is correct, deciphering not required ");
