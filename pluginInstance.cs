@@ -34,7 +34,7 @@ namespace mediaDownloader
                 Application.Run(loadedSplashScreen);
             }
             else
-                loadedSplashScreen.Show();         
+                gotoSplashScreen(false);       
 
         }
 
@@ -182,6 +182,7 @@ namespace mediaDownloader
             }
             hideAllForms();
 
+            loadedSplashScreen.updateTermsBox();
             loadedSplashScreen.Show();
         }
 

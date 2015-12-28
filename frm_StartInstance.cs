@@ -12,6 +12,9 @@ namespace mediaDownloader
 {
     public partial class frm_StartInstance : Form
     {
+
+        public Boolean ignoreCheckChange = false;
+
         public frm_StartInstance()
         {
             InitializeComponent();
@@ -29,8 +32,12 @@ namespace mediaDownloader
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            pluginInstance.config.clipboardMessageShown = true;
-            pluginInstance.config.saveSettings(pluginInstance.config, true);
+            if (!ignoreCheckChange)
+            {
+                pluginInstance.config.termsAccepted = chk_AcceptTerms.Checked;
+                pluginInstance.config.saveSettings(pluginInstance.config, true);
+            }
+
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -77,6 +84,19 @@ namespace mediaDownloader
         private void frm_StartInstance_FormClosing(object sender, FormClosingEventArgs e)
         {
             pluginInstance.closeApplication();
+        }
+
+        public void updateTermsBox()
+        {
+            ignoreCheckChange = true;
+            chk_AcceptTerms.Checked = pluginInstance.config.termsAccepted;
+            ignoreCheckChange = false;
+
+        }
+
+        private void frm_StartInstance_Load(object sender, EventArgs e)
+        {
+            updateTermsBox();
         }
     }
 }
