@@ -1208,8 +1208,9 @@ namespace mediaDownloader
             txt_DefaultPath.Dock = DockStyle.Fill;
             txt_FFMpegPath.Dock = DockStyle.Fill;
             txt_OverrideSignature.Dock = DockStyle.Fill;
+            this.txt_OverrideSignature.Enabled = false;
 
-        }
+         }
 
 
         #endregion
