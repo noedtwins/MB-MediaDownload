@@ -93,14 +93,16 @@ namespace mediaDownloader
             addLog("Begin Stage 1: Initial Stages", false);
             addLog("URL: " + pluginInstance.details.url);
 
+            pic_INILOAD.Visible = true;
+            prg_Main.Visible = false;
+            lbl_ManProg.Visible = false;
+
 
             oldRequiredDecipher = YoutubeExtractor.Decipherer.wasDecrypted;
             oldOperations = YoutubeExtractor.Decipherer.theOperationsToDo;
 
             bk_Decipher.RunWorkerAsync();
  
-            YoutubeExtractor.Decipherer.wasDecrypted = false;
-            YoutubeExtractor.Decipherer.theOperationsToDo = "null";
 
 
         }
@@ -117,6 +119,11 @@ namespace mediaDownloader
                 }
                 else
                     addLog("Signature is correct, deciphering not required ");
+
+
+                YoutubeExtractor.Decipherer.wasDecrypted = false;
+                YoutubeExtractor.Decipherer.theOperationsToDo = "null";
+
             }
             catch (Exception exp)
             {
@@ -133,7 +140,9 @@ namespace mediaDownloader
             doingThings = true;
             addLog("Begin Stage 2: Download Original File");
             describeStage(2, "Downloading Original File");
-
+            pic_INILOAD.Visible = false;
+            prg_Main.Visible = true;
+            lbl_ManProg.Visible = true;
             try
             {
 
