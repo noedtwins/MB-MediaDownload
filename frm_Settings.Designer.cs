@@ -97,8 +97,8 @@ namespace mediaDownloader
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
             this.chk_ExtractAudio = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.but_BrowseFFMpeg = new System.Windows.Forms.Button();
@@ -668,6 +668,7 @@ namespace mediaDownloader
             this.but_Close.TabIndex = 11;
             this.but_Close.Text = "Cancel";
             this.but_Close.UseVisualStyleBackColor = true;
+            this.but_Close.Click += new System.EventHandler(this.but_Close_Click);
             // 
             // txt_TempPath
             // 
@@ -880,16 +881,6 @@ namespace mediaDownloader
             this.tabPage6.Text = "Downloading && Converting Settings";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(0, 221);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(196, 21);
-            this.label12.TabIndex = 33;
-            this.label12.Text = "Audio Stream Extracting";
-            // 
             // chk_ExtractAudio
             // 
             this.chk_ExtractAudio.AutoSize = true;
@@ -899,6 +890,16 @@ namespace mediaDownloader
             this.chk_ExtractAudio.TabIndex = 32;
             this.chk_ExtractAudio.Text = "Extract audio stream from original file instead of converting the video file";
             this.chk_ExtractAudio.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(0, 221);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(196, 21);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Audio Stream Extracting";
             // 
             // label11
             // 

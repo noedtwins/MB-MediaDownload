@@ -211,5 +211,10 @@ namespace mediaDownloader
 
 
         }
+
+        private void but_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
