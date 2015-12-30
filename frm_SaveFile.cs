@@ -35,8 +35,7 @@ namespace mediaDownloader
             updateCropButton();
 
             if (pluginInstance.config.sameValBitRateAsVideo)
-            {
-                //If Use Same BitRate on Conversion is true in settings, then add the format bitrate to this
+            { 
                 cbo_SetBitRate.Items.Add(pluginInstance.details.audioBitRate);
                 cbo_SetBitRate.Text = Convert.ToString(pluginInstance.details.audioBitRate);
             }
@@ -224,8 +223,8 @@ namespace mediaDownloader
             pluginInstance.details.artistTag = txt_Tag_Artist.Text;
             setFileLoc(txt_FileName.Text + "." + cbo_SelectFileFormat.Text, pluginInstance.config.tempFolder, cbo_Folder.Text);
 
-            pluginInstance.details.audioBitRate = Convert.ToInt32(cbo_SetBitRate.Text);
-
+            pluginInstance.details.convertToBitRate = Convert.ToInt32(cbo_SetBitRate.Text);
+            
             return true;
         }
 

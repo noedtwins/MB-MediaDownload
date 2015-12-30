@@ -305,13 +305,13 @@ namespace mediaDownloader
                         addLog("[INFO] Extract Audio FALSE. Crop Selected TRUE", true);
                         ffmpegConvert.StartInfo.Arguments = (" -i " + sm + pluginInstance.details.fullTempPath + sm + " -vn -y -ss " + 
                             pluginInstance.details.startTime + " -to " + pluginInstance.details.endTime +
-                            " -f mp3 -ab " + pluginInstance.config.bitRate + "k " + sm + pluginInstance.details.downloadPath + sm);
+                            " -f mp3 -ab " + pluginInstance.details.convertToBitRate + "k " + sm + pluginInstance.details.downloadPath + sm);
                     }
                     else
                     {
                         addLog("[INFO] Extract Audio FALSE. Crop Selected FALSE", true);
                         ffmpegConvert.StartInfo.Arguments = (" -i " + sm + pluginInstance.details.fullTempPath + sm + " -vn -y -f mp3 -ab " +
-                            pluginInstance.config.bitRate + "k " + sm + pluginInstance.details.downloadPath + sm);
+                            pluginInstance.details.convertToBitRate + "k " + sm + pluginInstance.details.downloadPath + sm);
                     }
                 }
 

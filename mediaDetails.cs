@@ -18,6 +18,7 @@ namespace mediaDownloader
         public int formatCode;
         public int audioBitRate;
         public AudioType audioFormat;
+        public int convertToBitRate;
         public string selectedResolution;
         public Boolean cropSelected;
         public string startTime;
