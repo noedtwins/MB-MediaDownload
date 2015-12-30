@@ -5,10 +5,10 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{496131BF-D8C0-433F-A889-13CE56F5510E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>mediaDownloader</RootNamespace>
-    <AssemblyName>mediaDownloader</AssemblyName>
+    <AssemblyName>mb_mediaDownloader</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>mediaDownloader.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -101,6 +102,8 @@
       <DependentUpon>frm_TagModify.cs</DependentUpon>
     </Compile>
     <Compile Include="mediaDetails.cs" />
+    <Compile Include="MusicBee Interface\MusicBeeInterface.cs" />
+    <Compile Include="MusicBee Interface\MBPlugin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="pluginInstance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

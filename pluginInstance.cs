@@ -13,6 +13,7 @@ namespace mediaDownloader
     {
 
         /* Holders for Instanced forms */
+        private static MusicBeePlugin.Plugin mbApi;
         private static frm_StartInstance loadedSplashScreen;
         private static frm_GetURL loadedURLCatch;
         private static frm_SaveFile loadedSaveFile;
@@ -23,7 +24,7 @@ namespace mediaDownloader
         private static Boolean alreadyCalledApplication = false;
         private static string configuationPath;
         private static string configuationFileName = @"\mb_MediaDownloader_Settings.xml";
-        private static Boolean forceDefaultSettings = false;
+        public static Boolean forceDefaultSettings = false;
 
 
         public static void runoutsideMB()
@@ -44,13 +45,28 @@ namespace mediaDownloader
             createNewInstance();
         }
 
+        public static void linkMBApi(MusicBeePlugin.Plugin linkAPI)
+        {
+            mbApi = linkAPI;
+            configuationPath = mbApi.getLocationOfSettingsFileFromMBApi();
+
+        }
+
         public static void createNewInstance() //Create new Plugin Instance
         {
-            configuationPath = Environment.CurrentDirectory;
+            if (Program.isStandaloneMode)
+            {
+                configuationPath = Environment.CurrentDirectory;
+            }
+            else
+            {
+                configuationPath = mbApi.getLocationOfSettingsFileFromMBApi();
+            }
+
             loadSettings();
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
-            if (!Program.isStandaloneMode)
+            if (Program.isStandaloneMode)
             {
                 runoutsideMB();
             }
@@ -120,7 +136,10 @@ namespace mediaDownloader
 
         public static void closeApplication()
         {
-            Application.Exit();
+            if (Program.isStandaloneMode)
+                Application.Exit();
+            else
+                clearInstance();
         }
 
         public static void clearInstance()
@@ -245,6 +264,11 @@ namespace mediaDownloader
             startTask.Show();
             startTask.runStages();
                 
+        }
+
+        public static MusicBeePlugin.Plugin getAPI()
+        {
+            return mbApi;
         }
 
     }

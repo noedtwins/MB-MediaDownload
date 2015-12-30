@@ -424,8 +424,8 @@ namespace mediaDownloader
 
                 if (!pluginInstance.config.preventDelTempFiles)
                 {
-                    addLog("Delete File: " + pluginInstance.details.downloadPath);
-                    System.IO.File.Delete(pluginInstance.details.downloadPath);
+                    addLog("Delete File: " + pluginInstance.details.fullTempPath);
+                    System.IO.File.Delete(pluginInstance.details.fullTempPath);
                     addLog("File Deleted Successfully!");
                 }
 
@@ -443,19 +443,35 @@ namespace mediaDownloader
 
         private void addToMB()
         {
-            if (pluginInstance.details.moveTo == moveType.inbox)
+            if (Program.isStandaloneMode)
             {
-                addLog("Adding to MusicBee: Inbox (API)");
-                //Missing API
+                addLog("MusicBee API unavailable");
+                return;
             }
-            if (pluginInstance.details.moveTo == moveType.library)
-            {
-                addLog("Adding to MusicBee: Library (API)");
-                //Missing API
+
+            try {
+                if (pluginInstance.details.moveTo == moveType.inbox)
+                {
+                    addLog("Adding to MusicBee: Inbox (API)");
+                    pluginInstance.getAPI().getInterface().Library_AddFileToLibrary(pluginInstance.details.downloadPath, MusicBeePlugin.Plugin.LibraryCategory.Inbox);
+                    pluginInstance.getAPI().getInterface().MB_RefreshPanels();
+                }
+                if (pluginInstance.details.moveTo == moveType.library)
+                {
+                    addLog("Adding to MusicBee: Library (API)");
+                    pluginInstance.getAPI().getInterface().Library_AddFileToLibrary(pluginInstance.details.downloadPath, MusicBeePlugin.Plugin.LibraryCategory.Music);
+                    pluginInstance.getAPI().getInterface().MB_RefreshPanels();
+                }
+                if (pluginInstance.details.moveTo == moveType.none)
+                {
+                    addLog("File not added to MusicBee.");
+                    return;
+                }
             }
-            if (pluginInstance.details.moveTo == moveType.none)
+
+            catch (Exception e)
             {
-                addLog("File not added to MusicBee.");
+                addLog("Failed to interact with MusicBee API! Error Dump: " + e);
             }
         }
 
@@ -473,10 +489,9 @@ namespace mediaDownloader
             but_Finish.Text = "Exit Plugin";
             describeStage(99, "Click the button below to convert another video\n or exit the plugin.", "File Completed!");
             lbl_Stage.Text = "File Completed!";
-            //mLogic.API.MB_RefreshPanels();
 
-            //if (mSetting.autoClosePlugin)
-            //{ this.Close(); }
+            if (pluginInstance.config.autoClosePlugin)
+                this.Close(); 
         }
         #endregion
 
@@ -527,7 +542,7 @@ namespace mediaDownloader
 
             }
             pluginInstance.closeApplication();
-
+            this.Dispose();
         }
 
         private void but_ConvertAgain_Click(object sender, EventArgs e)

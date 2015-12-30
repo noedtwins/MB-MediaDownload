@@ -53,6 +53,15 @@ namespace mediaDownloader
                 rdo_Library.Checked = pluginInstance.config.addLibrary;
             }
 
+            if (Program.isStandaloneMode)
+            {
+                rdo_Inbox.Enabled = false;
+                rdo_Library.Enabled = false;
+                rdo_Video.Enabled = false;
+                rdo_None.Checked = true;
+            }
+
+
             this.ActiveControl = txt_Tag_Title; //Set Focus on Title Tag TextBox
             loadDetailsFromMedia();
         }
