@@ -17,6 +17,7 @@ namespace mediaDownloader
         public frm_TagModify()
         {
             InitializeComponent();
+            this.AcceptButton = but_NextStage;
             lbl_Title.Parent = pic_Top;
             pic_ICO.Parent = pic_Top;
             cbo_tag.Text = "Comment";

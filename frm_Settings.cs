@@ -12,11 +12,14 @@ namespace mediaDownloader
     public partial class frm_Settings : Form
     {
         private frm_TagModify tagFrm;
+        private Boolean justSaved = false;
 
 
         public frm_Settings()
         {
             InitializeComponent();
+            this.AcceptButton = but_NextStage;
+            initMBCustom();
             settingsToControls();
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
@@ -136,7 +139,7 @@ namespace mediaDownloader
             }
 
             pluginInstance.config.saveSettings(pluginInstance.config);
-            pluginInstance.clearInstance();
+            justSaved = true;
             this.Close();
 
         }
@@ -175,14 +178,38 @@ namespace mediaDownloader
         {
             try { tagFrm.Close(); }
             catch { }
-
-            pluginInstance.gotoSplashScreen(true);
+            
+            if (justSaved)
+            {
+                justSaved = false;
+                pluginInstance.reloadPlugin();
+                this.Dispose();
+            }
+            else
+                pluginInstance.gotoSplashScreen(true);
         }
         
         private void but_TagEditor_Click(object sender, EventArgs e)
         {
             tagFrm = new frm_TagModify();
             tagFrm.Show();
+        }
+
+        private void but_Restore_Click(object sender, EventArgs e)
+        {
+            pluginInstance.config.loadDefaultSettings();
+            if (!Program.isStandaloneMode)
+                pluginInstance.config.tempFolder = pluginInstance.getAPI().getLocationOfSettingsFileFromMBApi();
+            else
+                pluginInstance.config.tempFolder = Application.ExecutablePath;
+
+
+            pluginInstance.config.saveSettings(pluginInstance.config);
+            pluginInstance.clearInstance();
+            justSaved = true;
+            this.Close();
+
+
         }
     }
 }

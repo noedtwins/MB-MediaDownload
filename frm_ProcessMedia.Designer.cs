@@ -58,6 +58,7 @@
             this.tmr_DelayStage2 = new System.Windows.Forms.Timer(this.components);
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
+            this.bk_Decipher = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             this.grp_Download.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -148,7 +149,7 @@
             // 
             // tmr_DelayStage4
             // 
-            this.tmr_DelayStage4.Interval = 3000;
+            this.tmr_DelayStage4.Interval = 1000;
             this.tmr_DelayStage4.Tick += new System.EventHandler(this.tmr_DelayStage4_Tick_1);
             // 
             // bkWork_ConvertVideo
@@ -309,7 +310,7 @@
             // 
             // tmr_DelayStage2
             // 
-            this.tmr_DelayStage2.Interval = 300;
+            this.tmr_DelayStage2.Interval = 1000;
             this.tmr_DelayStage2.Tick += new System.EventHandler(this.tmr_DelayStage2_Tick);
             // 
             // pic_TopLine
@@ -330,6 +331,11 @@
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_ICO.TabIndex = 41;
             this.pic_ICO.TabStop = false;
+            // 
+            // bk_Decipher
+            // 
+            this.bk_Decipher.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bk_Decipher_DoWork);
+            this.bk_Decipher.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bk_Decipher_RunWorkerCompleted);
             // 
             // frm_ProcessMedia
             // 
@@ -398,5 +404,6 @@
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Timer tmr_DelayStage2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.ComponentModel.BackgroundWorker bk_Decipher;
     }
 }

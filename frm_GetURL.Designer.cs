@@ -40,34 +40,34 @@ namespace mediaDownloader
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
             this.flow_DownRdoButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.but_ContStage = new System.Windows.Forms.Button();
             this.lbl_Title = new System.Windows.Forms.Label();
-            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.bk_QueryFormats = new System.ComponentModel.BackgroundWorker();
-            this.pic_InfLoad = new System.Windows.Forms.PictureBox();
-            this.but_MoreOptions = new System.Windows.Forms.Button();
-            this.pic_TopLine = new System.Windows.Forms.PictureBox();
-            this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.grp_Info = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pic_InfLoad = new System.Windows.Forms.PictureBox();
+            this.but_MoreOptions = new System.Windows.Forms.Button();
+            this.pic_Thumb = new System.Windows.Forms.PictureBox();
+            this.pic_TopLine = new System.Windows.Forms.PictureBox();
+            this.pic_ICO = new System.Windows.Forms.PictureBox();
+            this.pic_Top = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             this.grp_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
             this.SuspendLayout();
             // 
             // but_Previous
@@ -166,16 +166,6 @@ namespace mediaDownloader
             this.flow_DownRdoButtons.TabIndex = 3;
             this.flow_DownRdoButtons.Visible = false;
             // 
-            // pic_Thumb
-            // 
-            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_Thumb.Name = "pic_Thumb";
-            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
-            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_Thumb.TabIndex = 0;
-            this.pic_Thumb.TabStop = false;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -224,59 +214,11 @@ namespace mediaDownloader
             this.lbl_Title.TabIndex = 18;
             this.lbl_Title.Text = "Media: Download Plugin";
             // 
-            // pic_Top
-            // 
-            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
-            this.pic_Top.Location = new System.Drawing.Point(-3, 0);
-            this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(509, 50);
-            this.pic_Top.TabIndex = 15;
-            this.pic_Top.TabStop = false;
-            // 
             // bk_QueryFormats
             // 
             this.bk_QueryFormats.WorkerSupportsCancellation = true;
             this.bk_QueryFormats.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bk_QueryFormats_DoWork);
             this.bk_QueryFormats.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bk_QueryFormats_RunWorkerCompleted);
-            // 
-            // pic_InfLoad
-            // 
-            this.pic_InfLoad.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_InfLoad.Location = new System.Drawing.Point(135, 276);
-            this.pic_InfLoad.Name = "pic_InfLoad";
-            this.pic_InfLoad.Size = new System.Drawing.Size(236, 28);
-            this.pic_InfLoad.TabIndex = 27;
-            this.pic_InfLoad.TabStop = false;
-            this.pic_InfLoad.Visible = false;
-            // 
-            // but_MoreOptions
-            // 
-            this.but_MoreOptions.Image = global::mediaDownloader.Properties.Resources.menu_icon_16;
-            this.but_MoreOptions.Location = new System.Drawing.Point(439, 63);
-            this.but_MoreOptions.Name = "but_MoreOptions";
-            this.but_MoreOptions.Size = new System.Drawing.Size(26, 38);
-            this.but_MoreOptions.TabIndex = 26;
-            this.but_MoreOptions.UseVisualStyleBackColor = true;
-            this.but_MoreOptions.Click += new System.EventHandler(this.but_MoreOptions_Click);
-            // 
-            // pic_TopLine
-            // 
-            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-5, 49);
-            this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
-            this.pic_TopLine.TabIndex = 19;
-            this.pic_TopLine.TabStop = false;
-            // 
-            // pic_ICO
-            // 
-            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
-            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
-            this.pic_ICO.Name = "pic_ICO";
-            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
-            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic_ICO.TabIndex = 16;
-            this.pic_ICO.TabStop = false;
             // 
             // grp_Info
             // 
@@ -304,31 +246,21 @@ namespace mediaDownloader
             // label4
             // 
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(138, 47);
+            this.label4.Location = new System.Drawing.Point(114, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(321, 93);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Supported Media\r\n---------------------\r\n• YouTube\r\n";
+            this.label4.Text = "Accepted Media\r\n---------------------\r\n• YouTube\r\n";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(132, 13);
+            this.label3.Location = new System.Drawing.Point(112, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(132, 30);
             this.label3.TabIndex = 1;
             this.label3.Text = "Information";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
-            this.pictureBox3.Location = new System.Drawing.Point(5, 15);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(127, 97);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -340,6 +272,74 @@ namespace mediaDownloader
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(422, 23);
             this.tableLayoutPanel1.TabIndex = 29;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::mediaDownloader.Properties.Resources.Information;
+            this.pictureBox3.Location = new System.Drawing.Point(7, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(101, 97);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pic_InfLoad
+            // 
+            this.pic_InfLoad.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_InfLoad.Location = new System.Drawing.Point(135, 276);
+            this.pic_InfLoad.Name = "pic_InfLoad";
+            this.pic_InfLoad.Size = new System.Drawing.Size(236, 28);
+            this.pic_InfLoad.TabIndex = 27;
+            this.pic_InfLoad.TabStop = false;
+            this.pic_InfLoad.Visible = false;
+            // 
+            // but_MoreOptions
+            // 
+            this.but_MoreOptions.Image = global::mediaDownloader.Properties.Resources.menu_icon_16;
+            this.but_MoreOptions.Location = new System.Drawing.Point(439, 63);
+            this.but_MoreOptions.Name = "but_MoreOptions";
+            this.but_MoreOptions.Size = new System.Drawing.Size(26, 38);
+            this.but_MoreOptions.TabIndex = 26;
+            this.but_MoreOptions.UseVisualStyleBackColor = true;
+            this.but_MoreOptions.Click += new System.EventHandler(this.but_MoreOptions_Click);
+            // 
+            // pic_Thumb
+            // 
+            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_Thumb.Name = "pic_Thumb";
+            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
+            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_Thumb.TabIndex = 0;
+            this.pic_Thumb.TabStop = false;
+            // 
+            // pic_TopLine
+            // 
+            this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
+            this.pic_TopLine.Location = new System.Drawing.Point(-5, 49);
+            this.pic_TopLine.Name = "pic_TopLine";
+            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
+            this.pic_TopLine.TabIndex = 19;
+            this.pic_TopLine.TabStop = false;
+            // 
+            // pic_ICO
+            // 
+            this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
+            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
+            this.pic_ICO.Name = "pic_ICO";
+            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
+            this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pic_ICO.TabIndex = 16;
+            this.pic_ICO.TabStop = false;
+            // 
+            // pic_Top
+            // 
+            this.pic_Top.BackColor = System.Drawing.Color.DimGray;
+            this.pic_Top.Location = new System.Drawing.Point(-3, 0);
+            this.pic_Top.Name = "pic_Top";
+            this.pic_Top.Size = new System.Drawing.Size(509, 50);
+            this.pic_Top.TabIndex = 15;
+            this.pic_Top.TabStop = false;
             // 
             // frm_GetURL
             // 
@@ -370,16 +370,16 @@ namespace mediaDownloader
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             this.grp_Info.ResumeLayout(false);
             this.grp_Info.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

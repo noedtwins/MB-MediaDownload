@@ -103,13 +103,11 @@ namespace mediaDownloader
             this.label4 = new System.Windows.Forms.Label();
             this.but_BrowseFFMpeg = new System.Windows.Forms.Button();
             this.tbl_FFMPEG = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_FFMpegPath = new System.Windows.Forms.TextBox();
             this.chk_Window = new System.Windows.Forms.CheckBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.label32 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.txt_OverrideSignature = new System.Windows.Forms.TextBox();
+            this.tbl_overwrite = new System.Windows.Forms.TableLayoutPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.label30 = new System.Windows.Forms.Label();
@@ -117,6 +115,8 @@ namespace mediaDownloader
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.txt_FFMpegPath = new System.Windows.Forms.TextBox();
+            this.txt_OverrideSignature = new System.Windows.Forms.TextBox();
             this.fldr_MainBrowse = new System.Windows.Forms.FolderBrowserDialog();
             this.dlg_OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.label27 = new System.Windows.Forms.Label();
@@ -136,10 +136,8 @@ namespace mediaDownloader
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage6.SuspendLayout();
-            this.tbl_FFMPEG.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
@@ -172,12 +170,10 @@ namespace mediaDownloader
             // rdo_TopAlways
             // 
             this.rdo_TopAlways.AutoSize = true;
-            this.rdo_TopAlways.Checked = true;
             this.rdo_TopAlways.Location = new System.Drawing.Point(59, 5);
             this.rdo_TopAlways.Name = "rdo_TopAlways";
             this.rdo_TopAlways.Size = new System.Drawing.Size(58, 17);
             this.rdo_TopAlways.TabIndex = 8;
-            this.rdo_TopAlways.TabStop = true;
             this.rdo_TopAlways.Text = "Always";
             this.rdo_TopAlways.UseVisualStyleBackColor = true;
             // 
@@ -194,10 +190,12 @@ namespace mediaDownloader
             // rdo_TopNever
             // 
             this.rdo_TopNever.AutoSize = true;
+            this.rdo_TopNever.Checked = true;
             this.rdo_TopNever.Location = new System.Drawing.Point(283, 5);
             this.rdo_TopNever.Name = "rdo_TopNever";
             this.rdo_TopNever.Size = new System.Drawing.Size(54, 17);
             this.rdo_TopNever.TabIndex = 11;
+            this.rdo_TopNever.TabStop = true;
             this.rdo_TopNever.Text = "Never";
             this.rdo_TopNever.UseVisualStyleBackColor = true;
             // 
@@ -503,6 +501,7 @@ namespace mediaDownloader
             this.but_Restore.TabIndex = 25;
             this.but_Restore.Text = "Reset to default settings";
             this.but_Restore.UseVisualStyleBackColor = true;
+            this.but_Restore.Click += new System.EventHandler(this.but_Restore_Click);
             // 
             // but_ClearMRU
             // 
@@ -862,8 +861,8 @@ namespace mediaDownloader
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.label12);
             this.tabPage6.Controls.Add(this.chk_ExtractAudio);
+            this.tabPage6.Controls.Add(this.label12);
             this.tabPage6.Controls.Add(this.label11);
             this.tabPage6.Controls.Add(this.label4);
             this.tabPage6.Controls.Add(this.but_BrowseFFMpeg);
@@ -894,7 +893,7 @@ namespace mediaDownloader
             // chk_ExtractAudio
             // 
             this.chk_ExtractAudio.AutoSize = true;
-            this.chk_ExtractAudio.Location = new System.Drawing.Point(3, 245);
+            this.chk_ExtractAudio.Location = new System.Drawing.Point(3, 247);
             this.chk_ExtractAudio.Name = "chk_ExtractAudio";
             this.chk_ExtractAudio.Size = new System.Drawing.Size(362, 17);
             this.chk_ExtractAudio.TabIndex = 32;
@@ -942,13 +941,6 @@ namespace mediaDownloader
             this.tbl_FFMPEG.Size = new System.Drawing.Size(316, 23);
             this.tbl_FFMPEG.TabIndex = 30;
             // 
-            // txt_FFMpegPath
-            // 
-            this.txt_FFMpegPath.Location = new System.Drawing.Point(3, 3);
-            this.txt_FFMpegPath.Name = "txt_FFMpegPath";
-            this.txt_FFMpegPath.Size = new System.Drawing.Size(310, 20);
-            this.txt_FFMpegPath.TabIndex = 29;
-            // 
             // chk_Window
             // 
             this.chk_Window.AutoSize = true;
@@ -972,7 +964,7 @@ namespace mediaDownloader
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.label32);
-            this.tabPage7.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage7.Controls.Add(this.tbl_overwrite);
             this.tabPage7.Controls.Add(this.label31);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -992,25 +984,16 @@ namespace mediaDownloader
             this.label32.Text = "Override automatic decipher by manual signature operations. Leave blank to obtain" +
     " automatically";
             // 
-            // tableLayoutPanel2
+            // tbl_overwrite
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(124, 7);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(342, 23);
-            this.tableLayoutPanel2.TabIndex = 21;
-            // 
-            // txt_OverrideSignature
-            // 
-            this.txt_OverrideSignature.Enabled = false;
-            this.txt_OverrideSignature.Location = new System.Drawing.Point(3, 3);
-            this.txt_OverrideSignature.MaxLength = 20;
-            this.txt_OverrideSignature.Name = "txt_OverrideSignature";
-            this.txt_OverrideSignature.Size = new System.Drawing.Size(336, 20);
-            this.txt_OverrideSignature.TabIndex = 29;
+            this.tbl_overwrite.ColumnCount = 1;
+            this.tbl_overwrite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_overwrite.Location = new System.Drawing.Point(124, 7);
+            this.tbl_overwrite.Name = "tbl_overwrite";
+            this.tbl_overwrite.RowCount = 1;
+            this.tbl_overwrite.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_overwrite.Size = new System.Drawing.Size(342, 23);
+            this.tbl_overwrite.TabIndex = 21;
             // 
             // label31
             // 
@@ -1087,6 +1070,22 @@ namespace mediaDownloader
             this.label28.Size = new System.Drawing.Size(191, 21);
             this.label28.TabIndex = 23;
             this.label28.Text = "Media-Extractor Library";
+            // 
+            // txt_FFMpegPath
+            // 
+            this.txt_FFMpegPath.Location = new System.Drawing.Point(3, 3);
+            this.txt_FFMpegPath.Name = "txt_FFMpegPath";
+            this.txt_FFMpegPath.Size = new System.Drawing.Size(310, 20);
+            this.txt_FFMpegPath.TabIndex = 29;
+            // 
+            // txt_OverrideSignature
+            // 
+            this.txt_OverrideSignature.Enabled = false;
+            this.txt_OverrideSignature.Location = new System.Drawing.Point(3, 3);
+            this.txt_OverrideSignature.MaxLength = 20;
+            this.txt_OverrideSignature.Name = "txt_OverrideSignature";
+            this.txt_OverrideSignature.Size = new System.Drawing.Size(336, 20);
+            this.txt_OverrideSignature.TabIndex = 29;
             // 
             // dlg_OpenFile
             // 
@@ -1175,13 +1174,9 @@ namespace mediaDownloader
             this.tabControl1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
-            this.tbl_FFMPEG.ResumeLayout(false);
-            this.tbl_FFMPEG.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1202,6 +1197,18 @@ namespace mediaDownloader
                 this.txt_OverrideSignature = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
                 this.txt_TempPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
             }
+
+
+            tbl_FilePaths.Controls.Add(txt_DefaultPath, 1, 0);
+            tbl_FilePaths.Controls.Add(txt_TempPath, 1, 1);
+            tbl_FFMPEG.Controls.Add(txt_FFMpegPath, 0, 0);
+            tbl_overwrite.Controls.Add(txt_OverrideSignature, 0, 0);
+
+            txt_TempPath.Dock = DockStyle.Fill;
+            txt_DefaultPath.Dock = DockStyle.Fill;
+            txt_FFMpegPath.Dock = DockStyle.Fill;
+            txt_OverrideSignature.Dock = DockStyle.Fill;
+
         }
 
 
@@ -1282,7 +1289,7 @@ namespace mediaDownloader
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tbl_overwrite;
         private System.Windows.Forms.TextBox txt_OverrideSignature;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label11;

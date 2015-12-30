@@ -29,7 +29,6 @@ namespace mediaDownloader
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
         }
@@ -98,22 +97,33 @@ namespace mediaDownloader
             oldRequiredDecipher = YoutubeExtractor.Decipherer.wasDecrypted;
             oldOperations = YoutubeExtractor.Decipherer.theOperationsToDo;
 
-            if (pluginInstance.details.selectedResult.RequiresDecryption)
-            {
-                addLog("Signature incorrect - Deciphering Media URL...");
-                DownloadUrlResolver.DecryptDownloadUrl(pluginInstance.details.selectedResult); //TODO: Run in async
-                addLog("Operations: " + Decipherer.theOperationsToDo);
-            }
-            else
-                addLog("Signature is correct, deciphering not required ");
-
+            bk_Decipher.RunWorkerAsync();
+ 
             YoutubeExtractor.Decipherer.wasDecrypted = false;
             YoutubeExtractor.Decipherer.theOperationsToDo = "null";
 
-            addLog("Stage 1 Complete...", true);
-            tmr_DelayStage2.Enabled = true;
 
         }
+
+
+        private void bk_Decipher_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try {
+                if (pluginInstance.details.selectedResult.RequiresDecryption)
+                {
+                    addLog("Signature incorrect - Deciphering Media URL...");
+                    DownloadUrlResolver.DecryptDownloadUrl(pluginInstance.details.selectedResult); //TODO: Run in async
+                    addLog("Operations: " + Decipherer.theOperationsToDo);
+                }
+                else
+                    addLog("Signature is correct, deciphering not required ");
+            }
+            catch (Exception exp)
+            {
+                throwErrorForm(exp);
+            }
+        }
+
         #endregion
 
         #region stage2
@@ -349,7 +359,7 @@ namespace mediaDownloader
             if (System.IO.File.Exists(pluginInstance.details.downloadPath)) //If file exists, conversion exists otherwise not.
             {
                 addLog("Process Exited - Conversion Finished");
-                addLog("Stage 3 Completed!");
+                addLog("Stage 3 Completed!", true);
                 processStage4();
             }
             else
@@ -399,7 +409,6 @@ namespace mediaDownloader
                 }
                 tagFile.Save();
                 addLog("Saving Tagged File ");
-                addLog("Stage 4 Ended.", true);
                 tmr_DelayStage4.Enabled = true;
              //   processStage5();
 
@@ -504,6 +513,7 @@ namespace mediaDownloader
         
         private void tmr_DelayStage4_Tick_1(object sender, EventArgs e)
         {
+            addLog("Stage 4 Ended.", true);
             processStage5();
             tmr_DelayStage4.Enabled = false;
 
@@ -549,6 +559,13 @@ namespace mediaDownloader
         {
             pluginInstance.reloadPlugin();
             this.Dispose();
+        }
+
+        private void bk_Decipher_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            addLog("Stage 1 Complete...", true);
+            tmr_DelayStage2.Enabled = true;
         }
     }
 

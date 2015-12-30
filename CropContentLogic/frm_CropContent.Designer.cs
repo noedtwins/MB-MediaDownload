@@ -339,6 +339,8 @@
             this.rangeBar.TabIndex = 0;
             this.rangeBar.TotalMaximum = 20;
             this.rangeBar.TotalMinimum = 0;
+            this.rangeBar.RangeChanged += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.OnRangeChanged);
+            this.rangeBar.RangeChanging += new Zzzz.ZzzzRangeBar.RangeChangedEventHandler(this.OnRangeChanging);
             // 
             // label1
             // 

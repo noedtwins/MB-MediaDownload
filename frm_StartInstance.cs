@@ -18,6 +18,7 @@ namespace mediaDownloader
         public frm_StartInstance()
         {
             InitializeComponent();
+            this.AcceptButton = but_NextStage;
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
             lbl_Version.Text = "Plugin Version: " + Program.versionCode;
@@ -58,6 +59,8 @@ namespace mediaDownloader
 
         public void updateTermsBox()
         {
+            but_NextStage.Focus();
+
             ignoreCheckChange = true;
             chk_AcceptTerms.Checked = pluginInstance.config.termsAccepted;
             ignoreCheckChange = false;
