@@ -1,4 +1,6 @@
-﻿namespace mediaDownloader
+﻿using System.Windows.Forms;
+
+namespace mediaDownloader
 {
     partial class frm_Settings
     {
@@ -739,11 +741,9 @@
             this.tbl_FilePaths.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tbl_FilePaths.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13F));
             this.tbl_FilePaths.Controls.Add(this.label3, 0, 0);
-            this.tbl_FilePaths.Controls.Add(this.txt_TempPath, 1, 1);
             this.tbl_FilePaths.Controls.Add(this.but_DefaultBrowse, 2, 0);
             this.tbl_FilePaths.Controls.Add(this.but_TempBrowse, 2, 1);
             this.tbl_FilePaths.Controls.Add(this.label2, 0, 1);
-            this.tbl_FilePaths.Controls.Add(this.txt_DefaultPath, 1, 0);
             this.tbl_FilePaths.Location = new System.Drawing.Point(6, 30);
             this.tbl_FilePaths.Name = "tbl_FilePaths";
             this.tbl_FilePaths.RowCount = 2;
@@ -854,7 +854,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(5, 74);
+            this.tabControl1.Location = new System.Drawing.Point(6, 74);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(547, 297);
@@ -935,7 +935,6 @@
             // 
             this.tbl_FFMPEG.ColumnCount = 1;
             this.tbl_FFMPEG.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tbl_FFMPEG.Controls.Add(this.txt_FFMpegPath, 0, 0);
             this.tbl_FFMPEG.Location = new System.Drawing.Point(144, 174);
             this.tbl_FFMPEG.Name = "tbl_FFMPEG";
             this.tbl_FFMPEG.RowCount = 1;
@@ -997,7 +996,6 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.txt_OverrideSignature, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(124, 7);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -1194,6 +1192,18 @@
             this.PerformLayout();
 
         }
+
+        public void initMBCustom()
+        {
+            if (!Program.isStandaloneMode)
+            {
+                this.txt_DefaultPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_FFMpegPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_OverrideSignature = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_TempPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+            }
+        }
+
 
         #endregion
 

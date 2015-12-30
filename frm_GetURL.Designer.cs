@@ -1,4 +1,6 @@
-﻿namespace mediaDownloader
+﻿using System.Windows.Forms;
+
+namespace mediaDownloader
 {
     partial class frm_GetURL
     {
@@ -55,6 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
@@ -327,15 +330,26 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 77);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(422, 23);
+            this.tableLayoutPanel1.TabIndex = 29;
+            // 
             // frm_GetURL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 491);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.grp_Info);
             this.Controls.Add(this.pic_InfLoad);
             this.Controls.Add(this.but_MoreOptions);
-            this.Controls.Add(this.txt_MediaURL);
             this.Controls.Add(this.grp_FrmButtons);
             this.Controls.Add(this.grp_VidDetails);
             this.Controls.Add(this.statusStrip1);
@@ -371,6 +385,22 @@
 
         }
 
+        public void initMBCustom()
+        {
+            if (!Program.isStandaloneMode)
+            {
+                this.txt_MediaURL = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+            }
+
+            this.txt_MediaURL.TabIndex = 6;
+            this.txt_MediaURL.Text = "Insert URL Here...";
+            this.txt_MediaURL.Enter += new System.EventHandler(this.txt_MediaURL_Enter);
+            this.txt_MediaURL.Leave += new System.EventHandler(this.txt_MediaURL_Leave);
+            this.txt_MediaURL.Dock = DockStyle.Fill;
+            this.tableLayoutPanel1.Controls.Add(txt_MediaURL);
+
+        }
+
         #endregion
         private System.Windows.Forms.Button but_Previous;
         private System.Windows.Forms.Button but_Reset;
@@ -398,5 +428,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

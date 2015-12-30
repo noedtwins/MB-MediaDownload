@@ -21,6 +21,7 @@ namespace mediaDownloader
         public frm_SaveFile()
         {
             InitializeComponent();
+            initMBCustom();
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
         }
@@ -285,6 +286,13 @@ namespace mediaDownloader
         private void but_Crop_Click(object sender, EventArgs e)
         {
             pluginInstance.gotoCropContent();
+        }
+
+        private void but_Swap_Click_1(object sender, EventArgs e)
+        {
+            String tempHold = txt_Tag_Title.Text;
+            txt_Tag_Title.Text = txt_Tag_Artist.Text;
+            txt_Tag_Artist.Text = tempHold;
         }
     }
 

@@ -24,6 +24,7 @@ namespace mediaDownloader
         public frm_GetURL()
         {
             InitializeComponent();
+            initMBCustom();
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
         }

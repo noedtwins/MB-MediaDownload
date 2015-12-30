@@ -34,7 +34,7 @@
             this.but_NextStage = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.grp_Lic = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_mode = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_Version = new System.Windows.Forms.Label();
             this.chk_AcceptTerms = new System.Windows.Forms.CheckBox();
@@ -107,7 +107,7 @@
             // 
             // grp_Lic
             // 
-            this.grp_Lic.Controls.Add(this.label8);
+            this.grp_Lic.Controls.Add(this.lbl_mode);
             this.grp_Lic.Controls.Add(this.label7);
             this.grp_Lic.Controls.Add(this.lbl_Version);
             this.grp_Lic.Controls.Add(this.chk_AcceptTerms);
@@ -118,21 +118,21 @@
             this.grp_Lic.Controls.Add(this.label4);
             this.grp_Lic.Controls.Add(this.label3);
             this.grp_Lic.Controls.Add(this.lbl_Terms);
-            this.grp_Lic.Location = new System.Drawing.Point(52, 129);
+            this.grp_Lic.Location = new System.Drawing.Point(40, 130);
             this.grp_Lic.Name = "grp_Lic";
-            this.grp_Lic.Size = new System.Drawing.Size(377, 282);
+            this.grp_Lic.Size = new System.Drawing.Size(405, 282);
             this.grp_Lic.TabIndex = 32;
             this.grp_Lic.TabStop = false;
             // 
-            // label8
+            // lbl_mode
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(335, 13);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Mode: MusicBee || Library: YouTube Extractor || Conversion: FFMPEG";
+            this.lbl_mode.AutoSize = true;
+            this.lbl_mode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mode.Location = new System.Drawing.Point(7, 9);
+            this.lbl_mode.Name = "lbl_mode";
+            this.lbl_mode.Size = new System.Drawing.Size(335, 13);
+            this.lbl_mode.TabIndex = 36;
+            this.lbl_mode.Text = "Mode: MusicBee || Library: YouTube Extractor || Conversion: FFMPEG";
             // 
             // label7
             // 
@@ -149,7 +149,7 @@
             this.lbl_Version.AutoSize = true;
             this.lbl_Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Version.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.lbl_Version.Location = new System.Drawing.Point(220, 263);
+            this.lbl_Version.Location = new System.Drawing.Point(244, 262);
             this.lbl_Version.Name = "lbl_Version";
             this.lbl_Version.Size = new System.Drawing.Size(152, 13);
             this.lbl_Version.TabIndex = 25;
@@ -370,7 +370,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_Version;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_mode;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

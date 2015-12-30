@@ -1,4 +1,6 @@
-﻿namespace mediaDownloader
+﻿using System.Windows.Forms;
+
+namespace mediaDownloader
 {
     partial class frm_SaveFile
     {
@@ -32,11 +34,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_SaveFile));
             this.tbl_Tags = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txt_Tag_Artist = new System.Windows.Forms.TextBox();
             this.txt_Tag_Title = new System.Windows.Forms.TextBox();
             this.txt_Tag_Album = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.but_PreviousStage = new System.Windows.Forms.Button();
@@ -101,9 +103,6 @@
             this.tbl_Tags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tbl_Tags.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tbl_Tags.Controls.Add(this.label11, 0, 2);
-            this.tbl_Tags.Controls.Add(this.txt_Tag_Artist, 1, 1);
-            this.tbl_Tags.Controls.Add(this.txt_Tag_Title, 1, 0);
-            this.tbl_Tags.Controls.Add(this.txt_Tag_Album, 1, 2);
             this.tbl_Tags.Controls.Add(this.label10, 0, 1);
             this.tbl_Tags.Controls.Add(this.label8, 0, 0);
             this.tbl_Tags.Location = new System.Drawing.Point(90, 12);
@@ -125,30 +124,6 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "Album:";
             // 
-            // txt_Tag_Artist
-            // 
-            this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
-            this.txt_Tag_Artist.Name = "txt_Tag_Artist";
-            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Artist.TabIndex = 18;
-            // 
-            // txt_Tag_Title
-            // 
-            this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
-            this.txt_Tag_Title.Name = "txt_Tag_Title";
-            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Title.TabIndex = 17;
-            // 
-            // txt_Tag_Album
-            // 
-            this.txt_Tag_Album.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Tag_Album.Location = new System.Drawing.Point(54, 69);
-            this.txt_Tag_Album.Name = "txt_Tag_Album";
-            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
-            this.txt_Tag_Album.TabIndex = 16;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -168,6 +143,29 @@
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Title:";
+            // 
+            // txt_Tag_Artist
+            // 
+            this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
+            this.txt_Tag_Artist.Name = "txt_Tag_Artist";
+            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Artist.TabIndex = 18;
+            // 
+            // txt_Tag_Title
+            // 
+            this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
+            this.txt_Tag_Title.Name = "txt_Tag_Title";
+            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Title.TabIndex = 17;
+            // 
+            // txt_Tag_Album
+            // 
+            this.txt_Tag_Album.Location = new System.Drawing.Point(0, 0);
+            this.txt_Tag_Album.Name = "txt_Tag_Album";
+            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Album.TabIndex = 16;
             // 
             // label7
             // 
@@ -266,6 +264,7 @@
             this.but_Swap.Size = new System.Drawing.Size(26, 57);
             this.but_Swap.TabIndex = 8;
             this.but_Swap.UseVisualStyleBackColor = true;
+            this.but_Swap.Click += new System.EventHandler(this.but_Swap_Click_1);
             // 
             // pic_Artwork
             // 
@@ -280,8 +279,7 @@
             // 
             // txt_FileName
             // 
-            this.txt_FileName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_FileName.Location = new System.Drawing.Point(3, 3);
+            this.txt_FileName.Location = new System.Drawing.Point(0, 0);
             this.txt_FileName.Name = "txt_FileName";
             this.txt_FileName.Size = new System.Drawing.Size(242, 20);
             this.txt_FileName.TabIndex = 19;
@@ -442,7 +440,6 @@
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.16294F));
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.539823F));
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.30383F));
-            this.tbl_FileName.Controls.Add(this.txt_FileName, 0, 0);
             this.tbl_FileName.Controls.Add(this.label13, 1, 0);
             this.tbl_FileName.Controls.Add(this.cbo_SelectFileFormat, 2, 0);
             this.tbl_FileName.Location = new System.Drawing.Point(112, 44);
@@ -652,7 +649,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbl_FileName.ResumeLayout(false);
-            this.tbl_FileName.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
@@ -661,6 +657,46 @@
             this.PerformLayout();
 
         }
+
+
+        public void initMBCustom()
+        {
+            if (!Program.isStandaloneMode)
+            {
+                this.txt_Tag_Title = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_Tag_Artist = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_Tag_Album = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_FileName = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_FileName = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+            }
+
+            
+            this.txt_Tag_Title.Name = "txt_Tag_Title";
+            this.txt_Tag_Title.TabIndex = 2;
+
+            this.txt_Tag_Artist.Name = "txt_Tag_Artist";
+            this.txt_Tag_Artist.TabIndex = 3;
+
+            this.txt_Tag_Album.Name = "txt_Tag_Album";
+            this.txt_Tag_Album.TabIndex = 4;
+
+            this.txt_FileName.Name = "txt_FileName";
+            this.txt_FileName.TabIndex = 1;
+
+
+            tbl_FileName.Controls.Add(txt_FileName, 0, 0);
+            this.txt_FileName.Dock = DockStyle.Fill;
+
+            tbl_Tags.Controls.Add(txt_Tag_Title, 1, 0);
+            this.txt_Tag_Title.Dock = DockStyle.Fill;
+
+            tbl_Tags.Controls.Add(txt_Tag_Artist, 1, 1);
+            this.txt_Tag_Artist.Dock = DockStyle.Fill;
+
+            tbl_Tags.Controls.Add(txt_Tag_Album, 1, 2);
+            this.txt_Tag_Album.Dock = DockStyle.Fill;
+        }
+
 
         #endregion
 
