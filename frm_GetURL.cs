@@ -214,8 +214,11 @@ namespace mediaDownloader
             grp_VidDetails.Visible = true;
             pic_InfLoad.Visible = false;
             flow_DownRdoButtons.Visible = true;
+            but_ContStage.Enabled = false;
             but_Reset.Visible = true;
             but_NextStage.Visible = true;
+            but_NextStage.Select();
+            but_NextStage.Focus();
 
             if (highestQuality != null) //Auto select the highest quality format
                 formatRdoClick(highestQuality, null);

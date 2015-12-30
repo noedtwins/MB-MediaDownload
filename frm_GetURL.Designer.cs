@@ -40,6 +40,7 @@ namespace mediaDownloader
             this.grp_FrmButtons = new System.Windows.Forms.GroupBox();
             this.grp_VidDetails = new System.Windows.Forms.GroupBox();
             this.flow_DownRdoButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,21 +51,20 @@ namespace mediaDownloader
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pic_InfLoad = new System.Windows.Forms.PictureBox();
             this.but_MoreOptions = new System.Windows.Forms.Button();
-            this.pic_Thumb = new System.Windows.Forms.PictureBox();
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.pic_Top = new System.Windows.Forms.PictureBox();
             this.grp_FrmButtons.SuspendLayout();
             this.grp_VidDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.grp_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).BeginInit();
@@ -166,6 +166,16 @@ namespace mediaDownloader
             this.flow_DownRdoButtons.TabIndex = 3;
             this.flow_DownRdoButtons.Visible = false;
             // 
+            // pic_Thumb
+            // 
+            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
+            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
+            this.pic_Thumb.Name = "pic_Thumb";
+            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
+            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_Thumb.TabIndex = 0;
+            this.pic_Thumb.TabStop = false;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -262,6 +272,16 @@ namespace mediaDownloader
             this.label3.TabIndex = 1;
             this.label3.Text = "Information";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::mediaDownloader.Properties.Resources.Information;
+            this.pictureBox3.Location = new System.Drawing.Point(7, 12);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(101, 97);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -272,16 +292,6 @@ namespace mediaDownloader
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(422, 23);
             this.tableLayoutPanel1.TabIndex = 29;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::mediaDownloader.Properties.Resources.Information;
-            this.pictureBox3.Location = new System.Drawing.Point(7, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(101, 97);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
             // 
             // pic_InfLoad
             // 
@@ -302,16 +312,6 @@ namespace mediaDownloader
             this.but_MoreOptions.TabIndex = 26;
             this.but_MoreOptions.UseVisualStyleBackColor = true;
             this.but_MoreOptions.Click += new System.EventHandler(this.but_MoreOptions_Click);
-            // 
-            // pic_Thumb
-            // 
-            this.pic_Thumb.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_Thumb.Location = new System.Drawing.Point(6, 13);
-            this.pic_Thumb.Name = "pic_Thumb";
-            this.pic_Thumb.Size = new System.Drawing.Size(79, 48);
-            this.pic_Thumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pic_Thumb.TabIndex = 0;
-            this.pic_Thumb.TabStop = false;
             // 
             // pic_TopLine
             // 
@@ -370,13 +370,13 @@ namespace mediaDownloader
             this.grp_FrmButtons.ResumeLayout(false);
             this.grp_VidDetails.ResumeLayout(false);
             this.grp_VidDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.grp_Info.ResumeLayout(false);
             this.grp_Info.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_InfLoad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_Thumb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Top)).EndInit();
