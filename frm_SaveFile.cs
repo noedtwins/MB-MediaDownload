@@ -199,7 +199,7 @@ namespace mediaDownloader
             if ((txt_Tag_Album.Text == "" || txt_Tag_Artist.Text == "" || txt_Tag_Title.Text == "") &&
                 !pluginInstance.config.hideTagMessage && !rdo_Video.Checked)
             {
-                DialogResult confirmNoTag = MessageBox.Show("You have left one or more tags fields blank, Continue without tagging?",
+                DialogResult confirmNoTag = MessageBox.Show("One or more tag fields are blank. Skip tagging the empty fields?",
                     "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmNoTag == System.Windows.Forms.DialogResult.No)
                 {
