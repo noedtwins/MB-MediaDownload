@@ -59,6 +59,10 @@
             this.pic_TopLine = new System.Windows.Forms.PictureBox();
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.bk_Decipher = new System.ComponentModel.BackgroundWorker();
+            this.tmr_TimeoutFFMPEG = new System.Windows.Forms.Timer(this.components);
+            this.tmr_RetryDecipherDelay = new System.Windows.Forms.Timer(this.components);
+            this.tmr_DelayRG3Fallback = new System.Windows.Forms.Timer(this.components);
+            this.bk_Work_RG3Fallback = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             this.grp_Download.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,6 +173,7 @@
             // tmr_StartProcess
             // 
             this.tmr_StartProcess.Interval = 250;
+            this.tmr_StartProcess.Tick += new System.EventHandler(this.tmr_StartProcess_Tick);
             // 
             // but_Finish
             // 
@@ -241,9 +246,9 @@
             // lbl_Stage
             // 
             this.lbl_Stage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Stage.Location = new System.Drawing.Point(61, 13);
+            this.lbl_Stage.Location = new System.Drawing.Point(10, 13);
             this.lbl_Stage.Name = "lbl_Stage";
-            this.lbl_Stage.Size = new System.Drawing.Size(273, 25);
+            this.lbl_Stage.Size = new System.Drawing.Size(390, 25);
             this.lbl_Stage.TabIndex = 0;
             this.lbl_Stage.Text = "Stage 1 of 5";
             this.lbl_Stage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -280,7 +285,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_INILOAD.Location = new System.Drawing.Point(109, 79);
+            this.pic_INILOAD.Location = new System.Drawing.Point(107, 79);
             this.pic_INILOAD.Name = "pic_INILOAD";
             this.pic_INILOAD.Size = new System.Drawing.Size(249, 51);
             this.pic_INILOAD.TabIndex = 4;
@@ -336,6 +341,26 @@
             // 
             this.bk_Decipher.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bk_Decipher_DoWork);
             this.bk_Decipher.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bk_Decipher_RunWorkerCompleted);
+            // 
+            // tmr_TimeoutFFMPEG
+            // 
+            this.tmr_TimeoutFFMPEG.Interval = 30000;
+            // 
+            // tmr_RetryDecipherDelay
+            // 
+            this.tmr_RetryDecipherDelay.Interval = 1000;
+            this.tmr_RetryDecipherDelay.Tick += new System.EventHandler(this.tmr_RetryDecipherDelay_Tick);
+            // 
+            // tmr_DelayRG3Fallback
+            // 
+            this.tmr_DelayRG3Fallback.Interval = 2000;
+            this.tmr_DelayRG3Fallback.Tick += new System.EventHandler(this.tmr_DelayRG3Fallback_Tick);
+            // 
+            // bk_Work_RG3Fallback
+            // 
+            this.bk_Work_RG3Fallback.WorkerSupportsCancellation = true;
+            this.bk_Work_RG3Fallback.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bk_Work_RG3Fallback_DoWork);
+            this.bk_Work_RG3Fallback.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bk_Work_RG3Fallback_RunWorkerCompleted);
             // 
             // frm_ProcessMedia
             // 
@@ -405,5 +430,9 @@
         private System.Windows.Forms.Timer tmr_DelayStage2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.ComponentModel.BackgroundWorker bk_Decipher;
+        private System.Windows.Forms.Timer tmr_TimeoutFFMPEG;
+        private System.Windows.Forms.Timer tmr_RetryDecipherDelay;
+        private System.Windows.Forms.Timer tmr_DelayRG3Fallback;
+        private System.ComponentModel.BackgroundWorker bk_Work_RG3Fallback;
     }
 }

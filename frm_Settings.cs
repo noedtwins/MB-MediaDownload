@@ -42,7 +42,12 @@ namespace mediaDownloader
             chk_AdvFeatures.Checked = pluginInstance.config.testFeature;
             chk_DelTemp.Checked = pluginInstance.config.preventDelTempFiles;
             chk_Smoothing.Checked = pluginInstance.config.smoothing;
+            num_Reattempt.Value = Convert.ToInt32(pluginInstance.config.retryDecipher);
+            chk_FallbackUse.Checked = pluginInstance.config.useFallbackdecipher;
             txt_OverrideSignature.Text = pluginInstance.config.manualDecipherOperataion;
+            chk_Fallbackrg3.Checked = pluginInstance.config.fallbackRG3;
+            txt_rg3Args.Text = pluginInstance.config.rg3Args;
+            txt_rg3Loc.Text = pluginInstance.config.rg3Path;
             //comboBox1 - TODO Add Library Type
             chk_Legacy.Checked = pluginInstance.config.useMBLegacy;
             chk_useModifiedLibrary.Checked = pluginInstance.config.useUnModifiedYTVersion;
@@ -78,6 +83,12 @@ namespace mediaDownloader
                 {
                     MessageBox.Show("Invalid FFmpeg file", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     allValid = false;
+                }
+
+                if (System.IO.File.Exists(txt_rg3Loc.Text) == false)
+                {
+                    MessageBox.Show("RG3 Youtube-DL invalid -- Fallback Method is disabled. Please save settings again when file exists to reenable fallback method!", "Plugin Warning",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 return allValid;
@@ -122,9 +133,14 @@ namespace mediaDownloader
             pluginInstance.config.testFeature = chk_AdvFeatures.Checked;
             pluginInstance.config.smoothing = chk_Smoothing.Checked;
             pluginInstance.config.addInbox = rdo_Inbox.Checked;
+            pluginInstance.config.useFallbackdecipher = chk_FallbackUse.Checked;
             pluginInstance.config.addLibrary = rdo_Music.Checked;
+            pluginInstance.config.retryDecipher = (int)num_Reattempt.Value;
             pluginInstance.config.extractAudio = chk_ExtractAudio.Checked;
             pluginInstance.config.manualDecipherOperataion = txt_OverrideSignature.Text;
+            pluginInstance.config.fallbackRG3 = chk_Fallbackrg3.Checked;
+            pluginInstance.config.rg3Args = txt_rg3Args.Text;
+            pluginInstance.config.rg3Path = txt_rg3Loc.Text;
             //comboBox1 - TODO Add Library Type
             pluginInstance.config.useMBLegacy = chk_Legacy.Checked;
             pluginInstance.config.useUnModifiedYTVersion = chk_useModifiedLibrary.Checked;
@@ -201,7 +217,7 @@ namespace mediaDownloader
             if (!Program.isStandaloneMode)
                 pluginInstance.config.tempFolder = pluginInstance.getAPI().getLocationOfSettingsFileFromMBApi();
             else
-                pluginInstance.config.tempFolder = Application.ExecutablePath;
+                pluginInstance.config.tempFolder = Environment.CurrentDirectory;
 
 
             pluginInstance.config.saveSettings(pluginInstance.config);
@@ -215,6 +231,18 @@ namespace mediaDownloader
         private void but_Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chk_ViewArgs_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_rg3Args.Visible = chk_ViewArgs.Checked;
+        }
+
+        private void but_browserg3_Click(object sender, EventArgs e)
+        {
+            DialogResult getResult = dlg_OpenFile.ShowDialog();
+            if (getResult == DialogResult.OK)
+            { txt_rg3Loc.Text = dlg_OpenFile.FileName; }
         }
     }
 }

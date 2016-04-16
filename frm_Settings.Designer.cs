@@ -38,6 +38,7 @@ namespace mediaDownloader
             this.rdo_TopNever = new System.Windows.Forms.RadioButton();
             this.pnl_OnTop = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.chk_PipeFFMPEG = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chk_AutoClose = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -80,6 +81,7 @@ namespace mediaDownloader
             this.panel1 = new System.Windows.Forms.Panel();
             this.but_Close = new System.Windows.Forms.Button();
             this.txt_TempPath = new System.Windows.Forms.TextBox();
+            this.txt_rg3Loc = new System.Windows.Forms.TextBox();
             this.but_NextStage = new System.Windows.Forms.Button();
             this.txt_DefaultPath = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -106,15 +108,26 @@ namespace mediaDownloader
             this.chk_Window = new System.Windows.Forms.CheckBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.chk_FallbackUse = new System.Windows.Forms.CheckBox();
             this.label32 = new System.Windows.Forms.Label();
             this.tbl_overwrite = new System.Windows.Forms.TableLayoutPanel();
             this.label31 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label30 = new System.Windows.Forms.Label();
+            this.tbl_rg3args = new System.Windows.Forms.TableLayoutPanel();
+            this.chk_ViewArgs = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.but_browserg3 = new System.Windows.Forms.Button();
+            this.tbl_rg3Loc = new System.Windows.Forms.TableLayoutPanel();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chk_Fallbackrg3 = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.num_Reattempt = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
+            this.txt_rg3Args = new System.Windows.Forms.TextBox();
             this.txt_FFMpegPath = new System.Windows.Forms.TextBox();
             this.txt_OverrideSignature = new System.Windows.Forms.TextBox();
             this.fldr_MainBrowse = new System.Windows.Forms.FolderBrowserDialog();
@@ -139,6 +152,9 @@ namespace mediaDownloader
             this.tabControl2.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Reattempt)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).BeginInit();
@@ -213,6 +229,7 @@ namespace mediaDownloader
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.chk_PipeFFMPEG);
             this.tabPage3.Controls.Add(this.checkBox1);
             this.tabPage3.Controls.Add(this.chk_AutoClose);
             this.tabPage3.Controls.Add(this.pnl_OnTop);
@@ -230,6 +247,17 @@ namespace mediaDownloader
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Features";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // chk_PipeFFMPEG
+            // 
+            this.chk_PipeFFMPEG.AutoSize = true;
+            this.chk_PipeFFMPEG.Enabled = false;
+            this.chk_PipeFFMPEG.Location = new System.Drawing.Point(3, 242);
+            this.chk_PipeFFMPEG.Name = "chk_PipeFFMPEG";
+            this.chk_PipeFFMPEG.Size = new System.Drawing.Size(210, 17);
+            this.chk_PipeFFMPEG.TabIndex = 29;
+            this.chk_PipeFFMPEG.Text = "Pipe FFMPEG output to Download Log";
+            this.chk_PipeFFMPEG.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -677,6 +705,13 @@ namespace mediaDownloader
             this.txt_TempPath.Size = new System.Drawing.Size(312, 20);
             this.txt_TempPath.TabIndex = 36;
             // 
+            // txt_rg3Loc
+            // 
+            this.txt_rg3Loc.Location = new System.Drawing.Point(146, 37);
+            this.txt_rg3Loc.Name = "txt_rg3Loc";
+            this.txt_rg3Loc.Size = new System.Drawing.Size(312, 20);
+            this.txt_rg3Loc.TabIndex = 36;
+            // 
             // but_NextStage
             // 
             this.but_NextStage.Location = new System.Drawing.Point(341, 11);
@@ -956,6 +991,7 @@ namespace mediaDownloader
             // 
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Controls.Add(this.tabPage8);
+            this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Location = new System.Drawing.Point(13, 48);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -964,6 +1000,7 @@ namespace mediaDownloader
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.chk_FallbackUse);
             this.tabPage7.Controls.Add(this.label32);
             this.tabPage7.Controls.Add(this.tbl_overwrite);
             this.tabPage7.Controls.Add(this.label31);
@@ -975,10 +1012,21 @@ namespace mediaDownloader
             this.tabPage7.Text = "YouTube Extractor (By FlagBug) Settings";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // chk_FallbackUse
+            // 
+            this.chk_FallbackUse.AutoSize = true;
+            this.chk_FallbackUse.Location = new System.Drawing.Point(6, 6);
+            this.chk_FallbackUse.Name = "chk_FallbackUse";
+            this.chk_FallbackUse.Size = new System.Drawing.Size(480, 17);
+            this.chk_FallbackUse.TabIndex = 24;
+            this.chk_FallbackUse.Text = "Attempt fallback signature decipher upon 403 Error (See Settings-> Signature Deci" +
+    "pher Fallback)";
+            this.chk_FallbackUse.UseVisualStyleBackColor = true;
+            // 
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 33);
+            this.label32.Location = new System.Drawing.Point(3, 56);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(462, 13);
             this.label32.TabIndex = 23;
@@ -989,7 +1037,7 @@ namespace mediaDownloader
             // 
             this.tbl_overwrite.ColumnCount = 1;
             this.tbl_overwrite.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tbl_overwrite.Location = new System.Drawing.Point(124, 7);
+            this.tbl_overwrite.Location = new System.Drawing.Point(121, 30);
             this.tbl_overwrite.Name = "tbl_overwrite";
             this.tbl_overwrite.RowCount = 1;
             this.tbl_overwrite.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1000,7 +1048,7 @@ namespace mediaDownloader
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(6, 10);
+            this.label31.Location = new System.Drawing.Point(3, 33);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(121, 16);
             this.label31.TabIndex = 20;
@@ -1008,7 +1056,11 @@ namespace mediaDownloader
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.label30);
+            this.tabPage8.Controls.Add(this.tbl_rg3args);
+            this.tabPage8.Controls.Add(this.chk_ViewArgs);
+            this.tabPage8.Controls.Add(this.label13);
+            this.tabPage8.Controls.Add(this.but_browserg3);
+            this.tabPage8.Controls.Add(this.tbl_rg3Loc);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
@@ -1017,15 +1069,118 @@ namespace mediaDownloader
             this.tabPage8.Text = "RG3 Extractor Settings";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // label30
+            // tbl_rg3args
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(93, 27);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(317, 16);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Some settings are unavailable in this version";
+            this.tbl_rg3args.ColumnCount = 1;
+            this.tbl_rg3args.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_rg3args.Location = new System.Drawing.Point(8, 55);
+            this.tbl_rg3args.Name = "tbl_rg3args";
+            this.tbl_rg3args.RowCount = 1;
+            this.tbl_rg3args.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_rg3args.Size = new System.Drawing.Size(488, 23);
+            this.tbl_rg3args.TabIndex = 35;
+            // 
+            // chk_ViewArgs
+            // 
+            this.chk_ViewArgs.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chk_ViewArgs.AutoSize = true;
+            this.chk_ViewArgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chk_ViewArgs.Location = new System.Drawing.Point(4, 31);
+            this.chk_ViewArgs.Name = "chk_ViewArgs";
+            this.chk_ViewArgs.Size = new System.Drawing.Size(492, 23);
+            this.chk_ViewArgs.TabIndex = 34;
+            this.chk_ViewArgs.Text = "Use custom RG3 Process Arguments (https://github.com/rg3/youtube-dl/blob/master/R" +
+    "EADME.md)";
+            this.chk_ViewArgs.UseVisualStyleBackColor = true;
+            this.chk_ViewArgs.CheckedChanged += new System.EventHandler(this.chk_ViewArgs_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(5, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(176, 16);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "rg3-youtube-dl.exe Location:";
+            // 
+            // but_browserg3
+            // 
+            this.but_browserg3.Location = new System.Drawing.Point(421, 3);
+            this.but_browserg3.Name = "but_browserg3";
+            this.but_browserg3.Size = new System.Drawing.Size(75, 23);
+            this.but_browserg3.TabIndex = 32;
+            this.but_browserg3.Text = "Browse";
+            this.but_browserg3.UseVisualStyleBackColor = true;
+            this.but_browserg3.Click += new System.EventHandler(this.but_browserg3_Click);
+            // 
+            // tbl_rg3Loc
+            // 
+            this.tbl_rg3Loc.ColumnCount = 1;
+            this.tbl_rg3Loc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_rg3Loc.Location = new System.Drawing.Point(180, 3);
+            this.tbl_rg3Loc.Name = "tbl_rg3Loc";
+            this.tbl_rg3Loc.RowCount = 1;
+            this.tbl_rg3Loc.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tbl_rg3Loc.Size = new System.Drawing.Size(238, 23);
+            this.tbl_rg3Loc.TabIndex = 33;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.chk_Fallbackrg3);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(502, 78);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Signature Decipher Fallback";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chk_Fallbackrg3
+            // 
+            this.chk_Fallbackrg3.AutoSize = true;
+            this.chk_Fallbackrg3.Location = new System.Drawing.Point(6, 35);
+            this.chk_Fallbackrg3.Name = "chk_Fallbackrg3";
+            this.chk_Fallbackrg3.Size = new System.Drawing.Size(296, 17);
+            this.chk_Fallbackrg3.TabIndex = 24;
+            this.chk_Fallbackrg3.Text = "Use RG3 Library to Retrieve Deciphered Download URL ";
+            this.chk_Fallbackrg3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.num_Reattempt, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(178, 6);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(288, 23);
+            this.tableLayoutPanel2.TabIndex = 23;
+            // 
+            // num_Reattempt
+            // 
+            this.num_Reattempt.Location = new System.Drawing.Point(3, 3);
+            this.num_Reattempt.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.num_Reattempt.Name = "num_Reattempt";
+            this.num_Reattempt.Size = new System.Drawing.Size(70, 20);
+            this.num_Reattempt.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(172, 16);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Retry #Times on 403 Errors:";
             // 
             // label29
             // 
@@ -1071,6 +1226,14 @@ namespace mediaDownloader
             this.label28.Size = new System.Drawing.Size(191, 21);
             this.label28.TabIndex = 23;
             this.label28.Text = "Media-Extractor Library";
+            // 
+            // txt_rg3Args
+            // 
+            this.txt_rg3Args.Location = new System.Drawing.Point(712, 388);
+            this.txt_rg3Args.Name = "txt_rg3Args";
+            this.txt_rg3Args.Size = new System.Drawing.Size(132, 20);
+            this.txt_rg3Args.TabIndex = 35;
+            this.txt_rg3Args.Visible = false;
             // 
             // txt_FFMpegPath
             // 
@@ -1180,6 +1343,10 @@ namespace mediaDownloader
             this.tabPage7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.num_Reattempt)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_TopLine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_ICO)).EndInit();
@@ -1197,6 +1364,8 @@ namespace mediaDownloader
                 this.txt_FFMpegPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
                 this.txt_OverrideSignature = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
                 this.txt_TempPath = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_rg3Loc = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
+                this.txt_rg3Args = (TextBox)pluginInstance.getAPI().getInterface().MB_AddPanel(null, MusicBeePlugin.Plugin.PluginPanelDock.TextBox);
             }
 
 
@@ -1204,11 +1373,15 @@ namespace mediaDownloader
             tbl_FilePaths.Controls.Add(txt_TempPath, 1, 1);
             tbl_FFMPEG.Controls.Add(txt_FFMpegPath, 0, 0);
             tbl_overwrite.Controls.Add(txt_OverrideSignature, 0, 0);
+            tbl_rg3Loc.Controls.Add(txt_rg3Loc, 0, 0);
+            tbl_rg3args.Controls.Add(txt_rg3Args, 0, 0);
 
             txt_TempPath.Dock = DockStyle.Fill;
             txt_DefaultPath.Dock = DockStyle.Fill;
             txt_FFMpegPath.Dock = DockStyle.Fill;
             txt_OverrideSignature.Dock = DockStyle.Fill;
+            txt_rg3Loc.Dock = DockStyle.Fill;
+            txt_rg3Args.Dock = DockStyle.Fill;
             this.txt_OverrideSignature.Enabled = false;
 
          }
@@ -1261,6 +1434,7 @@ namespace mediaDownloader
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button but_Close;
         private System.Windows.Forms.TextBox txt_TempPath;
+        private System.Windows.Forms.TextBox txt_rg3Loc;
         private System.Windows.Forms.Button but_NextStage;
         private System.Windows.Forms.TextBox txt_DefaultPath;
         private System.Windows.Forms.Label label3;
@@ -1285,7 +1459,6 @@ namespace mediaDownloader
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -1308,5 +1481,18 @@ namespace mediaDownloader
         private System.Windows.Forms.CheckBox chk_Legacy;
         private System.Windows.Forms.CheckBox chk_useModifiedLibrary;
         private System.Windows.Forms.CheckBox checkBox1;
+        private CheckBox chk_FallbackUse;
+        private TabPage tabPage2;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label label8;
+        private NumericUpDown num_Reattempt;
+        private CheckBox chk_PipeFFMPEG;
+        private CheckBox chk_Fallbackrg3;
+        private Label label13;
+        private Button but_browserg3;
+        private TableLayoutPanel tbl_rg3Loc;
+        private TextBox txt_rg3Args;
+        private CheckBox chk_ViewArgs;
+        private TableLayoutPanel tbl_rg3args;
     }
 }

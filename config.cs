@@ -15,7 +15,7 @@ namespace mediaDownloader
         public Boolean outsideMB = true;
 
         [XmlIgnoreAttribute]
-        public readonly int SETTINGVERSION = 3;
+        public readonly int SETTINGVERSION = 5;
 
         public serialConfig()
         {
@@ -285,6 +285,54 @@ namespace mediaDownloader
             set { _useMBLegacy = value; }
         }
 
+        private bool _pipeFFMPEG;
+        [XmlAttribute]
+        public bool pipeFFMPEG
+        {
+            get { return _pipeFFMPEG; }
+            set { _pipeFFMPEG = value; }
+        }
+
+        private int _retryDecipher;
+        [XmlAttribute]
+        public int retryDecipher
+        {
+            get { return _retryDecipher; }
+            set { _retryDecipher = value;  }
+        }
+
+        private bool _useFallbackdecipher;
+        [XmlAttribute]
+        public bool useFallbackdecipher
+        {
+            get { return _useFallbackdecipher; }
+            set { _useFallbackdecipher = value; }
+        }
+
+        private bool _fallbackRG3;
+        [XmlAttribute]
+        public bool fallbackRG3
+        {
+            get { return _fallbackRG3; }
+            set { _fallbackRG3 = value; }
+        }
+
+        private string _rg3Path;
+        [XmlAttribute]
+        public string rg3Path
+        {
+            get { return _rg3Path; }
+            set { _rg3Path = value; }
+        }
+
+        private string _rg3Args;
+        [XmlAttribute]
+        public string rg3Args
+        {
+            get { return _rg3Args; }
+            set { _rg3Args = value; }
+        }
+
         public void loadDefaultSettings()
         {
             bitRate = 256;
@@ -298,6 +346,7 @@ namespace mediaDownloader
             displayConsole = false;
             autoClosePlugin = false;
             ffmpegPath = Environment.CurrentDirectory + @"\Plugins\ffmpeg.exe";
+            rg3Path = Environment.CurrentDirectory + @"\Plugins\rg3-youtube-dl.exe";
             extractAudio = false;
             sameValBitRateAsVideo = false;
             hideTagMessage = false;
@@ -310,16 +359,27 @@ namespace mediaDownloader
             useTempFolder = false;
             testFeature = false;
             preventDelTempFiles = false;
+            pipeFFMPEG = false;
             overwriteMode = "warn";
             smoothing = true;
             loadedVersion = SETTINGVERSION;
             termsAccepted = false;
             clipboardMessageShown = false;
-
+            useFallbackdecipher = true; //NEED TO IMPLEMENT!
+            retryDecipher = 3;
+            fallbackRG3 = true;
+            rg3Args = " --get-url" + " --no-check-certificate --no-call-home";
             downloadLibraryType = "YouTubeExtractor";
             manualDecipherOperataion = "";
             useUnModifiedYTVersion = false;
             useMBLegacy = false;
+        }
+
+        public string computeRG3Arguments(string url)
+        {
+            string sm = "\"";
+            string builder = sm + url + sm + rg3Args;
+            return builder;
         }
 
         public void saveSettings(serialConfig ObjectPass, Boolean skipSuccessMessage = false)
