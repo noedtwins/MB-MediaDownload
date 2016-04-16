@@ -576,6 +576,7 @@ namespace mediaDownloader
             this.but_Browse.TabIndex = 0;
             this.but_Browse.Text = "Browse";
             this.but_Browse.UseVisualStyleBackColor = true;
+            this.but_Browse.Click += new System.EventHandler(this.but_Browse_Click);
             // 
             // label2
             // 
