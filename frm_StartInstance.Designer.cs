@@ -316,6 +316,7 @@
             this.button1.TabIndex = 35;
             this.button1.Text = "Test";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // frm_StartInstance
             // 
