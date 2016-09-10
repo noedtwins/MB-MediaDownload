@@ -22,13 +22,12 @@ namespace MusicBeePlugin
             about.TargetApplication = "";   // current only applies to artwork, lyrics or instant messenger name that appears in the provider drop down selector or target Instant Messenger
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
-            about.VersionMinor = 5;
-            about.Revision = 2;
+            about.VersionMinor = 7;
+            about.Revision = 0;
             about.MinInterfaceVersion = MinInterfaceVersion;
             about.MinApiRevision = MinApiRevision;
             about.ReceiveNotifications = (ReceiveNotificationFlags.PlayerEvents | ReceiveNotificationFlags.TagEvents);
             about.ConfigurationPanelHeight = 0;   // height in pixels that musicbee should reserve in a panel for config settings. When set, a handle to an empty panel will be passed to the Configure function
-
             return about;
         }
 
@@ -52,7 +51,28 @@ namespace MusicBeePlugin
         private void menuClicked(object sender, EventArgs args)
         {
             mediaDownloader.Program.isStandaloneMode = false; //Running in MB Mode.
+
+            if (mediaDownloader.pluginInstance.instanceRunning == true && !mediaDownloader.pluginInstance.config.multipleinstances)
+            {
+                DialogResult closeInstance = MessageBox.Show("Another instance of Media Downloader is already running.\nWould you like to force close the previous instance?", "Plugin Question",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2 ,MessageBoxOptions.ServiceNotification);
+                if (closeInstance == DialogResult.Yes)
+                {
+                    mediaDownloader.pluginInstance.instanceRunning = false;
+                    mediaDownloader.pluginInstance.clearInstance();
+                }
+                else
+                    return;
+            }
+            else
+            {
+                mediaDownloader.pluginInstance.instanceRunning = true;
+            }
+
+            mediaDownloader.pluginInstance.flagLoadFromMenu = true;
             mediaDownloader.pluginInstance.createNewInstance();
+
+
         }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,43 +22,30 @@ namespace mediaDownloader
             this.AcceptButton = but_NextStage;
             initMBCustom();
             settingsToControls();
-            this.lbl_Title.Parent = pic_Top;
-            this.pic_ICO.Parent = pic_Top;
 
+            if (pluginInstance.config.ontop)
+                this.TopMost = true;
         }
 
         private void settingsToControls()
         {
-            txt_TempPath.Text = pluginInstance.config.tempFolder;
             txt_DefaultPath.Text = pluginInstance.config.mainFolder;
             chk_Comment.Checked = pluginInstance.config.addComment;
             chk_AutoPaste.Checked = pluginInstance.config.autoPasteURL;
             chk_AutoTag.Checked = pluginInstance.config.autoTagInfo;
-            chk_Window.Checked = pluginInstance.config.displayConsole;
             chk_AutoClose.Checked = pluginInstance.config.autoClosePlugin;
             txt_FFMpegPath.Text = pluginInstance.config.ffmpegPath;
             chk_ExtractAudio.Checked = pluginInstance.config.extractAudio;
             chk_HideTagWarn.Checked = pluginInstance.config.hideTagMessage;
-            chk_SeperateDir.Checked = pluginInstance.config.useTempFolder;
             chk_AdvFeatures.Checked = pluginInstance.config.testFeature;
             chk_DelTemp.Checked = pluginInstance.config.preventDelTempFiles;
-            chk_Smoothing.Checked = pluginInstance.config.smoothing;
-            num_Reattempt.Value = Convert.ToInt32(pluginInstance.config.retryDecipher);
-            chk_FallbackUse.Checked = pluginInstance.config.useFallbackdecipher;
-            txt_OverrideSignature.Text = pluginInstance.config.manualDecipherOperataion;
-            chk_Fallbackrg3.Checked = pluginInstance.config.fallbackRG3;
             txt_rg3Args.Text = pluginInstance.config.rg3Args;
             txt_rg3Loc.Text = pluginInstance.config.rg3Path;
-            //comboBox1 - TODO Add Library Type
-            chk_Legacy.Checked = pluginInstance.config.useMBLegacy;
-            chk_useModifiedLibrary.Checked = pluginInstance.config.useUnModifiedYTVersion;
-
+            rdo_TopAlways.Checked = pluginInstance.config.ontop;
+            chk_SkipSplash.Checked = pluginInstance.config.skipSplash;
+            chk_MultipleInstances.Checked = pluginInstance.config.multipleinstances;
             lbl_SettingVersion.Text = "Setting File Version: " + pluginInstance.config.loadedVersion + " || Match Setting: " + pluginInstance.config.SETTINGVERSION;
-
-            if (pluginInstance.config.sameValBitRateAsVideo)
-                cbo_BitRate.Text = "Use Same Audio Bitrate as the video";
-            else
-                cbo_BitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
+            cbo_BitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
 
             if (!pluginInstance.config.addInbox && !pluginInstance.config.addLibrary)
                 rdo_None.Checked = true;
@@ -67,8 +55,12 @@ namespace mediaDownloader
                 rdo_Music.Checked = pluginInstance.config.addLibrary;
             }
 
-            moveTempCntrlBox(chk_SeperateDir.Checked);
-
+            if (pluginInstance.config.ffmpegOutput == "Pipe")
+                rdo_FFMPEGPipe.Checked = true;
+            else if (pluginInstance.config.ffmpegOutput == "Console")
+                rdo_ShowConsole.Checked = true;
+            else
+                rdo_NoFFMPEGOutput.Checked = true;
         }
 
         private bool checkValidPaths()
@@ -77,18 +69,20 @@ namespace mediaDownloader
             {
                 bool allValid;
                 allValid = System.IO.Directory.Exists(txt_DefaultPath.Text);
-                allValid = System.IO.Directory.Exists(txt_TempPath.Text);
 
                 if (System.IO.File.Exists(txt_FFMpegPath.Text) == false)
                 {
-                    MessageBox.Show("Invalid FFmpeg file", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, "The selected FFMPEG File is invalid. Please check you have selected the correct path!", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     allValid = false;
                 }
 
                 if (System.IO.File.Exists(txt_rg3Loc.Text) == false)
                 {
-                    MessageBox.Show("RG3 Youtube-DL invalid -- Fallback Method is disabled. Please save settings again when file exists to reenable fallback method!", "Plugin Warning",
+                    MessageBox.Show(this, "The selected RG3 File is invalid. Please check you have selected the correct path!!", "Plugin Warning",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    allValid = false;
+
                 }
 
                 return allValid;
@@ -98,62 +92,40 @@ namespace mediaDownloader
 
         }
 
-        private void moveTempCntrlBox(bool isTempEnabled)
-        {
-            if (isTempEnabled)
-            {
-                pnl_VisCntrl.Location = new Point(3, 101);
-            }
-            else
-            {
-                pnl_VisCntrl.Location = new Point(3, 65);
-            }
-
-        }
-
         private void but_NextStage_Click(object sender, EventArgs e)
         {
             if (checkValidPaths() == false)
             {
-                MessageBox.Show("One of more path fields are invalid. Please check the inputs and try again", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "One of more path fields are invalid. Please check the inputs and try again", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; //Error Occured leave this routine
             }
 
-            pluginInstance.config.tempFolder = txt_TempPath.Text;
             pluginInstance.config.mainFolder = txt_DefaultPath.Text;
             pluginInstance.config.ffmpegPath = txt_FFMpegPath.Text;
-            pluginInstance.config.displayConsole = chk_Window.Checked;
             pluginInstance.config.addComment = chk_Comment.Checked;
             pluginInstance.config.autoClosePlugin = chk_AutoClose.Checked;
             pluginInstance.config.hideTagMessage = chk_HideTagWarn.Checked;
             pluginInstance.config.autoPasteURL = chk_AutoPaste.Checked;
             pluginInstance.config.autoTagInfo = chk_AutoTag.Checked;
-            pluginInstance.config.useTempFolder = chk_SeperateDir.Checked;
             pluginInstance.config.preventDelTempFiles = chk_DelTemp.Checked;
             pluginInstance.config.testFeature = chk_AdvFeatures.Checked;
-            pluginInstance.config.smoothing = chk_Smoothing.Checked;
             pluginInstance.config.addInbox = rdo_Inbox.Checked;
-            pluginInstance.config.useFallbackdecipher = chk_FallbackUse.Checked;
             pluginInstance.config.addLibrary = rdo_Music.Checked;
-            pluginInstance.config.retryDecipher = (int)num_Reattempt.Value;
             pluginInstance.config.extractAudio = chk_ExtractAudio.Checked;
-            pluginInstance.config.manualDecipherOperataion = txt_OverrideSignature.Text;
-            pluginInstance.config.fallbackRG3 = chk_Fallbackrg3.Checked;
             pluginInstance.config.rg3Args = txt_rg3Args.Text;
             pluginInstance.config.rg3Path = txt_rg3Loc.Text;
-            //comboBox1 - TODO Add Library Type
-            pluginInstance.config.useMBLegacy = chk_Legacy.Checked;
-            pluginInstance.config.useUnModifiedYTVersion = chk_useModifiedLibrary.Checked;
+            pluginInstance.config.bitRate = Convert.ToInt32(cbo_BitRate.Text);
+            pluginInstance.config.ontop = rdo_TopAlways.Checked;
+            pluginInstance.config.skipSplash = chk_SkipSplash.Checked;
+            pluginInstance.config.multipleinstances = chk_MultipleInstances.Checked;
 
-
-            if (cbo_BitRate.Text == "Use Same Audio Bitrate as the video")
-               pluginInstance.config.sameValBitRateAsVideo = true;
+            if (rdo_FFMPEGPipe.Checked)
+                pluginInstance.config.ffmpegOutput = "Pipe";
+            else if (rdo_ShowConsole.Checked)
+                pluginInstance.config.ffmpegOutput = "Console";
             else
-            {
-                pluginInstance.config.bitRate = Convert.ToInt32(cbo_BitRate.Text);
-                pluginInstance.config.sameValBitRateAsVideo = false;
-            }
-
+                pluginInstance.config.ffmpegOutput = "None";
+            
             pluginInstance.config.saveSettings(pluginInstance.config);
             justSaved = true;
             this.Close();
@@ -166,12 +138,6 @@ namespace mediaDownloader
             txt_DefaultPath.Text = fldr_MainBrowse.SelectedPath;
         }
 
-        private void but_TempBrowse_Click(object sender, EventArgs e)
-        {
-            fldr_MainBrowse.ShowDialog();
-            txt_TempPath.Text = fldr_MainBrowse.SelectedPath;
-        }
-
         private void but_BrowseFFMpeg_Click(object sender, EventArgs e)
         {
             DialogResult getResult = dlg_OpenFile.ShowDialog();
@@ -182,12 +148,6 @@ namespace mediaDownloader
         private void chk_Comment_CheckedChanged(object sender, EventArgs e)
         {
             but_TagEditor.Enabled = chk_Comment.Checked;
-        }
-
-        private void chk_SeperateDir_CheckedChanged(object sender, EventArgs e)
-        {
-            moveTempCntrlBox(chk_SeperateDir.Checked);
-
         }
 
         private void frm_Settings_FormClosing(object sender, FormClosingEventArgs e)
@@ -214,18 +174,11 @@ namespace mediaDownloader
         private void but_Restore_Click(object sender, EventArgs e)
         {
             pluginInstance.config.loadDefaultSettings();
-            if (!Program.isStandaloneMode)
-                pluginInstance.config.tempFolder = pluginInstance.getAPI().getLocationOfSettingsFileFromMBApi();
-            else
-                pluginInstance.config.tempFolder = Environment.CurrentDirectory;
-
 
             pluginInstance.config.saveSettings(pluginInstance.config);
             pluginInstance.clearInstance();
             justSaved = true;
             this.Close();
-
-
         }
 
         private void but_Close_Click(object sender, EventArgs e)
@@ -235,7 +188,7 @@ namespace mediaDownloader
 
         private void chk_ViewArgs_CheckedChanged(object sender, EventArgs e)
         {
-            txt_rg3Args.Visible = chk_ViewArgs.Checked;
+            txt_rg3Args.Enabled = chk_ViewArgs.Checked;
         }
 
         private void but_browserg3_Click(object sender, EventArgs e)
@@ -243,6 +196,36 @@ namespace mediaDownloader
             DialogResult getResult = dlg_OpenFile.ShowDialog();
             if (getResult == DialogResult.OK)
             { txt_rg3Loc.Text = dlg_OpenFile.FileName; }
+        }
+
+        private void frm_Settings_Load(object sender, EventArgs e)
+        {
+            txt_rg3Args.Enabled = false;
+        }
+
+        private void but_Update_Click(object sender, EventArgs e)
+        {
+            DialogResult update = MessageBox.Show(this, "This function was start the RG3 Update Tool - It will connect to a GitHub Server to download the latest version\nMusicBee may need to be ran as Administrator for this function" +
+                " to succeed\n\n Are you sure you wish to continue?", "Plugin Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (update == DialogResult.Yes)
+            {
+                try
+                {
+                    Process rg3Process = new Process();
+                    rg3Process.StartInfo.UseShellExecute = true;
+                    rg3Process.StartInfo.CreateNoWindow = false;
+                    rg3Process.StartInfo.FileName = txt_rg3Loc.Text;
+                    rg3Process.StartInfo.Arguments = (" -U");
+                    rg3Process.Start();
+                    rg3Process.WaitForExit();
+                }
+                catch
+                {
+                    MessageBox.Show(this, "Failed to launch the process!", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 }

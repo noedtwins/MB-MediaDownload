@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
-using YoutubeExtractor;
 
 namespace mediaDownloader
 {
     public partial class frm_GetURL : Form
     {
-        private bool mMessageDisplayed; //Has the Invalid Format alredy been displayed. Obsolete?
-        private int mSelectedFormat = -1; //Selected Format in the list (-1 is null/error)
         private bool requestedRestart = false; 
         private bool focusedAutoPasted = false; //Prevent pasting the same URL twice
         private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
 
+        private Process rg3Process;
+        private bool isError = false;
+        private string outputLog = "";
+        private string runningArgument = "";
 
         private ContextMenuStrip overflowMenu = new ContextMenuStrip(); //For the Overflow Menu button
        
@@ -26,64 +23,24 @@ namespace mediaDownloader
             InitializeComponent();
             this.AcceptButton = but_NextStage;
             initMBCustom();
-            this.lbl_Title.Parent = pic_Top;
-            this.pic_ICO.Parent = pic_Top;
+
+            if (pluginInstance.config.ontop)
+                this.TopMost = true;
         }
-
-        public Boolean checkForValidURL(String checkURL) //Checks if the URL is Valid
-        {
-            try
-            {
-                if (DownloadUrlResolver.TryNormalizeYoutubeUrl(txt_MediaURL.Text, out pluginInstance.details.url))
-                   return true;
-               else
-                   return false; 
-            }
-            catch
-            {          
-                return false;
-            }
-        }
-
-        private void stageReset() //Restart this stage by unlocking all controls and restoring default values
-        {
-            mSelectedFormat = -1;
-            grp_VidDetails.Visible = false;
-            pic_Thumb.Image = Properties.Resources.ajaxLoad;
-            pic_InfLoad.Visible = false;
-            but_ContStage.Enabled = true;
-            but_MoreOptions.Enabled = true;
-            txt_MediaURL.Enabled = true;
-            but_Previous.Enabled = true;
-            but_Reset.Visible = false;
-            but_NextStage.Visible = false;
-
-            if (bk_QueryFormats.IsBusy)
-            {
-                requestedRestart = true;
-                bk_QueryFormats.CancelAsync();
-                flow_DownRdoButtons.Controls.Clear();
-            }
-
-            flow_DownRdoButtons.Controls.Clear();
-            but_ContStage.Visible = true;
-
-        }
-
 
         private void but_ContStage_Click(object sender, EventArgs e)
         {
             //Lock the controls whilst the media is querying
             but_Previous.Enabled = false;
             grp_Info.Visible = false;
-            pic_InfLoad.Visible = true;
+            grp_loadingbar.Visible = true;
             but_ContStage.Enabled = false;
             txt_MediaURL.Enabled = false;
             but_MoreOptions.Enabled = false;
 
-            if (!checkForValidURL(txt_MediaURL.Text)) //If Invalid URL
+            if (!ParseURL.TryNormalizeYoutubeUrl(txt_MediaURL.Text, out pluginInstance.details.url)) //If Invalid URL
             {
-                MessageBox.Show("There was an error normalizing the URL." + Environment.NewLine + "Please check your entry", "Plugin Warning",
+                MessageBox.Show(this, "There was an error normalizing the URL." + Environment.NewLine + "Please check your entry", "Plugin Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 stageReset();
                 return;
@@ -91,161 +48,44 @@ namespace mediaDownloader
             else
             {
                 but_ContStage.Visible = false;
-                bk_QueryFormats.RunWorkerAsync(); //Get list of valid formats in another thread.
-             }
+                findTitle();
+            }
         }
 
-        private void bk_QueryFormats_DoWork(object sender, DoWorkEventArgs e)
+        private void stageReset() //Restart this stage by unlocking all controls and restoring default values
         {
-            //Get a list of formats avaliable to download.
-            pluginInstance.details.results = DownloadUrlResolver.GetDownloadUrls(txt_MediaURL.Text);
-        }
+            grp_VidDetails.Visible = false;
+            pic_Thumb.Image = Properties.Resources.ajaxLoad;
+            grp_loadingbar.Visible = false;
+            but_ContStage.Enabled = true;
+            but_MoreOptions.Enabled = true;
+            txt_MediaURL.Enabled = true;
+            but_Previous.Enabled = true;
+            but_Reset.Visible = false;
+            but_NextStage.Visible = false;
+            outputLog = "";
 
-        private void bk_QueryFormats_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            addValidFormatsToPanel(); //Add the list of formats to the panel.
-
-            if (e.Cancelled && requestedRestart) //So the user can complete this stage more than once.
+            if (bk_UseRG3.IsBusy)
             {
-                requestedRestart = false;
-                bk_QueryFormats.RunWorkerAsync();
+                requestedRestart = true;
+                bk_UseRG3.CancelAsync();
             }
 
-            but_Previous.Enabled = true;    
-
+            but_ContStage.Visible = true;
         }
-
-        private void addValidFormatsToPanel() //Adds all the valid formats to a list
-        {
-            int curSelection = 0;
-            int amountOfFormats = countAmountValidFormats(); //Count how many valid formats there are.
-
-            if (amountOfFormats == 0) //If zero formats.
-            {
-                displayNoFormatMsg();
-                return;
-            }
-
-            RadioButton highestQualityRadioButton = null;
-
-            foreach (VideoInfo item in pluginInstance.details.results)
-            {
-
-                if (item.AdaptiveType == AdaptiveType.None &&
-                    item.VideoType != VideoType.Unknown && item.VideoType != VideoType.WebM) //Only supported formats to add
-
-                {
-                    pluginInstance.details.title = item.Title;
-                    RadioButton selButton = new RadioButton(); //New Control for each format
-
-                    selButton.Name = "rdo_But_" + item.FormatCode;
-                    selButton.Text = "Video Type: " + item.VideoType + " || Video Resolution: " + item.Resolution + " || Audio BitRate: " +
-                        item.AudioBitrate + " || Audio Extension: " + item.AudioType;
-
-                    selButton.Width = 462; //NOTE: Should be auto fill?
-                    selButton.Click += new EventHandler(formatRdoClick); //Add Click Handler
-
-                    flow_DownRdoButtons.Controls.Add(selButton); //Add Control to flow layout
-
-                    if (highestQualityRadioButton == null) //Auto-Select the Highest Quality Format
-                        highestQualityRadioButton = selButton;
-
-                    curSelection++; //Increment ID for RadioButton
-
-                }
-            }
-
-            displayFormatControls(highestQualityRadioButton);
-        }
-
-        private int countAmountValidFormats() //Count how many VALID formats have been found
-        {
-            int validFound = 0;
-            try
-            {
-                foreach (VideoInfo theVideoInfo in pluginInstance.details.results) 
-                {
-                    if (theVideoInfo.AdaptiveType == AdaptiveType.None &&
-                        theVideoInfo.VideoType != VideoType.Unknown && theVideoInfo.VideoType != VideoType.WebM) //Ignore Invalid Formats.
-                    { validFound++; }
-
-                }
-
-                lbl_FormatCount.Text = "Discovered Valid Formats: " + validFound;
-                return validFound;
-            }
-
-            catch
-            { return 0; }
-        }
-
-        private void displayNoFormatMsg() //Display No Formats Avaliable Format
-        {
-            //TODO: Add better debug message
-            if (!mMessageDisplayed)
-            {
-                mMessageDisplayed = true;
-                MessageBox.Show("No formats found for this media." + Environment.NewLine + "Is the link still active in your country?" + Environment.NewLine +
-                     "Post link on plugin forum page if you are still having errors", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                but_Reset.Visible = true;
-                pic_InfLoad.Visible = false;
-                return;
-            }
-            else { return; }
-        }
-
-
-        private void formatRdoClick(object sender, EventArgs e) //Event-Handler when the user selects another format
-        {
-            RadioButton clickedButton = (RadioButton)sender; //Identify which radiobutton clicked]
-            clickedButton.Checked = true;
-
-            string rdoFormatCode;
-            rdoFormatCode = clickedButton.Name.Substring(8); //Removes first 8 characters
-            mSelectedFormat = Convert.ToInt32(rdoFormatCode); //This leave the format number.
-
-        }
-
-        private void displayFormatControls(RadioButton highestQuality = null)
-        {
-            getThumbPic();
-            lbl_VideoTitle.Text = pluginInstance.details.title;
-            grp_VidDetails.Enabled = true;
-            grp_VidDetails.Visible = true;
-            pic_InfLoad.Visible = false;
-            flow_DownRdoButtons.Visible = true;
-            but_ContStage.Enabled = false;
-            but_Reset.Visible = true;
-            but_NextStage.Visible = true;
-            but_NextStage.Select();
-            but_NextStage.Focus();
-
-            if (highestQuality != null) //Auto select the highest quality format
-                formatRdoClick(highestQuality, null);
-        }
-
-        private string getVidIDFromURL()
-        { 
-            int vChar = pluginInstance.details.url.IndexOf("v="); //Normalized URL have v=, get position of that
-            pluginInstance.details.mediaID = pluginInstance.details.url.Substring(vChar + 2); //Get the ID by removing all chars and including v=
-
-            return pluginInstance.details.mediaID;
-        }
-
-
-        private void getThumbPic()
+        
+        private void setThumbnailPicture(string thumbURL)
         {
             //TODO: Add Timeout
             try
             {
-                pic_Thumb.Load("http://img.youtube.com/vi/" + getVidIDFromURL() + "/1.jpg"); //Thumbnail of video.
-                pluginInstance.details.cachedThumb = pic_Thumb.Image; //STore the image for future stage.
+                pic_Thumb.Load(thumbURL);
+                pluginInstance.details.cachedThumb = pic_Thumb.Image; //Store the image for future use.
 
             }
             catch
             {
-                MessageBox.Show("Error occured retrieveing Media Information and/or Media Artwork", "Plugin Warning",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Error loading Media Thumbnail!", "Plugin Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -253,23 +93,9 @@ namespace mediaDownloader
 
         private void but_NextStage_Click(object sender, EventArgs e)
         {
-            if (mSelectedFormat == -1) //No Format Selected
-            {
-                MessageBox.Show("Please select one video formats in the list", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
-            //Narrow down to one format as selected by the user
-            pluginInstance.details.selectedResult = pluginInstance.details.results.First(info => info.FormatCode == mSelectedFormat);
-            pluginInstance.details.audioBitRate = pluginInstance.details.selectedResult.AudioBitrate;
-            pluginInstance.details.audioFormat = pluginInstance.details.selectedResult.AudioType;
-            pluginInstance.details.selectedResolution = Convert.ToString(pluginInstance.details.selectedResult.Resolution);
-            pluginInstance.details.formatCode = mSelectedFormat;
-            pluginInstance.details.cropSelected = false; //init
-
+            pluginInstance.details.cropSelected = false; //Init
             closeEntirePlugin = false;
-
             pluginInstance.gotoSaveFile();
-            
         }
 
         private void but_Reset_Click(object sender, EventArgs e)
@@ -286,7 +112,9 @@ namespace mediaDownloader
         }
 
         private void mnu_PasteClipBoard(object sender, EventArgs e) //Event-Handler for paste from clipboard button
-        { txt_MediaURL.Text = Clipboard.GetText(); }
+        {
+            txt_MediaURL.Text = Clipboard.GetText();
+        }
 
         private void txt_MediaURL_Leave(object sender, EventArgs e)
         {
@@ -300,7 +128,7 @@ namespace mediaDownloader
             { txt_MediaURL.Text = ""; }
         }
 
-        private void frm_GetURL_Activated(object sender, EventArgs e)
+        private void loadURLFromClipboard()
         {
             if (pluginInstance.config.autoPasteURL && !focusedAutoPasted)
             {
@@ -309,6 +137,7 @@ namespace mediaDownloader
                 {
                     focusedAutoPasted = true;
                     txt_MediaURL.Text = Clipboard.GetText();
+                    trm_AutoPressButton.Enabled = true;
 
                     if (!pluginInstance.config.clipboardMessageShown)
                     {
@@ -317,10 +146,7 @@ namespace mediaDownloader
                         pluginInstance.config.clipboardMessageShown = true;
                         pluginInstance.config.saveSettings(pluginInstance.config, true);
                     }
-
-
-                    but_ContStage.PerformClick();
-
+                    
                 }
 
             }
@@ -335,11 +161,162 @@ namespace mediaDownloader
 
         private void frm_GetURL_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (bk_QueryFormats.IsBusy)
-            { bk_QueryFormats.CancelAsync(); }
+            if (bk_UseRG3.IsBusy)
+                bk_UseRG3.CancelAsync(); 
 
             if (closeEntirePlugin == true)
-            { pluginInstance.closeApplication(); }
+                pluginInstance.closeApplication(); 
+        }
+
+        private void throwRG3Error()
+        {
+            MessageBox.Show(this, "There was an error retrieving the Media Information.\nPlease check the link is still active and available in your country?\n" +
+                     "Alternatively please contact Cyano with the following output:\n\n" + outputLog, "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            but_Reset.Visible = true;
+            grp_loadingbar.Visible = false;
+        }
+
+        private void findTitle()
+        {
+            runningArgument = " --get-title";
+            lbl_Process.Text = "Retrieving Media Details...";
+            bk_UseRG3.RunWorkerAsync();
+        }
+
+        private void findThumbnail()
+        {
+            runningArgument = " --get-thumbnail";
+            lbl_Process.Text = "Getting Thumbnail URL...";
+            bk_UseRG3.RunWorkerAsync();
+        }
+
+        private void findBestAudioFormat()
+        {
+            runningArgument = " -f bestaudio --get-format";
+            lbl_Process.Text = "Searching Audio Formats...";
+            bk_UseRG3.RunWorkerAsync();
+        }
+
+        private void completeRG3Tasks()
+        {
+            pluginInstance.details.title = lbl_VideoTitle.Text;
+            grp_VidDetails.Visible = true;
+            grp_loadingbar.Visible = false;
+            but_ContStage.Enabled = false;
+            but_Reset.Visible = true;
+            but_Previous.Enabled = true;
+            but_NextStage.Visible = true;
+            but_NextStage.Select();
+            but_NextStage.Focus();
+        }
+
+
+        private void bk_UseRG3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try {
+                rg3Process = new Process();
+                rg3Process.StartInfo.UseShellExecute = false;
+                rg3Process.StartInfo.RedirectStandardOutput = true;
+                rg3Process.StartInfo.RedirectStandardError = true;
+                rg3Process.EnableRaisingEvents = true;
+                rg3Process.StartInfo.CreateNoWindow = true;
+
+                rg3Process.ErrorDataReceived += rg3Process_DataReceived;
+                rg3Process.OutputDataReceived += rg3Process_DataReceived;
+
+                rg3Process.StartInfo.FileName = pluginInstance.config.rg3Path;
+
+                string sm = "\"";
+                string args = sm + txt_MediaURL.Text + sm + pluginInstance.config.rg3Args + runningArgument;
+                Debug.Print(args);
+
+                rg3Process.StartInfo.Arguments = (args);
+
+                //Start and wait for process exit.
+                rg3Process.Start();
+                rg3Process.BeginErrorReadLine();
+                rg3Process.BeginOutputReadLine();
+
+                rg3Process.WaitForExit();
+            }
+            catch
+            {
+                throwRG3Error();
+            }
+        }
+
+        private void rg3Process_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data != null)
+                outputLog = e.Data;
+        }
+
+        private void rg3ProcessError_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            isError = true;
+
+            if (e.Data != null)
+                outputLog = e.Data;
+        }
+
+        private void bk_UseRG3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled && requestedRestart) //So the user can complete this stage more than once.
+            {
+                requestedRestart = false;
+                bk_UseRG3.RunWorkerAsync();
+            }
+
+            if (isError || runningArgument.Contains("ERROR:"))
+                throwRG3Error();
+            else
+            {
+                if (runningArgument.Contains("title"))
+                {
+                    Debug.Write(outputLog);
+                    lbl_VideoTitle.Text = outputLog;
+                    findThumbnail();
+                }
+                else if (runningArgument.Contains("thumbnail"))
+                {
+                    Debug.Write(outputLog);
+                    setThumbnailPicture(outputLog);
+                    findBestAudioFormat();
+                }
+                else if (runningArgument.Contains("format"))
+                {
+                    Debug.Write(outputLog);
+                    lbl_FormatNumber.Text = "Format Selected: " + outputLog;
+                    try {
+                        pluginInstance.details.formatCode = Convert.ToInt32(outputLog.Substring(0, outputLog.IndexOf(' ')));
+                        completeRG3Tasks();
+                    }
+                    catch
+                    {
+                        throwRG3Error();
+                    }
+                }
+            }
+        }
+
+        private void frm_GetURL_Enter(object sender, EventArgs e)
+        {
+            loadURLFromClipboard();
+        }
+
+        private void frm_GetURL_Activated(object sender, EventArgs e)
+        {
+            loadURLFromClipboard();
+        }
+
+        private void trm_AutoPressButton_Tick(object sender, EventArgs e)
+        {
+            if (txt_MediaURL.Text != "Insert URL Here...")
+            {
+                but_ContStage.PerformClick();
+            }
+            trm_AutoPressButton.Enabled = false;
+
         }
     }
 }

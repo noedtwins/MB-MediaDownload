@@ -70,7 +70,6 @@ namespace mediaDownloader
             this.rdo_None = new System.Windows.Forms.RadioButton();
             this.rdo_Inbox = new System.Windows.Forms.RadioButton();
             this.rdo_Library = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -111,7 +110,7 @@ namespace mediaDownloader
             this.tbl_Tags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tbl_Tags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tbl_Tags.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tbl_Tags.Size = new System.Drawing.Size(340, 100);
+            this.tbl_Tags.Size = new System.Drawing.Size(466, 100);
             this.tbl_Tags.TabIndex = 7;
             // 
             // label11
@@ -149,7 +148,7 @@ namespace mediaDownloader
             this.txt_Tag_Artist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_Tag_Artist.Location = new System.Drawing.Point(54, 36);
             this.txt_Tag_Artist.Name = "txt_Tag_Artist";
-            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Artist.Size = new System.Drawing.Size(283, 22);
             this.txt_Tag_Artist.TabIndex = 18;
             // 
             // txt_Tag_Title
@@ -157,14 +156,14 @@ namespace mediaDownloader
             this.txt_Tag_Title.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_Tag_Title.Location = new System.Drawing.Point(54, 3);
             this.txt_Tag_Title.Name = "txt_Tag_Title";
-            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Title.Size = new System.Drawing.Size(283, 22);
             this.txt_Tag_Title.TabIndex = 17;
             // 
             // txt_Tag_Album
             // 
             this.txt_Tag_Album.Location = new System.Drawing.Point(0, 0);
             this.txt_Tag_Album.Name = "txt_Tag_Album";
-            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 20);
+            this.txt_Tag_Album.Size = new System.Drawing.Size(283, 22);
             this.txt_Tag_Album.TabIndex = 16;
             // 
             // label7
@@ -182,18 +181,17 @@ namespace mediaDownloader
             this.grp_FrmButtons.Controls.Add(this.but_PreviousStage);
             this.grp_FrmButtons.Controls.Add(this.but_Reset);
             this.grp_FrmButtons.Controls.Add(this.but_NextStage);
-            this.grp_FrmButtons.Location = new System.Drawing.Point(10, 406);
+            this.grp_FrmButtons.Location = new System.Drawing.Point(4, 513);
             this.grp_FrmButtons.Name = "grp_FrmButtons";
-            this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
+            this.grp_FrmButtons.Size = new System.Drawing.Size(625, 57);
             this.grp_FrmButtons.TabIndex = 27;
             this.grp_FrmButtons.TabStop = false;
-            this.grp_FrmButtons.Enter += new System.EventHandler(this.grp_FrmButtons_Enter);
             // 
             // but_PreviousStage
             // 
-            this.but_PreviousStage.Location = new System.Drawing.Point(5, 11);
+            this.but_PreviousStage.Location = new System.Drawing.Point(12, 14);
             this.but_PreviousStage.Name = "but_PreviousStage";
-            this.but_PreviousStage.Size = new System.Drawing.Size(112, 30);
+            this.but_PreviousStage.Size = new System.Drawing.Size(149, 37);
             this.but_PreviousStage.TabIndex = 11;
             this.but_PreviousStage.Text = "<- Previous";
             this.but_PreviousStage.UseVisualStyleBackColor = true;
@@ -201,9 +199,9 @@ namespace mediaDownloader
             // 
             // but_Reset
             // 
-            this.but_Reset.Location = new System.Drawing.Point(176, 11);
+            this.but_Reset.Location = new System.Drawing.Point(235, 14);
             this.but_Reset.Name = "but_Reset";
-            this.but_Reset.Size = new System.Drawing.Size(112, 30);
+            this.but_Reset.Size = new System.Drawing.Size(149, 37);
             this.but_Reset.TabIndex = 10;
             this.but_Reset.Text = "Reset This Stage";
             this.but_Reset.UseVisualStyleBackColor = true;
@@ -211,9 +209,9 @@ namespace mediaDownloader
             // 
             // but_NextStage
             // 
-            this.but_NextStage.Location = new System.Drawing.Point(341, 11);
+            this.but_NextStage.Location = new System.Drawing.Point(460, 12);
             this.but_NextStage.Name = "but_NextStage";
-            this.but_NextStage.Size = new System.Drawing.Size(118, 30);
+            this.but_NextStage.Size = new System.Drawing.Size(157, 37);
             this.but_NextStage.TabIndex = 9;
             this.but_NextStage.Text = "Continue ->";
             this.but_NextStage.UseVisualStyleBackColor = true;
@@ -223,9 +221,9 @@ namespace mediaDownloader
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 469);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 582);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(480, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(638, 22);
             this.statusStrip1.TabIndex = 28;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -249,9 +247,9 @@ namespace mediaDownloader
             this.groupBox2.Controls.Add(this.tbl_Tags);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.pic_Artwork);
-            this.groupBox2.Location = new System.Drawing.Point(13, 286);
+            this.groupBox2.Location = new System.Drawing.Point(4, 348);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(462, 113);
+            this.groupBox2.Size = new System.Drawing.Size(625, 126);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tagging";
@@ -259,7 +257,7 @@ namespace mediaDownloader
             // but_Swap
             // 
             this.but_Swap.Image = global::mediaDownloader.Properties.Resources.ico_SWAP;
-            this.but_Swap.Location = new System.Drawing.Point(433, 12);
+            this.but_Swap.Location = new System.Drawing.Point(564, 12);
             this.but_Swap.Name = "but_Swap";
             this.but_Swap.Size = new System.Drawing.Size(26, 57);
             this.but_Swap.TabIndex = 8;
@@ -281,7 +279,7 @@ namespace mediaDownloader
             // 
             this.txt_FileName.Location = new System.Drawing.Point(0, 0);
             this.txt_FileName.Name = "txt_FileName";
-            this.txt_FileName.Size = new System.Drawing.Size(242, 20);
+            this.txt_FileName.Size = new System.Drawing.Size(242, 22);
             this.txt_FileName.TabIndex = 19;
             // 
             // grp_VidDetails
@@ -294,16 +292,16 @@ namespace mediaDownloader
             this.grp_VidDetails.Controls.Add(this.pic_VidThumb);
             this.grp_VidDetails.Location = new System.Drawing.Point(13, 58);
             this.grp_VidDetails.Name = "grp_VidDetails";
-            this.grp_VidDetails.Size = new System.Drawing.Size(462, 89);
+            this.grp_VidDetails.Size = new System.Drawing.Size(616, 105);
             this.grp_VidDetails.TabIndex = 24;
             this.grp_VidDetails.TabStop = false;
             // 
             // lbl_Prefix
             // 
             this.lbl_Prefix.AutoSize = true;
-            this.lbl_Prefix.Location = new System.Drawing.Point(262, 63);
+            this.lbl_Prefix.Location = new System.Drawing.Point(349, 71);
             this.lbl_Prefix.Name = "lbl_Prefix";
-            this.lbl_Prefix.Size = new System.Drawing.Size(30, 13);
+            this.lbl_Prefix.Size = new System.Drawing.Size(38, 16);
             this.lbl_Prefix.TabIndex = 4;
             this.lbl_Prefix.Text = "kbps";
             // 
@@ -318,18 +316,18 @@ namespace mediaDownloader
             "192",
             "256",
             "320"});
-            this.cbo_SetBitRate.Location = new System.Drawing.Point(216, 58);
+            this.cbo_SetBitRate.Location = new System.Drawing.Point(296, 66);
             this.cbo_SetBitRate.Name = "cbo_SetBitRate";
-            this.cbo_SetBitRate.Size = new System.Drawing.Size(46, 21);
+            this.cbo_SetBitRate.Size = new System.Drawing.Size(46, 24);
             this.cbo_SetBitRate.TabIndex = 0;
             this.cbo_SetBitRate.TabStop = false;
             // 
             // lbl_Convert
             // 
             this.lbl_Convert.AutoSize = true;
-            this.lbl_Convert.Location = new System.Drawing.Point(92, 61);
+            this.lbl_Convert.Location = new System.Drawing.Point(140, 69);
             this.lbl_Convert.Name = "lbl_Convert";
-            this.lbl_Convert.Size = new System.Drawing.Size(126, 13);
+            this.lbl_Convert.Size = new System.Drawing.Size(156, 16);
             this.lbl_Convert.TabIndex = 3;
             this.lbl_Convert.Text = "MP3 Conversion BitRate:";
             // 
@@ -337,17 +335,17 @@ namespace mediaDownloader
             // 
             this.lbl_FormatStatus.AutoSize = true;
             this.lbl_FormatStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FormatStatus.Location = new System.Drawing.Point(92, 39);
+            this.lbl_FormatStatus.Location = new System.Drawing.Point(130, 38);
             this.lbl_FormatStatus.Name = "lbl_FormatStatus";
-            this.lbl_FormatStatus.Size = new System.Drawing.Size(336, 16);
+            this.lbl_FormatStatus.Size = new System.Drawing.Size(110, 16);
             this.lbl_FormatStatus.TabIndex = 2;
-            this.lbl_FormatStatus.Text = "Unknown Quality || Unknown Format Code || TAG CODE";
+            this.lbl_FormatStatus.Text = "Selected Format:";
             // 
             // lbl_VideoTitle
             // 
             this.lbl_VideoTitle.AutoSize = true;
             this.lbl_VideoTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_VideoTitle.Location = new System.Drawing.Point(91, 15);
+            this.lbl_VideoTitle.Location = new System.Drawing.Point(128, 13);
             this.lbl_VideoTitle.Name = "lbl_VideoTitle";
             this.lbl_VideoTitle.Size = new System.Drawing.Size(117, 20);
             this.lbl_VideoTitle.TabIndex = 1;
@@ -355,10 +353,11 @@ namespace mediaDownloader
             // 
             // pic_VidThumb
             // 
+            this.pic_VidThumb.Image = global::mediaDownloader.Properties.Resources.unknownThumb;
             this.pic_VidThumb.Location = new System.Drawing.Point(6, 13);
             this.pic_VidThumb.Name = "pic_VidThumb";
-            this.pic_VidThumb.Size = new System.Drawing.Size(79, 70);
-            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pic_VidThumb.Size = new System.Drawing.Size(116, 92);
+            this.pic_VidThumb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_VidThumb.TabIndex = 0;
             this.pic_VidThumb.TabStop = false;
             // 
@@ -383,7 +382,6 @@ namespace mediaDownloader
             this.groupBox1.Controls.Add(this.rdo_None);
             this.groupBox1.Controls.Add(this.rdo_Inbox);
             this.groupBox1.Controls.Add(this.rdo_Library);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -391,12 +389,13 @@ namespace mediaDownloader
             this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.but_Browse);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 153);
+            this.groupBox1.Location = new System.Drawing.Point(4, 169);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(463, 127);
+            this.groupBox1.Size = new System.Drawing.Size(625, 166);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Download Location";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cbo_Folder
             // 
@@ -404,9 +403,9 @@ namespace mediaDownloader
             this.cbo_Folder.FormattingEnabled = true;
             this.cbo_Folder.Items.AddRange(new object[] {
             "Unavailable Api: No Monitored Folders Loaded"});
-            this.cbo_Folder.Location = new System.Drawing.Point(112, 20);
+            this.cbo_Folder.Location = new System.Drawing.Point(106, 18);
             this.cbo_Folder.Name = "cbo_Folder";
-            this.cbo_Folder.Size = new System.Drawing.Size(276, 21);
+            this.cbo_Folder.Size = new System.Drawing.Size(439, 21);
             this.cbo_Folder.TabIndex = 1;
             this.cbo_Folder.TabStop = false;
             // 
@@ -414,9 +413,9 @@ namespace mediaDownloader
             // 
             this.but_Crop.Image = global::mediaDownloader.Properties.Resources.crop;
             this.but_Crop.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.but_Crop.Location = new System.Drawing.Point(332, 99);
+            this.but_Crop.Location = new System.Drawing.Point(504, 132);
             this.but_Crop.Name = "but_Crop";
-            this.but_Crop.Size = new System.Drawing.Size(125, 23);
+            this.but_Crop.Size = new System.Drawing.Size(113, 23);
             this.but_Crop.TabIndex = 18;
             this.but_Crop.Text = "Crop Content (ERROR)";
             this.but_Crop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -426,9 +425,9 @@ namespace mediaDownloader
             // rdo_Video
             // 
             this.rdo_Video.AutoSize = true;
-            this.rdo_Video.Location = new System.Drawing.Point(210, 77);
+            this.rdo_Video.Location = new System.Drawing.Point(235, 101);
             this.rdo_Video.Name = "rdo_Video";
-            this.rdo_Video.Size = new System.Drawing.Size(86, 17);
+            this.rdo_Video.Size = new System.Drawing.Size(106, 20);
             this.rdo_Video.TabIndex = 17;
             this.rdo_Video.TabStop = true;
             this.rdo_Video.Text = "Video Library";
@@ -442,17 +441,17 @@ namespace mediaDownloader
             this.tbl_FileName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.30383F));
             this.tbl_FileName.Controls.Add(this.label13, 1, 0);
             this.tbl_FileName.Controls.Add(this.cbo_SelectFileFormat, 2, 0);
-            this.tbl_FileName.Location = new System.Drawing.Point(112, 44);
+            this.tbl_FileName.Location = new System.Drawing.Point(114, 48);
             this.tbl_FileName.Name = "tbl_FileName";
             this.tbl_FileName.RowCount = 1;
             this.tbl_FileName.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tbl_FileName.Size = new System.Drawing.Size(339, 25);
+            this.tbl_FileName.Size = new System.Drawing.Size(485, 25);
             this.tbl_FileName.TabIndex = 16;
             // 
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(248, 0);
+            this.label13.Location = new System.Drawing.Point(354, 0);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(11, 24);
@@ -470,18 +469,18 @@ namespace mediaDownloader
             "mp4",
             "flv",
             "3gp"});
-            this.cbo_SelectFileFormat.Location = new System.Drawing.Point(259, 0);
+            this.cbo_SelectFileFormat.Location = new System.Drawing.Point(371, 0);
             this.cbo_SelectFileFormat.Margin = new System.Windows.Forms.Padding(0);
             this.cbo_SelectFileFormat.Name = "cbo_SelectFileFormat";
-            this.cbo_SelectFileFormat.Size = new System.Drawing.Size(80, 21);
+            this.cbo_SelectFileFormat.Size = new System.Drawing.Size(80, 24);
             this.cbo_SelectFileFormat.TabIndex = 1;
             // 
             // rdo_None
             // 
             this.rdo_None.AutoSize = true;
-            this.rdo_None.Location = new System.Drawing.Point(304, 77);
+            this.rdo_None.Location = new System.Drawing.Point(345, 101);
             this.rdo_None.Name = "rdo_None";
-            this.rdo_None.Size = new System.Drawing.Size(147, 17);
+            this.rdo_None.Size = new System.Drawing.Size(179, 20);
             this.rdo_None.TabIndex = 15;
             this.rdo_None.TabStop = true;
             this.rdo_None.Text = "Do Not Add To MusicBee";
@@ -490,9 +489,9 @@ namespace mediaDownloader
             // rdo_Inbox
             // 
             this.rdo_Inbox.AutoSize = true;
-            this.rdo_Inbox.Location = new System.Drawing.Point(159, 77);
+            this.rdo_Inbox.Location = new System.Drawing.Point(177, 102);
             this.rdo_Inbox.Name = "rdo_Inbox";
-            this.rdo_Inbox.Size = new System.Drawing.Size(51, 17);
+            this.rdo_Inbox.Size = new System.Drawing.Size(58, 20);
             this.rdo_Inbox.TabIndex = 14;
             this.rdo_Inbox.TabStop = true;
             this.rdo_Inbox.Text = "Inbox";
@@ -501,29 +500,19 @@ namespace mediaDownloader
             // rdo_Library
             // 
             this.rdo_Library.AutoSize = true;
-            this.rdo_Library.Location = new System.Drawing.Point(68, 77);
+            this.rdo_Library.Location = new System.Drawing.Point(66, 102);
             this.rdo_Library.Name = "rdo_Library";
-            this.rdo_Library.Size = new System.Drawing.Size(87, 17);
+            this.rdo_Library.Size = new System.Drawing.Size(105, 20);
             this.rdo_Library.TabIndex = 13;
             this.rdo_Library.TabStop = true;
             this.rdo_Library.Text = "Music Library";
             this.rdo_Library.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(220, 98);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Select Playlists";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(109, 103);
+            this.label6.Location = new System.Drawing.Point(109, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 13);
             this.label6.TabIndex = 11;
@@ -533,7 +522,7 @@ namespace mediaDownloader
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 103);
+            this.label5.Location = new System.Drawing.Point(4, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 16);
             this.label5.TabIndex = 10;
@@ -543,7 +532,7 @@ namespace mediaDownloader
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 77);
+            this.label4.Location = new System.Drawing.Point(9, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 16);
             this.label4.TabIndex = 6;
@@ -553,7 +542,7 @@ namespace mediaDownloader
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 47);
+            this.label3.Location = new System.Drawing.Point(8, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 4;
@@ -562,15 +551,15 @@ namespace mediaDownloader
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox3.Location = new System.Drawing.Point(4, 69);
+            this.pictureBox3.Location = new System.Drawing.Point(8, 96);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(459, 3);
+            this.pictureBox3.Size = new System.Drawing.Size(600, 3);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
             // but_Browse
             // 
-            this.but_Browse.Location = new System.Drawing.Point(394, 19);
+            this.but_Browse.Location = new System.Drawing.Point(550, 18);
             this.but_Browse.Name = "but_Browse";
             this.but_Browse.Size = new System.Drawing.Size(67, 23);
             this.but_Browse.TabIndex = 0;
@@ -603,7 +592,7 @@ namespace mediaDownloader
             this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
             this.pic_TopLine.Location = new System.Drawing.Point(-1, 49);
             this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(484, 5);
+            this.pic_TopLine.Size = new System.Drawing.Size(709, 6);
             this.pic_TopLine.TabIndex = 23;
             this.pic_TopLine.TabStop = false;
             // 
@@ -612,14 +601,14 @@ namespace mediaDownloader
             this.pic_Top.BackColor = System.Drawing.Color.DimGray;
             this.pic_Top.Location = new System.Drawing.Point(0, 0);
             this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(491, 50);
+            this.pic_Top.Size = new System.Drawing.Size(661, 50);
             this.pic_Top.TabIndex = 20;
             this.pic_Top.TabStop = false;
             // 
             // frm_SaveFile
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(480, 491);
+            this.ClientSize = new System.Drawing.Size(638, 604);
             this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.pic_ICO);
             this.Controls.Add(this.grp_FrmButtons);
@@ -741,7 +730,6 @@ namespace mediaDownloader
         private System.Windows.Forms.RadioButton rdo_None;
         private System.Windows.Forms.RadioButton rdo_Inbox;
         private System.Windows.Forms.RadioButton rdo_Library;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

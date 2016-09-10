@@ -8,8 +8,8 @@ namespace mediaDownloader
     static class Program
     {
 
-        public static Boolean isStandaloneMode = false;
-        public static string versionCode = "1.6.0";
+        public static Boolean isStandaloneMode = true;
+        public static string versionCode = "1.7.0";
 
         /// <summary>
         /// The main entry point for the application.
@@ -20,7 +20,7 @@ namespace mediaDownloader
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-               pluginInstance.createNewInstance();
+            pluginInstance.createNewInstance();
 
         }
     }

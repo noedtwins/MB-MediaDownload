@@ -4,26 +4,40 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mediaDownloader", "mediaDownloader.csproj", "{496131BF-D8C0-433F-A889-13CE56F5510E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{ECDC127F-8DEF-4F99-8300-72C13597339D} = {ECDC127F-8DEF-4F99-8300-72C13597339D}
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeExtractor", "..\..\..\Development\Media Downloader V13\customYouTubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor.csproj", "{ECDC127F-8DEF-4F99-8300-72C13597339D}"
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "MusicBee", "..\..\..\..\..\Program Files (x86)\MusicBee\MusicBee.exe", "{DB866BCE-8346-4E6B-B5E4-E76050BD8D58}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = C:\Program Files (x86)\MusicBee\MusicBee.exe
+		RemoteMachine = CHARLIE-LAP
+		StartingDirectory = C:\Program Files (x86)\MusicBee
+		Environment = Default
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{496131BF-D8C0-433F-A889-13CE56F5510E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{496131BF-D8C0-433F-A889-13CE56F5510E}.Debug|x86.Build.0 = Debug|Any CPU
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECDC127F-8DEF-4F99-8300-72C13597339D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|x86.ActiveCfg = Release|Any CPU
+		{496131BF-D8C0-433F-A889-13CE56F5510E}.Release|x86.Build.0 = Release|Any CPU
+		{DB866BCE-8346-4E6B-B5E4-E76050BD8D58}.Debug|Any CPU.ActiveCfg = Release|x86
+		{DB866BCE-8346-4E6B-B5E4-E76050BD8D58}.Debug|x86.ActiveCfg = Release|x86
+		{DB866BCE-8346-4E6B-B5E4-E76050BD8D58}.Release|Any CPU.ActiveCfg = Release|x86
+		{DB866BCE-8346-4E6B-B5E4-E76050BD8D58}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

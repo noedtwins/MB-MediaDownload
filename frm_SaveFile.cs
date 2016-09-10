@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using YoutubeExtractor;
 
 namespace mediaDownloader
 {
@@ -16,8 +15,7 @@ namespace mediaDownloader
 
         private bool mVideoMode = false;
         private bool closeEntirePlugin = true; //Close entire plugin if user has requested close.
-
-
+        
         public frm_SaveFile()
         {
             InitializeComponent();
@@ -25,6 +23,9 @@ namespace mediaDownloader
             initMBCustom();
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
+
+            if (pluginInstance.config.ontop)
+                this.TopMost = true;
         }
 
 
@@ -35,15 +36,7 @@ namespace mediaDownloader
 
             updateCropButton();
 
-            if (pluginInstance.config.sameValBitRateAsVideo)
-            { 
-                cbo_SetBitRate.Items.Add(pluginInstance.details.audioBitRate);
-                cbo_SetBitRate.Text = Convert.ToString(pluginInstance.details.audioBitRate);
-            }
-            else
-            {
-                cbo_SetBitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
-            }
+            cbo_SetBitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
 
             //Radio Buttons for Adding Media To MB
             if (pluginInstance.config.addInbox == false && pluginInstance.config.addLibrary == false)
@@ -70,27 +63,18 @@ namespace mediaDownloader
         public void loadDetailsFromMedia()
         {
             lbl_VideoTitle.Text = pluginInstance.details.title;
-            lbl_FormatStatus.Text = "Resolution: " + pluginInstance.details.selectedResolution + 
-                " || " + "Format Code " + pluginInstance.details.formatCode;
+            lbl_FormatStatus.Text = "Selected Format Code: " + pluginInstance.details.formatCode;
             pic_VidThumb.Image = pluginInstance.details.cachedThumb;
 
             txt_FileName.Text = autotag.removeSpecialCharactersFromFileName(pluginInstance.details.title); //Store the file name as title without special characters.
 
             if (pluginInstance.config.extractAudio) //If Extracting rather than converting
             {
-                if (!pluginInstance.config.m4aMake) //If making an not making m4a file, then use the format code media format.
-                { txt_FileName.Text = txt_FileName.Text + pluginInstance.details.audioFormat; } //TOOD: This obsolete surely?
-                else //Otherwise use a m4a file
-                {
-                    if (pluginInstance.details.audioFormat == AudioType.Aac) //If its aac -> we're making m4a instead
-                    { 
-                        cbo_SelectFileFormat.Text = "m4a";
-                    }
-                    else { txt_FileName.Text = txt_FileName.Text + pluginInstance.details.audioFormat; } //Otherwise use media format (AAC)
-                }
-                
+              
+                txt_FileName.Text = txt_FileName.Text;
+                    
                 //Setup form to display to user we're extracting rather than converting..
-                lbl_Convert.Text = "Extract At Bitrate: " + Convert.ToString(pluginInstance.details.audioBitRate) + " kbps";
+                lbl_Convert.Text = "Extract At Bitrate: ERROR + kbps"; //TODO
                 cbo_SetBitRate.Visible = false;
                 lbl_Prefix.Visible = false;
             }
@@ -102,10 +86,9 @@ namespace mediaDownloader
                 cbo_SelectFileFormat.Text = "mp3";
             }
 
+
             if (mVideoMode) //If the user wants the video not a audio file (no extracting or converting)
             {
-                cbo_SelectFileFormat.Text = pluginInstance.details.selectedResult.VideoExtension; //Use the video extension
-                lbl_Convert.Text = "Video Resolution: " + Convert.ToString(pluginInstance.details.selectedResolution);
                 cbo_SetBitRate.Visible = false;
                 lbl_Prefix.Visible = false;
             }
@@ -121,13 +104,11 @@ namespace mediaDownloader
 
         private void pic_Artwork_Click(object sender, EventArgs e)
         {
-            //TODO: Add select artwork.
-            MessageBox.Show("Setting Artwork unavailable. Tasked for a future release!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, "Setting Artwork unavailable. Tasked for a future release!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void but_Browse_Click(object sender, EventArgs e)
         {
-            //TODO: Add recent folders (10)
             //BUGTOFIX: Add's Multiple times in the combo box.
 
             string tempHold = cbo_Folder.Text;
@@ -186,7 +167,7 @@ namespace mediaDownloader
 
             if (checkValidPath() == false) //Check the folder selected is valid.
             {
-                MessageBox.Show("Invaid path selected. Please confirm the directory you have selected exists.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Invaid path selected. Please confirm the directory you have selected exists.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false; ; //Error occured, Exit method.
             }
 
@@ -199,7 +180,7 @@ namespace mediaDownloader
             if ((txt_Tag_Album.Text == "" || txt_Tag_Artist.Text == "" || txt_Tag_Title.Text == "") &&
                 !pluginInstance.config.hideTagMessage && !rdo_Video.Checked)
             {
-                DialogResult confirmNoTag = MessageBox.Show("One or more tag fields are blank. Skip tagging the empty fields?",
+                DialogResult confirmNoTag = MessageBox.Show(this, "One or more tag fields are blank. Skip tagging the empty fields?",
                     "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmNoTag == System.Windows.Forms.DialogResult.No)
                 {
@@ -222,44 +203,31 @@ namespace mediaDownloader
             pluginInstance.details.titleTag = txt_Tag_Title.Text;
             pluginInstance.details.albumTag = txt_Tag_Album.Text;
             pluginInstance.details.artistTag = txt_Tag_Artist.Text;
-            setFileLoc(txt_FileName.Text + "." + cbo_SelectFileFormat.Text, pluginInstance.config.tempFolder, cbo_Folder.Text);
+            setFileLoc(txt_FileName.Text + "." + cbo_SelectFileFormat.Text, cbo_Folder.Text);
 
             pluginInstance.details.convertToBitRate = Convert.ToInt32(cbo_SetBitRate.Text);
             
             return true;
         }
 
-        public void setFileLoc(string filename, string tempPath, string downloadPath)
+        public void setFileLoc(string filename, string downloadPath)
         {
             pluginInstance.details.fileName = filename;
             pluginInstance.details.downloadPath = downloadPath;
-            pluginInstance.details.fullTempPath = tempPath;
+            pluginInstance.details.fullTempPath = downloadPath;
         }
-
-
+        
 
         private void but_NextStage_Click(object sender, EventArgs e)
         {
             if (prepareStep())
-            {
                 pluginInstance.startProcess();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void grp_FrmButtons_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void but_PreviousStage_Click(object sender, EventArgs e)
         {
             but_Reset.PerformClick();
             pluginInstance.gotoCatchURL();
-
         }
 
         private void but_Reset_Click_1(object sender, EventArgs e)
@@ -277,10 +245,7 @@ namespace mediaDownloader
         private void frm_SaveFile_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (closeEntirePlugin == true)
-            {
                 pluginInstance.closeApplication();
-
-            }
         }
 
         private void but_Crop_Click(object sender, EventArgs e)
@@ -293,6 +258,11 @@ namespace mediaDownloader
             String tempHold = txt_Tag_Title.Text;
             txt_Tag_Title.Text = txt_Tag_Artist.Text;
             txt_Tag_Artist.Text = tempHold;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

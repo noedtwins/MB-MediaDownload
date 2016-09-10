@@ -1,38 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using YoutubeExtractor;
-using TagLib;
 using System.Net;
 
 namespace mediaDownloader
 {
     public partial class frm_ProcessMedia : Form
     {
-        private VideoDownloader mVideoDownloader;
+        private Downloader mDownloader;
         private Process ffmpegConvert;
         private Process rg3Process;
 
         private const string sm = "\"";
         private bool doingThings = false;
         private bool requestedCancel = false;
-        private string oldOperations = "";
-        private Boolean oldRequiredDecipher = false;
         private bool downloadCompleted = false;
-        private int timesDecipherRetried = 1;
-        private bool firstAttempt = true;
-        private bool requestReattempt = false;
-        private bool triedRG3Fallback = false;
-        private bool requestRG3 = false;
-
-        private bool useRG3Output = false;
-        private string outputRG3;
+        private string outputRG3 = "";
 
         public frm_ProcessMedia()
         {
@@ -40,22 +24,23 @@ namespace mediaDownloader
             CheckForIllegalCrossThreadCalls = false;
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
+
+            if (pluginInstance.config.ontop)
+                this.TopMost = true;
         }
 
         public void runStages()
         {
-            if (firstAttempt)
-            {
-                addLog("Cyano Media Downloader - Version: " + Program.versionCode + " Setting Version: " + pluginInstance.config.loadedVersion, false);
-                addLog("New Task Initialized at " + DateTime.Now, true);
-            }
+            addLog("Cyano Media Downloader - Version: " + Program.versionCode + " Setting Version: " + pluginInstance.config.loadedVersion, false);
+            addLog("New Task Initialized at " + DateTime.Now, true);
             process_Stage1();
-
         }
-
 
         private void addLog(string Text, bool addDashLineAfter = false)
         {
+            if (txt_ConvLog.TextLength > 30000)
+                txt_ConvLog.Clear();
+
             txt_ConvLog.Text = txt_ConvLog.Text + Text + Environment.NewLine;
             if (addDashLineAfter)
             { txt_ConvLog.Text = txt_ConvLog.Text + "-------------------------------" + Environment.NewLine; }
@@ -74,7 +59,7 @@ namespace mediaDownloader
 
         private void throwErrorForm(Exception eSend)
         {
-            MessageBox.Show("An error occured downloading the video.\nThe error has been dumped into the log TextBox.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(this, "An error occured downloading the video.\nThe error has been dumped into the log TextBox.", "Plugin Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             lbl_Stage.Text = "Error Occurred";
             lbl_Desc.Text = "Please see log below!";
             lbl_LargeHeading.Text = "Failed :(";
@@ -108,41 +93,22 @@ namespace mediaDownloader
         {
             addLog("Begin Stage 1: Initial Stages", false);
             addLog("URL: " + pluginInstance.details.url);
+            describeStage(1, "Finding Download URL...");
 
             pic_INILOAD.Visible = true;
             prg_Main.Visible = false;
             lbl_ManProg.Visible = false;
 
-
-            oldRequiredDecipher = YoutubeExtractor.Decipherer.wasDecrypted;
-            oldOperations = YoutubeExtractor.Decipherer.theOperationsToDo;
-
-            bk_Decipher.RunWorkerAsync();
-
-        }
-
-
-        private void bk_Decipher_DoWork(object sender, DoWorkEventArgs e)
-        {
             try
             {
-                if (pluginInstance.details.selectedResult.RequiresDecryption)
-                {
-                    addLog("Signature incorrect - Deciphering Media URL...");
-                    DownloadUrlResolver.DecryptDownloadUrl(pluginInstance.details.selectedResult); //TODO: Run in async
-                    addLog("Operations: " + Decipherer.theOperationsToDo);
-                }
-                else
-                    addLog("Signature is correct, deciphering not required ");
-
-                YoutubeExtractor.Decipherer.wasDecrypted = false;
-                YoutubeExtractor.Decipherer.theOperationsToDo = "null";
-
+                findDownloadURL();
             }
-            catch (Exception exp)
+            catch (Exception e)
             {
-                throwErrorForm(exp);
+                throwErrorForm(e);
             }
+
+            addLog("Stage 1 Complete...", true);
         }
 
         #endregion
@@ -153,59 +119,136 @@ namespace mediaDownloader
         {
             doingThings = true;
             addLog("Begin Stage 2: Download Original File");
-            describeStage(2, "Downloading Original File");
+            addLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            addLog("WARNING - THE URL BELOW MAY CONTAIN YOUR IP ADDRESS!");
+            addLog("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+            addLog("Output Value: " + outputRG3, true);
+            describeStage(2, "Downloading Original File...");
             pic_INILOAD.Visible = false;
             prg_Main.Visible = true;
             lbl_ManProg.Visible = true;
-            try
-            {
 
-                if (firstAttempt)
-                {
-                    if (pluginInstance.config.useTempFolder)
-                    {
-                        pluginInstance.details.fullTempPath = (pluginInstance.config.tempFolder + @"\" +
-                            pluginInstance.details.fileName + pluginInstance.details.selectedResult.VideoExtension + ".tmp");
-                        addLog("Config: UseTempFolder=True; Computed Temp File: " + pluginInstance.details.fullTempPath);
-                    }
-                    else
-                    {
-                        pluginInstance.details.fullTempPath = (pluginInstance.details.downloadPath + @"\" +
-                            pluginInstance.details.fileName + pluginInstance.details.selectedResult.VideoExtension + ".tmp");
+            pluginInstance.details.downloadPath = (pluginInstance.details.downloadPath + @"\" + pluginInstance.details.fileName);
+            pluginInstance.details.fullTempPath = (pluginInstance.details.downloadPath + ".tmp");
 
-                        addLog("Config: UseTempFolder=False; Computed Temp File: " + pluginInstance.details.fullTempPath);
-                    }
+            addLog("Temporary File Path : " + pluginInstance.details.fullTempPath);
+            addLog("Creating New Downloader Object...");
+            addLog(" Information: GUISmoothing is forced enabled in this version!");
 
-                    pluginInstance.details.downloadPath = (pluginInstance.details.downloadPath + @"\" +
-                            pluginInstance.details.fileName);
+            mDownloader = new Downloader(outputRG3, pluginInstance.details.fullTempPath);
 
-                }
+            mDownloader.DownloadProgressChanged += (asend, args) => bkWork_DownloadVideo.ReportProgress(Convert.ToInt32(args.ProgressPercentage),
+              new ProgressEventArgs(args.ProgressPercentage, args.copiedBytes, args.contentLength, args.timeStart));
 
-                addLog("Creating New VideoDownloader; Config: guiSmoothing=" + pluginInstance.config.smoothing);
+            addLog("Starting bkWork_DownloadVideo");
+            grp_Download.Visible = true;
+            lbl_DownloadETA.Visible = true;
+            bkWork_DownloadVideo.RunWorkerAsync();
+        }
 
-                string computeURL = pluginInstance.details.selectedResult.DownloadUrl;
+        private void findDownloadURL()
+        {
+            addLog("Finding Download URL using RG3...");
+            addLog("Starting bkWork_GetURLRG3");
 
-                if (useRG3Output)
-                    computeURL = outputRG3;
-
-                mVideoDownloader = new VideoDownloader(computeURL, pluginInstance.details.fullTempPath, pluginInstance.config.smoothing);
-
-                mVideoDownloader.DownloadProgressChanged += (asend, args) => bkWork_DownloadVideo.ReportProgress(Convert.ToInt32(args.ProgressPercentage),
-                  new ProgressEventArgs(args.ProgressPercentage, args.copiedBytes, args.contentLength, args.timeStart));
-
-                addLog("Starting bkWork_DownloadVideo");
-                grp_Download.Visible = true;
-                lbl_DownloadETA.Visible = true;
-                bkWork_DownloadVideo.RunWorkerAsync();
-
-            }
-            catch (Exception e)
-            {
-                throwErrorForm(e);
-            }
+            bkWork_GetURLRG3.RunWorkerAsync();
 
         }
 
+        private void bkWork_GetURLRG3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                addLog("", true);
+                addLog("Preparing RG3 Youtube-DL Process", true);
+
+                rg3Process = new Process();
+                rg3Process.StartInfo.UseShellExecute = false;
+                rg3Process.StartInfo.RedirectStandardOutput = true;
+                rg3Process.StartInfo.RedirectStandardError = true;
+                rg3Process.EnableRaisingEvents = true;
+                rg3Process.StartInfo.CreateNoWindow = true;
+
+                rg3Process.ErrorDataReceived += rg3Process_DataReceived;
+                rg3Process.OutputDataReceived += rg3Process_DataReceived;
+
+                rg3Process.StartInfo.FileName = pluginInstance.config.rg3Path;
+                addLog("RG3 Process Path: " + rg3Process.StartInfo.FileName);
+
+                string args = sm + pluginInstance.details.url + sm + pluginInstance.config.rg3Args + " -f " + pluginInstance.details.formatCode + " --get-url";
+                rg3Process.StartInfo.Arguments = (args);
+                addLog("Process Arguments Set:" + rg3Process.StartInfo.Arguments.ToString(), true);
+
+                //Start and wait for process exit.
+                rg3Process.Start();
+
+                addLog("Process Started!");
+                addLog("Waiting for process to end before continuing...");
+                addLog("Process Information. PID:" + rg3Process.Id);
+
+                rg3Process.BeginErrorReadLine();
+                rg3Process.BeginOutputReadLine();
+
+                rg3Process.WaitForExit();
+
+            }
+            catch (Exception ex)
+            {
+                throwErrorForm(ex);
+            }
+        }
+
+        private void rg3Process_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data != null)
+                outputRG3 = e.Data;
+        }
+
+        private void bkWork_GetURLRG3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (requestedCancel)
+            {
+                try
+                {
+                    addLog("Requested Cancel");
+                    rg3Process.Close();
+                }
+                catch { }
+                return;
+            }
+
+            process_Stage2();
+        }
+
+
+        private void bkWork_DownloadVideo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                mDownloader.Execute();
+                downloadCompleted = true;
+            }
+            catch (WebException ex)
+            {
+                var response = (HttpWebResponse)ex.Response;
+
+                if (response.StatusCode == HttpStatusCode.Forbidden)
+                    handle403Error(ex);
+                else
+                {
+                    addLog("Web Exception!");
+                    throwErrorForm(ex);
+                    downloadCompleted = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throwErrorForm(ex);
+                downloadCompleted = false; ;
+            }
+        }
+        
         private void bkWork_DownloadVideo_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             ProgressEventArgs realArgs = (ProgressEventArgs)e.UserState;
@@ -234,195 +277,24 @@ namespace mediaDownloader
                 { processStage3_audio(); }
 
             }
-            else if (requestReattempt)
-            {
-                tmr_RetryDecipherDelay.Enabled = true;
-            }
-            else if (requestRG3)
-            {
-                tmr_DelayRG3Fallback.Enabled = true;
-                requestRG3 = false;
-            }
         }
 
-        private void bkWork_DownloadVideo_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                mVideoDownloader.Execute();
-                downloadCompleted = true;
-            }
-            catch (WebException ex)
-            {
-                var response = (HttpWebResponse)ex.Response;
-
-                if (response.StatusCode == HttpStatusCode.Forbidden)
-                {
-                    handle403Error(ex);
-                    addLog("Exception: " + ex.Message);
-                }
-                else
-                {
-                    addLog("WebException!");
-                    throwErrorForm(ex);
-                    downloadCompleted = false;
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                throwErrorForm(ex);
-                downloadCompleted = false; ;
-            }
-        }
 
         #endregion
 
         private void handle403Error(WebException exception)
         {
-            if (firstAttempt)
-            {
+            //TODO: IMPROVE MESSAGE
                 addLog("", true);
                 addLog("Download Failed... HTTP Response: 403");
                 addLog("The signature algorithm has likely changed (please report to Cyano)");
-                addLog("Attempting Signature Decipher Fallback Methods...", true);
-                firstAttempt = false;
-            }
-
-            if (!pluginInstance.config.useFallbackdecipher)
-            {
-                addLog("\n\nAll Deciphering Methods Attempted... Could not Decipher Signature to Download Video!");
                 throwErrorForm(exception);
-                downloadCompleted = false;
-                return;
-            }
-
-            if (pluginInstance.config.retryDecipher != 0 && (timesDecipherRetried != pluginInstance.config.retryDecipher))
-            {
-                describeStage(1, "Decipher Signature Reattempt (" + (timesDecipherRetried + 1) + " of " + pluginInstance.config.retryDecipher + ")");
-                prg_Main.Value = 0;
-                pic_INILOAD.Visible = true;
-                prg_Main.Visible = false;
-                requestReattempt = true;
-            }
-            else
-            {
-                addLog("", true);
-                addLog("Attempted Decipher " + timesDecipherRetried + " times, all attempts failed!", true);
-                requestReattempt = false;
-            }
-
-            if (!requestReattempt)
-            {
-                addLog("Config: fallbackRG3=" + pluginInstance.config.fallbackRG3);
-                triedRG3Fallback = !pluginInstance.config.fallbackRG3;
-
-                if (!triedRG3Fallback)
-                    prepareRG3Fallback();
-            }
-
-            if (!requestReattempt && triedRG3Fallback)
-            {
-                addLog("\n\nAll Deciphering Methods Attempted... Could not Decipher Signature to Download Video!");
-                throwErrorForm(exception);
-                downloadCompleted = false;
-            }
-
+                downloadCompleted = false;            
         }
+      
 
-        private void prepareRG3Fallback()
-        {
-            addLog("Attempting RG3 Decipher Fallback...");
-            describeStage(1, "Decipher Signature RG3 Fallback...");
-            prg_Main.Value = 0;
-            pic_INILOAD.Visible = true;
-            prg_Main.Visible = false;
-            requestRG3 = true;
-        }
 
-       
-
-        private void bk_Work_RG3Fallback_DoWork(object sender, DoWorkEventArgs e)
-        {
-            if (requestedCancel)
-            {
-                e.Cancel = true;
-                return;
-            }
-
-            try
-            {
-                addLog("", true);
-                addLog("Preparing RG3 Youtube-DL Process", true);
-                addLog("Config: displayConsoleWindow=" + pluginInstance.config.displayConsole);
-
-                rg3Process = new Process();
-                rg3Process.StartInfo.UseShellExecute = false;
-                rg3Process.StartInfo.RedirectStandardOutput = true;
-                rg3Process.StartInfo.RedirectStandardError = true;
-                rg3Process.EnableRaisingEvents = true;
-                rg3Process.StartInfo.CreateNoWindow = !pluginInstance.config.displayConsole;
         
-
-                rg3Process.ErrorDataReceived += rg3Process_DataReceived;
-                rg3Process.OutputDataReceived += rg3Process_DataReceived;
-
-                if (pluginInstance.config.displayConsole)
-                    rg3Process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                else
-                    rg3Process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                
-                rg3Process.StartInfo.FileName = pluginInstance.config.rg3Path;
-
-                addLog("RG3 Process Path: " + rg3Process.StartInfo.FileName);
-                string args = pluginInstance.config.computeRG3Arguments(pluginInstance.details.url);
-
-                rg3Process.StartInfo.Arguments = (args);
-                addLog("Process Arguments Set:" + rg3Process.StartInfo.Arguments.ToString(), true);
-
-                //Start and wait for process exit.
-                rg3Process.Start();
-                rg3Process.BeginErrorReadLine();
-                rg3Process.BeginOutputReadLine();
-                addLog("Process Started!");
-                addLog("Waiting for process to end before continuing...");
-                addLog("Process Information. PID:" + rg3Process.Id);
-
-                rg3Process.WaitForExit();
-
-            }
-            catch (Exception ex)
-            {
-                throwErrorForm(ex);
-            }
-        }
-            
-        private void rg3Process_DataReceived(object sender, DataReceivedEventArgs e)
-        {
-            if (e.Data != null)
-                outputRG3 = e.Data;
-        }
-
-        private void bk_Work_RG3Fallback_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (requestedCancel)
-            {
-                try
-                {
-                    addLog("Requested Cancel");
-                    rg3Process.Close();
-                }
-                catch { }
-                return;
-            }
-
-           addLog("Process Exited - RG3 Decipher Finished");
-           addLog("Output Value: " + outputRG3, true);
-           useRG3Output = true;
-           tmr_DelayStage2.Enabled = true;
-
-        }
         
         #region stage3
         private void processStage3_audio()
@@ -438,7 +310,7 @@ namespace mediaDownloader
             if (pluginInstance.config.extractAudio)
                 describeExtractType = "Extracting audio stream...";
             else
-                describeExtractType = "Converting File Format";
+                describeExtractType = "Converting File Format...";
 
             describeStage(3, describeExtractType);
             addLog("Starting bkWork_ConvertVideo");
@@ -481,35 +353,28 @@ namespace mediaDownloader
             try
             {
                 addLog("New Conversion Task" + DateTime.Now);
-                addLog("Config: displayConsoleWindow=" + pluginInstance.config.displayConsole);
                 ffmpegConvert = new Process();
 
-                ffmpegConvert.StartInfo.UseShellExecute = true;
-                ffmpegConvert.StartInfo.CreateNoWindow = pluginInstance.config.displayConsole;
-
-                if (pluginInstance.config.displayConsole)
-                    ffmpegConvert.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
-                else
-                    ffmpegConvert.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                if (pluginInstance.config.pipeFFMPEG)
+                if (pluginInstance.config.ffmpegOutput == "Console")
+                {
+                    ffmpegConvert.StartInfo.CreateNoWindow = false;
+                }    
+                else if (pluginInstance.config.ffmpegOutput == "Pipe")
                 {
                     ffmpegConvert.StartInfo.UseShellExecute = false;
                     ffmpegConvert.StartInfo.RedirectStandardOutput = true;
                     ffmpegConvert.StartInfo.RedirectStandardError = true;
-                    ffmpegConvert.StartInfo.RedirectStandardInput = true;
-                    ffmpegConvert.StartInfo.CreateNoWindow = !pluginInstance.config.displayConsole;
+                    ffmpegConvert.EnableRaisingEvents = true;
+                    ffmpegConvert.StartInfo.CreateNoWindow = true;
 
-                    ffmpegConvert.OutputDataReceived += new DataReceivedEventHandler(
-                        (s, e2) =>
-                    {
-                        txt_ConvLog.Text = txt_ConvLog.Text + (e2.Data);
-                    });
-
-                    ffmpegConvert.ErrorDataReceived += new DataReceivedEventHandler((s, e3) => { txt_ConvLog.Text = txt_ConvLog.Text + (e3.Data); });
-
+                    ffmpegConvert.ErrorDataReceived += ffmpegOutput_DataReceived;
+                    ffmpegConvert.OutputDataReceived += ffmpegOutput_DataReceived;
                 }
-
+                else
+                {
+                    ffmpegConvert.StartInfo.UseShellExecute = false;
+                    ffmpegConvert.StartInfo.CreateNoWindow = true;
+                }
 
 
                 ffmpegConvert.StartInfo.FileName = pluginInstance.config.ffmpegPath;
@@ -553,14 +418,15 @@ namespace mediaDownloader
 
                 //Start and wait for process exit.
                 ffmpegConvert.Start();
+                if (pluginInstance.config.ffmpegOutput == "Pipe")
+                {
+                    ffmpegConvert.BeginErrorReadLine();
+                    ffmpegConvert.BeginOutputReadLine();
+                }
                 addLog("Process Started!");
                 addLog("Waiting for process to end before continuing...");
                 addLog("Process Information. PID:" + ffmpegConvert.Id);
-                addLog("Config: pipeFFMPEG = " + pluginInstance.config.pipeFFMPEG);
-
-                if (pluginInstance.config.pipeFFMPEG)
-                    ffmpegConvert.BeginOutputReadLine();
-
+               
                 ffmpegConvert.WaitForExit();
             }
 
@@ -569,6 +435,13 @@ namespace mediaDownloader
                 throwErrorForm(ex);
             }
         }
+
+        private void ffmpegOutput_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (e.Data != null)
+                addLog(e.Data);
+        }
+
 
 
         private void bkWork_ConvertVideo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -637,8 +510,7 @@ namespace mediaDownloader
                 }
                 tagFile.Save();
                 addLog("Saving Tagged File ");
-                tmr_DelayStage4.Enabled = true;
-                //   processStage5();
+                processStage5();
 
             }
 
@@ -730,37 +602,25 @@ namespace mediaDownloader
             this.Text = "Media Download Plugin: Process Finished!";
 
             if (pluginInstance.config.autoClosePlugin)
+            {
                 this.Close();
+                MessageBox.Show("Media Downloader Plugin downloaded & converted the media file successfully!", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
-
-        private void tmr_DelayStage2_Tick(object sender, EventArgs e)
-        {
-            process_Stage2();
-            tmr_DelayStage2.Enabled = false;
-
-        }
-
-        private void tmr_DelayStage4_Tick_1(object sender, EventArgs e)
-        {
-            addLog("Stage 4 Ended.", true);
-            processStage5();
-            tmr_DelayStage4.Enabled = false;
-
-        }
 
         private void frm_ProcessMedia_FormClosing(object sender, FormClosingEventArgs e)
         {
 
             if (doingThings && but_Finish.Text == "Cancel")
             {
-                DialogResult confirmCancel = MessageBox.Show("Are you sure you want to cancel?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult confirmCancel = MessageBox.Show(this, "Are you sure you want to cancel?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmCancel == DialogResult.Yes)
                 {
 
                     try
                     {
-                        mVideoDownloader.DownloadProgressChanged += (asend, args) => args.Cancel = true;
+                        mDownloader.DownloadProgressChanged += (asend, args) => args.Cancel = true;
                         requestedCancel = true;
                         bkWork_DownloadVideo.CancelAsync();
                     }
@@ -790,34 +650,5 @@ namespace mediaDownloader
             pluginInstance.reloadPlugin();
             this.Dispose();
         }
-
-        private void bk_Decipher_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-            addLog("Stage 1 Complete...", true);
-            tmr_DelayStage2.Enabled = true;
-        }
-
-        private void tmr_StartProcess_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tmr_RetryDecipherDelay_Tick(object sender, EventArgs e)
-        {
-            addLog("", true);
-            addLog("Reattempting Decipher... Attempt " + timesDecipherRetried + " of " + pluginInstance.config.retryDecipher, true);
-            runStages();
-            timesDecipherRetried++;
-            tmr_RetryDecipherDelay.Enabled = false;
-        }
-
-        private void tmr_DelayRG3Fallback_Tick(object sender, EventArgs e)
-        {
-            bk_Work_RG3Fallback.RunWorkerAsync();
-            tmr_DelayRG3Fallback.Enabled = false;
-        }
-
-    
     }
 }

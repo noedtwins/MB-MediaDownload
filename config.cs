@@ -15,12 +15,10 @@ namespace mediaDownloader
         public Boolean outsideMB = true;
 
         [XmlIgnoreAttribute]
-        public readonly int SETTINGVERSION = 5;
+        public readonly int SETTINGVERSION = 6;
 
         public serialConfig()
-        {
-
-        }
+        { }
 
         public serialConfig(string setLocation)
         {
@@ -41,14 +39,6 @@ namespace mediaDownloader
             set { _bitRate = value; }
         }
 
-        private bool _useTempFolder;
-        [XmlAttribute]
-        public bool useTempFolder
-        {
-            get { return _useTempFolder; }
-            set { _useTempFolder = value; }
-        }
-
         private bool _delTempFiles;
         [XmlAttribute]
         public bool preventDelTempFiles
@@ -57,15 +47,6 @@ namespace mediaDownloader
             set { _delTempFiles = value; }
         }
 
-        private string _tempFolder;
-        [XmlAttribute]
-        public string tempFolder
-        {
-            get { return _tempFolder; }
-            set { _tempFolder = value; }
-        }
-
-
         private string _mainFolder;
         [XmlAttribute]
         public string mainFolder
@@ -73,8 +54,7 @@ namespace mediaDownloader
             get { return _mainFolder; }
             set { _mainFolder = value; }
         }
-
-
+        
         private bool _addInbox;
         [XmlAttribute]
         public bool addInbox
@@ -99,12 +79,12 @@ namespace mediaDownloader
             set { _addComment = value; }
         }
 
-        private bool _displayConsole;
+        private string _ffmpegOutput;
         [XmlAttribute]
-        public bool displayConsole
+        public string ffmpegOutput
         {
-            get { return _displayConsole; }
-            set { _displayConsole = value; }
+            get { return _ffmpegOutput; }
+            set { _ffmpegOutput = value; }
         }
 
         private string _ffmpegPath;
@@ -122,22 +102,6 @@ namespace mediaDownloader
         {
             get { return _extractAudio; }
             set { _extractAudio = value; }
-        }
-
-        private bool _sameValBitRateAsVideo;
-        [XmlAttribute]
-        public bool sameValBitRateAsVideo
-        {
-            get { return _sameValBitRateAsVideo; }
-            set { _sameValBitRateAsVideo = value; }
-        }
-
-        private bool _m4aMake;
-        [XmlAttribute]
-        public bool m4aMake
-        {
-            get { return _m4aMake; }
-            set { _m4aMake = value; }
         }
 
         private bool _autoPasteURL;
@@ -228,14 +192,6 @@ namespace mediaDownloader
             set { _testFeature = value; }
         }
 
-        private bool _smoothing;
-        [XmlAttribute]
-        public bool smoothing
-        {
-            get { return _smoothing; }
-            set { _smoothing = value; }
-        }
-
         private bool _termsAccepted;
         [XmlAttribute]
         public bool termsAccepted
@@ -243,78 +199,13 @@ namespace mediaDownloader
             get { return _termsAccepted; }
             set { _termsAccepted = value; }
         }
-
-
+        
         private bool _clipboardMessageShown;
         [XmlAttribute]
         public bool clipboardMessageShown
         {
             get { return _clipboardMessageShown; }
             set { _clipboardMessageShown = value; }
-        }
-
-        private string _downloadLibraryType;
-        [XmlAttribute]
-        public string downloadLibraryType
-        {
-            get { return _downloadLibraryType; }
-            set { _downloadLibraryType = value; }
-        }
-
-        private string _manualDecipherOperataion;
-        [XmlAttribute]
-        public string manualDecipherOperataion
-        {
-            get { return _manualDecipherOperataion; }
-            set { _manualDecipherOperataion = value; }
-        }
-
-        private bool _useUnModifiedYTVersion;
-        [XmlAttribute]
-        public bool useUnModifiedYTVersion
-        {
-            get { return _useUnModifiedYTVersion; }
-            set { _useUnModifiedYTVersion = value; }
-        }
-
-        private bool _useMBLegacy;
-        [XmlAttribute]
-        public bool useMBLegacy
-        {
-            get { return _useMBLegacy; }
-            set { _useMBLegacy = value; }
-        }
-
-        private bool _pipeFFMPEG;
-        [XmlAttribute]
-        public bool pipeFFMPEG
-        {
-            get { return _pipeFFMPEG; }
-            set { _pipeFFMPEG = value; }
-        }
-
-        private int _retryDecipher;
-        [XmlAttribute]
-        public int retryDecipher
-        {
-            get { return _retryDecipher; }
-            set { _retryDecipher = value;  }
-        }
-
-        private bool _useFallbackdecipher;
-        [XmlAttribute]
-        public bool useFallbackdecipher
-        {
-            get { return _useFallbackdecipher; }
-            set { _useFallbackdecipher = value; }
-        }
-
-        private bool _fallbackRG3;
-        [XmlAttribute]
-        public bool fallbackRG3
-        {
-            get { return _fallbackRG3; }
-            set { _fallbackRG3 = value; }
         }
 
         private string _rg3Path;
@@ -333,46 +224,57 @@ namespace mediaDownloader
             set { _rg3Args = value; }
         }
 
+        private bool _ontop;
+        public bool ontop
+        {
+            get { return _ontop; }
+            set { _ontop = value; }
+        }
+
+        private bool _multipleinstances;
+        public bool multipleinstances
+        {
+            get { return _multipleinstances; }
+            set { _multipleinstances = value; }
+        }
+
+        private bool _skipSplash;
+        public bool skipSplash
+        {
+            get { return _skipSplash; }
+            set { _skipSplash = value; }
+        }
+
         public void loadDefaultSettings()
         {
             bitRate = 256;
-            tempFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\MusicBee";
             mainFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             addComment = true;
             addInbox = true;
             autoTagInfo = true;
             autoPasteURL = true;
             addLibrary = false;
-            displayConsole = false;
-            autoClosePlugin = false;
+            ffmpegOutput = "Pipe";
+            autoClosePlugin = true;
             ffmpegPath = Environment.CurrentDirectory + @"\Plugins\ffmpeg.exe";
             rg3Path = Environment.CurrentDirectory + @"\Plugins\rg3-youtube-dl.exe";
             extractAudio = false;
-            sameValBitRateAsVideo = false;
             hideTagMessage = false;
-            m4aMake = true;
             addCTagPlugInfo = true;
             addCTagDateTime = true;
             addCTagSource = true;
             addCTagCustomText = false;
             addCTagCustomTextVal = "";
-            useTempFolder = false;
             testFeature = false;
             preventDelTempFiles = false;
-            pipeFFMPEG = false;
             overwriteMode = "warn";
-            smoothing = true;
             loadedVersion = SETTINGVERSION;
             termsAccepted = false;
             clipboardMessageShown = false;
-            useFallbackdecipher = true; //NEED TO IMPLEMENT!
-            retryDecipher = 3;
-            fallbackRG3 = true;
-            rg3Args = " --get-url" + " --no-check-certificate --no-call-home";
-            downloadLibraryType = "YouTubeExtractor";
-            manualDecipherOperataion = "";
-            useUnModifiedYTVersion = false;
-            useMBLegacy = false;
+            rg3Args = " --no-check-certificate --no-call-home";
+            ontop = false;
+            multipleinstances = false;
+            skipSplash = false;
         }
 
         public string computeRG3Arguments(string url)

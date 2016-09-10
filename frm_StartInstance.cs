@@ -22,13 +22,12 @@ namespace mediaDownloader
             this.lbl_Title.Parent = pic_Top;
             this.pic_ICO.Parent = pic_Top;
             lbl_Version.Text = "Plugin Version: " + Program.versionCode;
-           
+            this.Visible = false;
         }
 
         private void but_NextStage_Click(object sender, EventArgs e)
         {
             pluginInstance.gotoCatchURL();
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

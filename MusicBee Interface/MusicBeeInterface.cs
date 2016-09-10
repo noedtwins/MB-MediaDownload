@@ -31,7 +31,8 @@ namespace MusicBeePlugin
             }
             public MusicBeeVersion MusicBeeVersion
             {
-                get {
+                get
+                {
                     if (ApiRevision <= 25)
                         return MusicBeeVersion.v2_0;
                     else if (ApiRevision <= 31)
@@ -385,7 +386,7 @@ namespace MusicBeePlugin
             AlbumArtistRaw = 34,     // stored album artist
             Artist = 32,             // displayed artist
             MultiArtist = 33,        // individual artists, separated by a null char
-			PrimaryArtist = 19,      // first artist from multi-artist tagged file, otherwise displayed artist
+            PrimaryArtist = 19,      // first artist from multi-artist tagged file, otherwise displayed artist
             Artists = 144,
             ArtistsWithArtistRole = 145,
             ArtistsWithPerformerRole = 146,
@@ -453,7 +454,7 @@ namespace MusicBeePlugin
             Virtual16 = 141,
             Year = 88
         }
-        
+
         public enum FileCodec
         {
             Unknown = -1,
@@ -606,7 +607,7 @@ namespace MusicBeePlugin
             MainPanel = 5
         }
 
-        
+
         public enum ReplayGainMode
         {
             Off = 0,
@@ -614,7 +615,7 @@ namespace MusicBeePlugin
             Album = 2,
             Smart = 3
         }
-        
+
         public enum PlayStatisticType
         {
             NoChange = 0,
@@ -626,7 +627,7 @@ namespace MusicBeePlugin
         {
             NavigateTo = 1
         }
-        
+
         public enum DownloadTarget
         {
             Inbox = 0,
@@ -635,7 +636,7 @@ namespace MusicBeePlugin
         }
 
         [Flags()]
-        public enum PictureLocations: byte
+        public enum PictureLocations : byte
         {
             None = 0,
             EmbedInFile = 1,

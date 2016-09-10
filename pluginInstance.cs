@@ -25,7 +25,8 @@ namespace mediaDownloader
         private static string configuationPath;
         private static string configuationFileName = @"\mb_MediaDownloader_Settings.xml";
         public static Boolean forceDefaultSettings = false;
-
+        public static Boolean instanceRunning = false;
+        public static Boolean flagLoadFromMenu = false;
 
         public static void runoutsideMB()
         {
@@ -49,7 +50,6 @@ namespace mediaDownloader
         {
             mbApi = linkAPI;
             configuationPath = mbApi.getLocationOfSettingsFileFromMBApi();
-
         }
 
         public static void createNewInstance() //Create new Plugin Instance
@@ -66,12 +66,23 @@ namespace mediaDownloader
             loadSettings();
             clearInstance();
             loadedSplashScreen = new frm_StartInstance();
+            instanceRunning = true;
             if (Program.isStandaloneMode)
             {
                 runoutsideMB();
             }
             else
             {
+                if (config.skipSplash && config.termsAccepted)
+                {
+                    if (flagLoadFromMenu)
+                    {
+                        gotoCatchURL();
+                        flagLoadFromMenu = false;
+                        return;
+                    }
+                }
+                flagLoadFromMenu = false;
                 gotoSplashScreen(false);
             }
         }
@@ -84,7 +95,6 @@ namespace mediaDownloader
             {
                 config = new serialConfig(configLocation);
                 config.loadDefaultSettings();
-                config.tempFolder = configuationPath;
                 MessageBox.Show("Media Downloader: No Settings File Found. \nDefault Settings will be applied", "Plugin Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 config.saveSettings(config);
             }
@@ -107,7 +117,6 @@ namespace mediaDownloader
                     {
                         config = new serialConfig(configLocation);
                         config.loadDefaultSettings();
-                        config.tempFolder = configuationPath;
                         config.configLoc = configLocation;
                         config.saveSettings(config);
                     }
@@ -168,8 +177,8 @@ namespace mediaDownloader
                 loadedCropContent.Dispose();
                 loadedCropContent = null; 
             }
+            instanceRunning = false;
 
-            
 
             //try { loadedSplashScreen.Close(); }
             //catch { }
@@ -200,7 +209,7 @@ namespace mediaDownloader
                 return;
             }
             hideAllForms();
-
+            
             loadedSplashScreen.updateTermsBox();
             loadedSplashScreen.Show();
         }

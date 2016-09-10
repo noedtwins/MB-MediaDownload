@@ -65,6 +65,7 @@
     <Compile Include="CropContentLogic\ZzzzRangeBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Downloader.cs" />
     <Compile Include="frm_GetURL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +105,10 @@
     <Compile Include="mediaDetails.cs" />
     <Compile Include="MusicBee Interface\MusicBeeInterface.cs" />
     <Compile Include="MusicBee Interface\MBPlugin.cs" />
+    <Compile Include="ParseURL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="pluginInstance.cs" />
+    <Compile Include="ProgressEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CropContentLogic\frm_CropContent.resx">
       <DependentUpon>frm_CropContent.cs</DependentUpon>
@@ -127,6 +130,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_StartInstance.resx">
       <DependentUpon>frm_StartInstance.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TagModify.resx">
       <DependentUpon>frm_TagModify.cs</DependentUpon>
@@ -152,12 +156,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Development\Media Downloader V13\customYouTubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor\YoutubeExtractor.csproj">
-      <Project>{ecdc127f-8def-4f99-8300-72c13597339d}</Project>
-      <Name>YoutubeExtractor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ajaxLoad.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +176,13 @@
   <ItemGroup>
     <None Include="Information.png" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "C:\Users\Charlie\Documents\GitHub\MB-MediaDownload\bin\Debug\*.*" "C:\Program Files (x86)\MusicBee\Plugins\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
