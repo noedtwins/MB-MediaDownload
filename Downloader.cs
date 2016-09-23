@@ -29,7 +29,8 @@ namespace mediaDownloader
         public void Execute()
         {
             this.OnDownloadStarted(EventArgs.Empty);
-            var request = (HttpWebRequest)WebRequest.Create(this.downloadURL);
+            var request = (HttpWebRequest)WebRequest.Create(this.downloadURL);   
+
 
             if (this.BytesToDownload.HasValue)
                 request.AddRange(0, this.BytesToDownload.Value - 1);

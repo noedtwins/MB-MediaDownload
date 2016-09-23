@@ -12,7 +12,7 @@ namespace mediaDownloader
     {
         public string url;
         public string title;
-        public int formatCode;
+        public string formatCode;
         public int convertToBitRate;
         public Boolean cropSelected;
         public string startTime;

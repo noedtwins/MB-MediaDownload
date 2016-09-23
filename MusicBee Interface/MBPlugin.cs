@@ -54,15 +54,9 @@ namespace MusicBeePlugin
 
             if (mediaDownloader.pluginInstance.instanceRunning == true && !mediaDownloader.pluginInstance.config.multipleinstances)
             {
-                DialogResult closeInstance = MessageBox.Show("Another instance of Media Downloader is already running.\nWould you like to force close the previous instance?", "Plugin Question",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2 ,MessageBoxOptions.ServiceNotification);
-                if (closeInstance == DialogResult.Yes)
-                {
-                    mediaDownloader.pluginInstance.instanceRunning = false;
-                    mediaDownloader.pluginInstance.clearInstance();
-                }
-                else
-                    return;
+                DialogResult closeInstance = MessageBox.Show("Another instance of Media Downloader is already running.", "Plugin Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
             }
             else
             {

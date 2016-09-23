@@ -57,6 +57,23 @@ namespace mediaDownloader
             return dictionary;
         }
 
+        internal static bool CheckAnyValidURL(string text, out string URL)
+        {
+            Regex MatchURL = new Regex(@"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$"); //This is the basic match
+
+            if (MatchURL.IsMatch(text))
+            {
+                URL = text;
+                return true;
+            }
+            else
+            {
+                URL = null;
+                return false;                
+            }
+
+        }
+
         public static string UrlDecode(string url)
         {
             return Uri.UnescapeDataString(url);

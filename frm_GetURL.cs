@@ -38,7 +38,7 @@ namespace mediaDownloader
             txt_MediaURL.Enabled = false;
             but_MoreOptions.Enabled = false;
 
-            if (!ParseURL.TryNormalizeYoutubeUrl(txt_MediaURL.Text, out pluginInstance.details.url)) //If Invalid URL
+            if (!ParseURL.CheckAnyValidURL(txt_MediaURL.Text, out pluginInstance.details.url)) //If Invalid URL
             {
                 MessageBox.Show(this, "There was an error normalizing the URL." + Environment.NewLine + "Please check your entry", "Plugin Warning",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -273,22 +273,19 @@ namespace mediaDownloader
             {
                 if (runningArgument.Contains("title"))
                 {
-                    Debug.Write(outputLog);
                     lbl_VideoTitle.Text = outputLog;
                     findThumbnail();
                 }
                 else if (runningArgument.Contains("thumbnail"))
                 {
-                    Debug.Write(outputLog);
                     setThumbnailPicture(outputLog);
                     findBestAudioFormat();
                 }
                 else if (runningArgument.Contains("format"))
                 {
-                    Debug.Write(outputLog);
                     lbl_FormatNumber.Text = "Format Selected: " + outputLog;
                     try {
-                        pluginInstance.details.formatCode = Convert.ToInt32(outputLog.Substring(0, outputLog.IndexOf(' ')));
+                        pluginInstance.details.formatCode = outputLog.Substring(0, outputLog.IndexOf(' '));
                         completeRG3Tasks();
                     }
                     catch

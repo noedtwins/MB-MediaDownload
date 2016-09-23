@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label7.Text" xml:space="preserve">
-    <value>YouTube Extractor: https://github.com/flagbug/YoutubeExtractor || MIT License
-TagLib: https://github.com/mono/taglib-sharp/ || LGPL
-Newtonsoft.Json: http://james.newtonking.com/json || MIT License
-FFMpeg: https://www.ffmpeg.org/doxygen/trunk/md_LICENSE.html
-http://www.codeproject.com/Articles/2275/C-RangeBar-control
-</value>
-  </data>
   <data name="lbl_Terms.Text" xml:space="preserve">
     <value>By using this application you agree that:
 This service is designed to make copies of videoes avaliable offline for

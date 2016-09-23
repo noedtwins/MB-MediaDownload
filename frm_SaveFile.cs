@@ -171,8 +171,26 @@ namespace mediaDownloader
                 return false; ; //Error occured, Exit method.
             }
 
+            /////////////////////
+            ///Overwrite Check///
+            ////////////////////
+
+            if (pluginInstance.config.overwriteMode == "warn")
+            {
+               if (System.IO.File.Exists(cbo_Folder.Text + "\\" + txt_FileName.Text + '.' + cbo_SelectFileFormat.Text))
+               {
+                    DialogResult askOverwrite = MessageBox.Show(this, "The file name you have entered already exists\nWould you like to overwrite the existing file?", "Plugin Question",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (askOverwrite == DialogResult.No)
+                        return false;
+               }
+
+            }
+
             if (rdo_Video.Checked == true)
                 pluginInstance.details.videoMode = true;
+            else
+                pluginInstance.details.videoMode = false;
 
             //////////////
             ///Tagging///

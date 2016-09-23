@@ -57,6 +57,7 @@
             this.pic_ICO = new System.Windows.Forms.PictureBox();
             this.tmr_TimeoutFFMPEG = new System.Windows.Forms.Timer(this.components);
             this.bkWork_GetURLRG3 = new System.ComponentModel.BackgroundWorker();
+            this.bkWork_RG3Download = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1.SuspendLayout();
             this.grp_Download.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,10 +73,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 582);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 469);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(638, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(478, 22);
             this.statusStrip1.TabIndex = 39;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -89,8 +89,7 @@
             // 
             this.lbl_TRate.AutoSize = true;
             this.lbl_TRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TRate.Location = new System.Drawing.Point(8, 110);
-            this.lbl_TRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TRate.Location = new System.Drawing.Point(6, 89);
             this.lbl_TRate.Name = "lbl_TRate";
             this.lbl_TRate.Size = new System.Drawing.Size(191, 16);
             this.lbl_TRate.TabIndex = 25;
@@ -99,10 +98,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(489, 28);
+            this.label2.Size = new System.Drawing.Size(367, 23);
             this.label2.TabIndex = 23;
             this.label2.Text = "Download Information";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,11 +111,9 @@
             this.grp_Download.Controls.Add(this.lbl_TRate);
             this.grp_Download.Controls.Add(this.lbl_Size);
             this.grp_Download.Controls.Add(this.label2);
-            this.grp_Download.Location = new System.Drawing.Point(51, 341);
-            this.grp_Download.Margin = new System.Windows.Forms.Padding(4);
+            this.grp_Download.Location = new System.Drawing.Point(38, 277);
             this.grp_Download.Name = "grp_Download";
-            this.grp_Download.Padding = new System.Windows.Forms.Padding(4);
-            this.grp_Download.Size = new System.Drawing.Size(555, 153);
+            this.grp_Download.Size = new System.Drawing.Size(416, 124);
             this.grp_Download.TabIndex = 49;
             this.grp_Download.TabStop = false;
             this.grp_Download.Visible = false;
@@ -125,10 +121,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-73, 43);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(-55, 35);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(656, 6);
+            this.pictureBox1.Size = new System.Drawing.Size(492, 5);
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
@@ -136,8 +131,7 @@
             // 
             this.lbl_Size.AutoSize = true;
             this.lbl_Size.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Size.Location = new System.Drawing.Point(8, 63);
-            this.lbl_Size.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Size.Location = new System.Drawing.Point(6, 51);
             this.lbl_Size.Name = "lbl_Size";
             this.lbl_Size.Size = new System.Drawing.Size(191, 16);
             this.lbl_Size.TabIndex = 24;
@@ -145,12 +139,11 @@
             // 
             // txt_ConvLog
             // 
-            this.txt_ConvLog.Location = new System.Drawing.Point(64, 341);
-            this.txt_ConvLog.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_ConvLog.Location = new System.Drawing.Point(48, 277);
             this.txt_ConvLog.Multiline = true;
             this.txt_ConvLog.Name = "txt_ConvLog";
             this.txt_ConvLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_ConvLog.Size = new System.Drawing.Size(540, 152);
+            this.txt_ConvLog.Size = new System.Drawing.Size(406, 124);
             this.txt_ConvLog.TabIndex = 48;
             // 
             // bkWork_ConvertVideo
@@ -170,10 +163,9 @@
             // but_Finish
             // 
             this.but_Finish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.but_Finish.Location = new System.Drawing.Point(4, 19);
-            this.but_Finish.Margin = new System.Windows.Forms.Padding(4);
+            this.but_Finish.Location = new System.Drawing.Point(3, 16);
             this.but_Finish.Name = "but_Finish";
-            this.but_Finish.Size = new System.Drawing.Size(617, 34);
+            this.but_Finish.Size = new System.Drawing.Size(463, 27);
             this.but_Finish.TabIndex = 11;
             this.but_Finish.Text = "Cancel";
             this.but_Finish.UseVisualStyleBackColor = true;
@@ -182,31 +174,27 @@
             // grp_FrmButtons
             // 
             this.grp_FrmButtons.Controls.Add(this.but_Finish);
-            this.grp_FrmButtons.Location = new System.Drawing.Point(11, 507);
-            this.grp_FrmButtons.Margin = new System.Windows.Forms.Padding(4);
+            this.grp_FrmButtons.Location = new System.Drawing.Point(8, 412);
             this.grp_FrmButtons.Name = "grp_FrmButtons";
-            this.grp_FrmButtons.Padding = new System.Windows.Forms.Padding(4);
-            this.grp_FrmButtons.Size = new System.Drawing.Size(625, 57);
+            this.grp_FrmButtons.Size = new System.Drawing.Size(469, 46);
             this.grp_FrmButtons.TabIndex = 46;
             this.grp_FrmButtons.TabStop = false;
             // 
             // lbl_LargeHeading
             // 
             this.lbl_LargeHeading.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LargeHeading.Location = new System.Drawing.Point(-9, 70);
-            this.lbl_LargeHeading.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LargeHeading.Location = new System.Drawing.Point(-7, 57);
             this.lbl_LargeHeading.Name = "lbl_LargeHeading";
-            this.lbl_LargeHeading.Size = new System.Drawing.Size(655, 58);
+            this.lbl_LargeHeading.Size = new System.Drawing.Size(491, 47);
             this.lbl_LargeHeading.TabIndex = 45;
             this.lbl_LargeHeading.Text = "Please Wait...";
             this.lbl_LargeHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // but_ConvertAgain
             // 
-            this.but_ConvertAgain.Location = new System.Drawing.Point(181, 127);
-            this.but_ConvertAgain.Margin = new System.Windows.Forms.Padding(4);
+            this.but_ConvertAgain.Location = new System.Drawing.Point(136, 103);
             this.but_ConvertAgain.Name = "but_ConvertAgain";
-            this.but_ConvertAgain.Size = new System.Drawing.Size(193, 46);
+            this.but_ConvertAgain.Size = new System.Drawing.Size(145, 37);
             this.but_ConvertAgain.TabIndex = 21;
             this.but_ConvertAgain.Text = "Convert Another Video";
             this.but_ConvertAgain.UseVisualStyleBackColor = true;
@@ -216,10 +204,9 @@
             // lbl_ManProg
             // 
             this.lbl_ManProg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ManProg.Location = new System.Drawing.Point(24, 123);
-            this.lbl_ManProg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_ManProg.Location = new System.Drawing.Point(18, 100);
             this.lbl_ManProg.Name = "lbl_ManProg";
-            this.lbl_ManProg.Size = new System.Drawing.Size(496, 31);
+            this.lbl_ManProg.Size = new System.Drawing.Size(372, 25);
             this.lbl_ManProg.TabIndex = 3;
             this.lbl_ManProg.Text = "0%";
             this.lbl_ManProg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,29 +214,26 @@
             // lbl_Desc
             // 
             this.lbl_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Desc.Location = new System.Drawing.Point(12, 46);
-            this.lbl_Desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Desc.Location = new System.Drawing.Point(9, 37);
             this.lbl_Desc.Name = "lbl_Desc";
-            this.lbl_Desc.Size = new System.Drawing.Size(539, 55);
+            this.lbl_Desc.Size = new System.Drawing.Size(404, 45);
             this.lbl_Desc.TabIndex = 2;
             this.lbl_Desc.Text = "Performing Initial Steps...";
             this.lbl_Desc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // prg_Main
             // 
-            this.prg_Main.Location = new System.Drawing.Point(88, 97);
-            this.prg_Main.Margin = new System.Windows.Forms.Padding(4);
+            this.prg_Main.Location = new System.Drawing.Point(66, 85);
             this.prg_Main.Name = "prg_Main";
-            this.prg_Main.Size = new System.Drawing.Size(412, 22);
+            this.prg_Main.Size = new System.Drawing.Size(309, 18);
             this.prg_Main.TabIndex = 1;
             // 
             // lbl_Stage
             // 
             this.lbl_Stage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Stage.Location = new System.Drawing.Point(13, 16);
-            this.lbl_Stage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Stage.Location = new System.Drawing.Point(10, 13);
             this.lbl_Stage.Name = "lbl_Stage";
-            this.lbl_Stage.Size = new System.Drawing.Size(520, 31);
+            this.lbl_Stage.Size = new System.Drawing.Size(390, 25);
             this.lbl_Stage.TabIndex = 0;
             this.lbl_Stage.Text = "Stage 1 of 5";
             this.lbl_Stage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -257,10 +241,9 @@
             // lbl_DownloadETA
             // 
             this.lbl_DownloadETA.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DownloadETA.Location = new System.Drawing.Point(39, 156);
-            this.lbl_DownloadETA.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_DownloadETA.Location = new System.Drawing.Point(29, 127);
             this.lbl_DownloadETA.Name = "lbl_DownloadETA";
-            this.lbl_DownloadETA.Size = new System.Drawing.Size(489, 28);
+            this.lbl_DownloadETA.Size = new System.Drawing.Size(367, 23);
             this.lbl_DownloadETA.TabIndex = 22;
             this.lbl_DownloadETA.Text = "Estimated Time Remaining: Calculating...";
             this.lbl_DownloadETA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -275,11 +258,9 @@
             this.groupBox1.Controls.Add(this.prg_Main);
             this.groupBox1.Controls.Add(this.lbl_Stage);
             this.groupBox1.Controls.Add(this.lbl_Desc);
-            this.groupBox1.Location = new System.Drawing.Point(51, 140);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(38, 114);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(555, 193);
+            this.groupBox1.Size = new System.Drawing.Size(416, 157);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             // 
@@ -289,10 +270,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_INILOAD.Image = global::mediaDownloader.Properties.Resources.ajaxLoad;
-            this.pic_INILOAD.Location = new System.Drawing.Point(168, 105);
-            this.pic_INILOAD.Margin = new System.Windows.Forms.Padding(4);
+            this.pic_INILOAD.Location = new System.Drawing.Point(102, 85);
             this.pic_INILOAD.Name = "pic_INILOAD";
-            this.pic_INILOAD.Size = new System.Drawing.Size(223, 33);
+            this.pic_INILOAD.Size = new System.Drawing.Size(230, 27);
             this.pic_INILOAD.TabIndex = 4;
             this.pic_INILOAD.TabStop = false;
             this.pic_INILOAD.Visible = false;
@@ -303,8 +283,7 @@
             this.lbl_Title.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Title.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Title.ForeColor = System.Drawing.Color.Transparent;
-            this.lbl_Title.Location = new System.Drawing.Point(84, 9);
-            this.lbl_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Title.Location = new System.Drawing.Point(63, 7);
             this.lbl_Title.Name = "lbl_Title";
             this.lbl_Title.Size = new System.Drawing.Size(333, 37);
             this.lbl_Title.TabIndex = 42;
@@ -314,29 +293,26 @@
             // 
             this.pic_Top.BackColor = System.Drawing.Color.DimGray;
             this.pic_Top.Location = new System.Drawing.Point(-1, 0);
-            this.pic_Top.Margin = new System.Windows.Forms.Padding(4);
             this.pic_Top.Name = "pic_Top";
-            this.pic_Top.Size = new System.Drawing.Size(684, 62);
+            this.pic_Top.Size = new System.Drawing.Size(513, 50);
             this.pic_Top.TabIndex = 40;
             this.pic_Top.TabStop = false;
             // 
             // pic_TopLine
             // 
             this.pic_TopLine.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(131)))), ((int)(((byte)(155)))));
-            this.pic_TopLine.Location = new System.Drawing.Point(-11, 60);
-            this.pic_TopLine.Margin = new System.Windows.Forms.Padding(4);
+            this.pic_TopLine.Location = new System.Drawing.Point(-8, 49);
             this.pic_TopLine.Name = "pic_TopLine";
-            this.pic_TopLine.Size = new System.Drawing.Size(656, 6);
+            this.pic_TopLine.Size = new System.Drawing.Size(492, 5);
             this.pic_TopLine.TabIndex = 43;
             this.pic_TopLine.TabStop = false;
             // 
             // pic_ICO
             // 
             this.pic_ICO.Image = global::mediaDownloader.Properties.Resources.basic_icon;
-            this.pic_ICO.Location = new System.Drawing.Point(13, 2);
-            this.pic_ICO.Margin = new System.Windows.Forms.Padding(4);
+            this.pic_ICO.Location = new System.Drawing.Point(10, 2);
             this.pic_ICO.Name = "pic_ICO";
-            this.pic_ICO.Size = new System.Drawing.Size(65, 50);
+            this.pic_ICO.Size = new System.Drawing.Size(49, 41);
             this.pic_ICO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_ICO.TabIndex = 41;
             this.pic_ICO.TabStop = false;
@@ -352,11 +328,17 @@
             this.bkWork_GetURLRG3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWork_GetURLRG3_DoWork);
             this.bkWork_GetURLRG3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkWork_GetURLRG3_RunWorkerCompleted);
             // 
+            // bkWork_RG3Download
+            // 
+            this.bkWork_RG3Download.WorkerReportsProgress = true;
+            this.bkWork_RG3Download.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkWork_RG3Download_DoWork);
+            this.bkWork_RG3Download.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkWork_RG3Download_RunWorkerCompleted);
+            // 
             // frm_ProcessMedia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 604);
+            this.ClientSize = new System.Drawing.Size(478, 491);
             this.Controls.Add(this.grp_Download);
             this.Controls.Add(this.pic_TopLine);
             this.Controls.Add(this.pic_ICO);
@@ -369,7 +351,6 @@
             this.Controls.Add(this.pic_Top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frm_ProcessMedia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -419,5 +400,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer tmr_TimeoutFFMPEG;
         private System.ComponentModel.BackgroundWorker bkWork_GetURLRG3;
+        private System.ComponentModel.BackgroundWorker bkWork_RG3Download;
     }
 }

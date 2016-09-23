@@ -47,6 +47,11 @@ namespace mediaDownloader
             lbl_SettingVersion.Text = "Setting File Version: " + pluginInstance.config.loadedVersion + " || Match Setting: " + pluginInstance.config.SETTINGVERSION;
             cbo_BitRate.Text = Convert.ToString(pluginInstance.config.bitRate);
 
+            if (pluginInstance.config.overwriteMode == "warn")
+                rdo_Warn.Checked = true;
+            else
+                rdo_NoWarn.Checked = true;
+
             if (!pluginInstance.config.addInbox && !pluginInstance.config.addLibrary)
                 rdo_None.Checked = true;
             else
@@ -125,7 +130,12 @@ namespace mediaDownloader
                 pluginInstance.config.ffmpegOutput = "Console";
             else
                 pluginInstance.config.ffmpegOutput = "None";
-            
+
+            if (rdo_Warn.Checked)
+                pluginInstance.config.overwriteMode = "warn";
+            if (rdo_NoWarn.Checked)
+                pluginInstance.config.overwriteMode = "nowarn";
+
             pluginInstance.config.saveSettings(pluginInstance.config);
             justSaved = true;
             this.Close();

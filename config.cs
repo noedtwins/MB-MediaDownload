@@ -271,7 +271,7 @@ namespace mediaDownloader
             loadedVersion = SETTINGVERSION;
             termsAccepted = false;
             clipboardMessageShown = false;
-            rg3Args = " --no-check-certificate --no-call-home";
+            rg3Args = " --no-check-certificate --no-call-home --newline";
             ontop = false;
             multipleinstances = false;
             skipSplash = false;

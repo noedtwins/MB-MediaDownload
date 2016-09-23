@@ -202,7 +202,11 @@ namespace mediaDownloader
         private void rg3Process_DataReceived(object sender, DataReceivedEventArgs e)
         {
             if (e.Data != null)
+            {
                 outputRG3 = e.Data;
+                addLog(e.Data);
+
+            }
         }
 
         private void bkWork_GetURLRG3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -285,17 +289,80 @@ namespace mediaDownloader
         private void handle403Error(WebException exception)
         {
             //TODO: IMPROVE MESSAGE
-                addLog("", true);
-                addLog("Download Failed... HTTP Response: 403");
-                addLog("The signature algorithm has likely changed (please report to Cyano)");
-                throwErrorForm(exception);
-                downloadCompleted = false;            
+            addLog("", true);
+            addLog("Download Failed... HTTP Response: 403");
+            addLog("The signature algorithm has likely changed. Falling Back To RG3 Downloader...");
+            FallBackRG3Download();
+
+
         }
-      
+
+        private void FallBackRG3Download()
+        {
+            addLog("", true);
+            addLog("Preparing RG3 Youtube-DL Process For Download", true);
+            bkWork_RG3Download.RunWorkerAsync();           
+        }
 
 
-        
-        
+        private void bkWork_RG3Download_DoWork(object sender, DoWorkEventArgs e)
+        {
+            rg3Process = new Process();
+            rg3Process.StartInfo.UseShellExecute = false;
+            rg3Process.StartInfo.RedirectStandardOutput = true;
+            rg3Process.StartInfo.RedirectStandardError = true;
+            rg3Process.EnableRaisingEvents = true;
+            rg3Process.StartInfo.CreateNoWindow = true;
+
+            rg3Process.ErrorDataReceived += rg3Process_DataReceived;
+            rg3Process.OutputDataReceived += rg3Process_DataReceived;
+
+            rg3Process.StartInfo.FileName = pluginInstance.config.rg3Path;
+            addLog("RG3 Process Path: " + rg3Process.StartInfo.FileName);
+
+            string args = sm + pluginInstance.details.url + sm + pluginInstance.config.rg3Args + " -f " + pluginInstance.details.formatCode + " -o " +
+                sm + pluginInstance.details.fullTempPath + sm;
+            rg3Process.StartInfo.Arguments = (args);
+            addLog("Process Arguments Set:" + rg3Process.StartInfo.Arguments.ToString(), true);
+            prg_Main.Visible = false;
+            lbl_ManProg.Text = "--";
+            lbl_DownloadETA.Visible = true;
+            lbl_DownloadETA.Text = "RG3 Download Fallback... See Log for Progress";
+            pic_INILOAD.Visible = true;
+
+            //Start and wait for process exit.
+            rg3Process.Start();
+
+            addLog("Process Started!");
+            addLog("Waiting for process to end before continuing...");
+            addLog("Process Information. PID:" + rg3Process.Id);
+
+            rg3Process.BeginErrorReadLine();
+            rg3Process.BeginOutputReadLine();
+
+            rg3Process.WaitForExit();
+            downloadCompleted = true;
+        }
+
+        private void bkWork_RG3Download_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            grp_Download.Visible = false;
+            lbl_DownloadETA.Visible = false;
+
+            if (downloadCompleted == true)
+            {
+                addLog("Download Completed!", true);
+                addLog("bkWork_RG3Download Ended");
+                lbl_ManProg.Visible = false;
+
+                if (pluginInstance.details.addMBMode == "video")
+                { processStage3_video(); }
+                else
+                { processStage3_audio(); }
+
+            }
+        }
+
         #region stage3
         private void processStage3_audio()
         {
@@ -650,5 +717,6 @@ namespace mediaDownloader
             pluginInstance.reloadPlugin();
             this.Dispose();
         }
+
     }
 }
