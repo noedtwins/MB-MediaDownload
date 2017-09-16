@@ -1,0 +1,8 @@
+Dear noedtwins,
+
+As the original author of this project I had to cease development and remove all copies of the binaries and sourcecode for MB-MediaDownloader.
+I no longer wish to be associated with this project whatsoever and this fork is the last remaining copy. 
+
+Could I politely ask that you delete this repository too? I would very much appreciate it.
+
+Thank you.
